@@ -10,7 +10,7 @@ import Foundation
 import RxComposableArchitecture
 
 public struct AppState {
-	var user: UsersViewState
+	var usersSession: UsersViewState
 }
 
 extension AppState: Equatable { }
@@ -18,14 +18,14 @@ extension AppState: Equatable { }
 extension AppState {
 	var starGazersFeature: UsersViewState {
 		get {
-			self.user
+			self.usersSession
 		}
 		set {
-			self.user = newValue
+			self.usersSession = newValue
 		}
 	}
 }
 
 let initialAppState = AppState(
-	user: .empty
+	usersSession: .empty
 )

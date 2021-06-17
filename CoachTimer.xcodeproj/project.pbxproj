@@ -57,8 +57,8 @@
 		692B188F62E13A0E32C08DE6 /* trend_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = C7B60B1E1C1A35B8572F7642 /* trend_broken.json */; };
 		6A719AD7A502BD926899AFDE /* installations.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9ADB27CAD581ED65A9839544 /* installations.csv */; };
 		6C43304B3E016988F361E04E /* UsersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B39F9CEA3411F7D523B6C /* UsersRequest.swift */; };
-		6D88D313165549CB2087A6B9 /* Stargazer+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451C92541EC440D2D8CB19E /* Stargazer+View.swift */; };
-		7A0E46ADC6DC401CFB2B9A79 /* Stargazer+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451C92541EC440D2D8CB19E /* Stargazer+View.swift */; };
+		6D88D313165549CB2087A6B9 /* UsersSessions+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451C92541EC440D2D8CB19E /* UsersSessions+View.swift */; };
+		7A0E46ADC6DC401CFB2B9A79 /* UsersSessions+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451C92541EC440D2D8CB19E /* UsersSessions+View.swift */; };
 		7A69D911A7CD79F8CF310B3A /* trend_milano_centrale.json in Resources */ = {isa = PBXBuildFile; fileRef = EA681DBAA378A4C265DA1ED9 /* trend_milano_centrale.json */; };
 		7E2AB2D12EB46F32CA9A3FBA /* trend_torino_p_nuova_reggio_calabria.json in Resources */ = {isa = PBXBuildFile; fileRef = C206A931E020938C75930B04 /* trend_torino_p_nuova_reggio_calabria.json */; };
 		7ECF63CC43C4AF9A7856F548 /* stations_broken.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4ADB842B1059B49EA91EA2D6 /* stations_broken.txt */; };
@@ -157,7 +157,7 @@
 		89F52511041654B3770A834A /* Mock+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+.swift"; sourceTree = "<group>"; };
 		8C48B2F132118F01C070FD5F /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
 		9286402CFDDF75AB1A01AA8B /* StargazersListViewController+Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StargazersListViewController+Binder.swift"; sourceTree = "<group>"; };
-		9451C92541EC440D2D8CB19E /* Stargazer+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stargazer+View.swift"; sourceTree = "<group>"; };
+		9451C92541EC440D2D8CB19E /* UsersSessions+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsersSessions+View.swift"; sourceTree = "<group>"; };
 		94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Reducer.swift"; sourceTree = "<group>"; };
 		968717F7A11D62D227AAF5AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9ADB27CAD581ED65A9839544 /* installations.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = installations.csv; sourceTree = "<group>"; };
@@ -499,7 +499,7 @@
 		F65C19D9D1A3B236E8D4D855 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				9451C92541EC440D2D8CB19E /* Stargazer+View.swift */,
+				9451C92541EC440D2D8CB19E /* UsersSessions+View.swift */,
 				592203DE72B06F9309D07BB4 /* Search */,
 				ED7C3F0F2E372C7C31B5BCEE /* UsersList */,
 			);
@@ -803,7 +803,7 @@
 				38FE37781BB85A35B969BC07 /* SearchViewController+Binder.swift in Sources */,
 				1430DA2E91E48D8A29385187 /* SearchViewController.swift in Sources */,
 				0CC160175A6A4785D56ECE0E /* Users+Feature.swift in Sources */,
-				7A0E46ADC6DC401CFB2B9A79 /* Stargazer+View.swift in Sources */,
+				7A0E46ADC6DC401CFB2B9A79 /* UsersSessions+View.swift in Sources */,
 				B2B022FDCC25498E003E49DB /* UserCell.swift in Sources */,
 				6C43304B3E016988F361E04E /* UsersRequest.swift in Sources */,
 				029C9C0DE44B0941BD3C704A /* StargazersListViewController+Binder.swift in Sources */,
@@ -837,7 +837,7 @@
 				C2A1CCE5A357B84FE52EA2DB /* SearchViewController+Binder.swift in Sources */,
 				EA7DFEDF3EECA19B70B30A33 /* SearchViewController.swift in Sources */,
 				4EC1505CC2E42C47AB4971A1 /* Users+Feature.swift in Sources */,
-				6D88D313165549CB2087A6B9 /* Stargazer+View.swift in Sources */,
+				6D88D313165549CB2087A6B9 /* UsersSessions+View.swift in Sources */,
 				AE7C8569A7B328721222CA7D /* UserCell.swift in Sources */,
 				256CFC0999DF802641A3F369 /* UsersRequest.swift in Sources */,
 				A67E87EA9BF39014ADB68593 /* StargazersListViewController+Binder.swift in Sources */,

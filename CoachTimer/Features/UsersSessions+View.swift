@@ -1,5 +1,5 @@
 //
-//  Stargazer+View.swift
+//  UsersSessions+View.swift
 //  CoachTimer
 //
 //  Created by Jean Raphael Bordet on 24/05/21.
@@ -16,13 +16,16 @@ public struct UsersViewState: Equatable {
 	public var alert: String?
 	public var currentPage: Int
 	
+	public var currentUser: User?
+	
 	public init(
 		list: [User],
 		repo: String,
 		owner: String,
 		isLoading: Bool,
 		alert: String?,
-		currentPage: Int
+		currentPage: Int,
+		currentUser: User?
 	) {
 		self.list = list
 		self.repo = repo
@@ -30,6 +33,7 @@ public struct UsersViewState: Equatable {
 		self.isLoading = isLoading
 		self.alert = alert
 		self.currentPage = currentPage
+		self.currentUser = currentUser
 	}
 	
 	var user: UsersState {
@@ -38,8 +42,8 @@ public struct UsersViewState: Equatable {
 				list: self.list,
 				isLoading: self.isLoading,
 				alert: self.alert,
-				currentPage: currentPage,
-				currentUser: nil
+				currentPage: self.currentPage,
+				currentUser: self.currentUser
 			)
 		}
 		
@@ -48,6 +52,7 @@ public struct UsersViewState: Equatable {
 			self.isLoading = newValue.isLoading
 			self.alert = newValue.alert
 			self.currentPage = newValue.currentPage
+			self.currentUser = newValue.currentUser
 		}
 	}
 	
@@ -75,7 +80,8 @@ extension UsersViewState {
 		owner: "",
 		isLoading: false,
 		alert: nil,
-		currentPage: 1
+		currentPage: 1,
+		currentUser: nil
 	)
 	
 	static var sample = Self(
@@ -84,7 +90,8 @@ extension UsersViewState {
 		owner: "hello-world",
 		isLoading: false,
 		alert: nil,
-		currentPage: 1
+		currentPage: 1,
+		currentUser: nil
 	)
 	
 	static var sample_1 = Self(
@@ -96,7 +103,8 @@ extension UsersViewState {
 		owner: "hello-world",
 		isLoading: false,
 		alert: nil,
-		currentPage: 1
+		currentPage: 1,
+		currentUser: nil
 	)
 	
 	static var test = Self(
@@ -108,7 +116,8 @@ extension UsersViewState {
 		owner: "hello-world",
 		isLoading: false,
 		alert: nil,
-		currentPage: 1
+		currentPage: 1,
+		currentUser: nil
 	)
 }
 

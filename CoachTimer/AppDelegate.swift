@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		rootScene.store = applicationStore.view(
 			value: { $0.starGazersFeature },
-			action: { .user($0) }
+			action: { .userSessions($0) }
 		)
 		
 		self.window?.rootViewController = UINavigationController(rootViewController: rootScene)
