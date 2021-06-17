@@ -17,8 +17,6 @@ extension AppEnvironment {
 	)
 }
 
-// MARK: - View (features composition)
-
 extension UsersViewEnvironment {
 	static var live = Self(
 		stargazersEnv: UsersEnvironment.live

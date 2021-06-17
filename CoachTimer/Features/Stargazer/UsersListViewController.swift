@@ -77,8 +77,8 @@ class UsersListViewController: UIViewController {
 		
 		registerTableViewCell(
 			with: tableView,
-			cell: StargazerCell.self,
-			reuseIdentifier: "StargazerCell"
+			cell: UserCell.self,
+			reuseIdentifier: "UserCell"
 		)
 		
 		tableView.separatorColor = .lightGray
@@ -153,7 +153,7 @@ class UsersListViewController: UIViewController {
 extension UsersListViewController {
 	private var configureCell: RxTableViewSectionedAnimatedDataSource<ArrivalsDeparturesListSectionModel>.ConfigureCell {
 		return { _, table, idxPath, item in
-			guard let cell = table.dequeueReusableCell(withIdentifier: "StargazerCell", for: idxPath) as? StargazerCell else {
+			guard let cell = table.dequeueReusableCell(withIdentifier: "UserCell", for: idxPath) as? UserCell else {
 				return UITableViewCell(style: .default, reuseIdentifier: nil)
 			}
 			

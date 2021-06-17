@@ -14,7 +14,7 @@
 		0CC160175A6A4785D56ECE0E /* Users+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E63BA4F6FBBEF9894DAED67 /* Users+Feature.swift */; };
 		0FBD2A2315695EBD6B35493F /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C06C2AFF4B5C617016E544 /* NetworkingTests.swift */; };
 		1430DA2E91E48D8A29385187 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B86BF80A354B072BDF60F /* SearchViewController.swift */; };
-		19ACB6B63AF234FAFCBEC0D4 /* StargazerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E44577EC927EC67693EF6 /* StargazerCell.xib */; };
+		19ACB6B63AF234FAFCBEC0D4 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E44577EC927EC67693EF6 /* UserCell.xib */; };
 		1D6A2D596D14D20664061735 /* Application+Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */; };
 		1FA97CE426ADC053B16A872B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C3361818A40D12C7C5A69 /* Networking.swift */; };
 		1FB9394DC3344FE1F593A4DE /* Mock+resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4776AC8690020FA0DD6D0BE /* Mock+resources.swift */; };
@@ -64,7 +64,7 @@
 		7ECF63CC43C4AF9A7856F548 /* stations_broken.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4ADB842B1059B49EA91EA2D6 /* stations_broken.txt */; };
 		7FC0A13C7C2955C5FC45CDC5 /* departures.json in Resources */ = {isa = PBXBuildFile; fileRef = D13F8EF4FF89F0294C796D37 /* departures.json */; };
 		81B378AA959F95175DFEBB7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5C8B4B04454165E152B69E /* AppDelegate.swift */; };
-		834145D70A421C0054F07922 /* StargazerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E44577EC927EC67693EF6 /* StargazerCell.xib */; };
+		834145D70A421C0054F07922 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E44577EC927EC67693EF6 /* UserCell.xib */; };
 		848C08BF6008BF79B920FE77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96775DF5AAE2B07E4A822304 /* Localizable.strings */; };
 		84A56F09ABC59E8D1EA7A469 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F451DA0E00BCA99250087FF /* SearchViewController.xib */; };
 		86CF0799C2DD3D6EFCFADA48 /* Environment+live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9E4420F179D5B4D5BE4F0 /* Environment+live.swift */; };
@@ -82,9 +82,9 @@
 		A67E87EA9BF39014ADB68593 /* StargazersListViewController+Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286402CFDDF75AB1A01AA8B /* StargazersListViewController+Binder.swift */; };
 		A9EE3507375D9F94042C9E19 /* trend_torino_p_nuova_reggio_calabria.json in Resources */ = {isa = PBXBuildFile; fileRef = C206A931E020938C75930B04 /* trend_torino_p_nuova_reggio_calabria.json */; };
 		ADC73F0645C36E04063A38FA /* Pods_CoachTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84E2AFCA042D3DC618CFC0D /* Pods_CoachTimer.framework */; };
-		AE7C8569A7B328721222CA7D /* StargazerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5B82C3832C69F81B8A7270 /* StargazerCell.swift */; };
+		AE7C8569A7B328721222CA7D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5B82C3832C69F81B8A7270 /* UserCell.swift */; };
 		B10438E28971523335C1504A /* rate.csv in Resources */ = {isa = PBXBuildFile; fileRef = A0B9ECC493994C9F083EC96C /* rate.csv */; };
-		B2B022FDCC25498E003E49DB /* StargazerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5B82C3832C69F81B8A7270 /* StargazerCell.swift */; };
+		B2B022FDCC25498E003E49DB /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5B82C3832C69F81B8A7270 /* UserCell.swift */; };
 		B2F823BF11A63A16D255AA47 /* Application+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9154A888151F198170A2AD9 /* Application+Action.swift */; };
 		BC4547A63BC4516DDEBBB8B4 /* Application+Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */; };
 		BE3F9D23FD21694206FA55A5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C3361818A40D12C7C5A69 /* Networking.swift */; };
@@ -135,7 +135,7 @@
 		2DD1907085871F01626364E6 /* arrivals.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = arrivals.json; sourceTree = "<group>"; };
 		33D1AD8017B7C5896293FEC6 /* arrivals_broken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = arrivals_broken.json; sourceTree = "<group>"; };
 		393502593CF7E708AB85319F /* Search+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Feature.swift"; sourceTree = "<group>"; };
-		3C5B82C3832C69F81B8A7270 /* StargazerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StargazerCell.swift; sourceTree = "<group>"; };
+		3C5B82C3832C69F81B8A7270 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		3F451DA0E00BCA99250087FF /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		3FC9DDD45682926BD5C1FF22 /* UsersReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersReducerTests.swift; sourceTree = "<group>"; };
 		40810AA31E8CC62D34822B28 /* Pods-CoachTimerMock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.release.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		E12497E7F765CF4F306DE6CE /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		EA681DBAA378A4C265DA1ED9 /* trend_milano_centrale.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trend_milano_centrale.json; sourceTree = "<group>"; };
 		EC298075A45185081B226BBC /* Application+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+State.swift"; sourceTree = "<group>"; };
-		EC3E44577EC927EC67693EF6 /* StargazerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StargazerCell.xib; sourceTree = "<group>"; };
+		EC3E44577EC927EC67693EF6 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		EFF7B3A524EFFF790607A686 /* Pods-CoachTimerMock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.debug.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.debug.xcconfig"; sourceTree = "<group>"; };
 		F701327C27C764224559071E /* Pods-CoachTimerTests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.mock.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.mock.xcconfig"; sourceTree = "<group>"; };
 		F8C7927F267BB095002C49C2 /* SeedUserRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedUserRequestModel.swift; sourceTree = "<group>"; };
@@ -436,8 +436,8 @@
 		D7FD7D9E126BE742AAE86E76 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				3C5B82C3832C69F81B8A7270 /* StargazerCell.swift */,
-				EC3E44577EC927EC67693EF6 /* StargazerCell.xib */,
+				3C5B82C3832C69F81B8A7270 /* UserCell.swift */,
+				EC3E44577EC927EC67693EF6 /* UserCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -599,7 +599,7 @@
 				611555502249480F5A4AFF53 /* Assets.xcassets in Resources */,
 				848C08BF6008BF79B920FE77 /* Localizable.strings in Resources */,
 				0AAAE369315929389FBEDF64 /* SearchViewController.xib in Resources */,
-				19ACB6B63AF234FAFCBEC0D4 /* StargazerCell.xib in Resources */,
+				19ACB6B63AF234FAFCBEC0D4 /* UserCell.xib in Resources */,
 				A39251B1BB97E5D5ED834A24 /* UsersListViewController.xib in Resources */,
 				F9775398CCFCDB8C2AA6F730 /* arrivals.json in Resources */,
 				278CE063AEF870B68097B5B2 /* arrivals_broken.json in Resources */,
@@ -625,7 +625,7 @@
 				3C0F76124B43FF3597BA23B3 /* Assets.xcassets in Resources */,
 				874B62190DB637FD359C33C9 /* Localizable.strings in Resources */,
 				84A56F09ABC59E8D1EA7A469 /* SearchViewController.xib in Resources */,
-				834145D70A421C0054F07922 /* StargazerCell.xib in Resources */,
+				834145D70A421C0054F07922 /* UserCell.xib in Resources */,
 				3E452CE2DD1E65267FAB3B00 /* UsersListViewController.xib in Resources */,
 				5FC82788E659E3DEABE5A0D8 /* arrivals.json in Resources */,
 				5B7496EF6D59040BD143A67C /* arrivals_broken.json in Resources */,
@@ -791,7 +791,7 @@
 				1430DA2E91E48D8A29385187 /* SearchViewController.swift in Sources */,
 				0CC160175A6A4785D56ECE0E /* Users+Feature.swift in Sources */,
 				7A0E46ADC6DC401CFB2B9A79 /* Stargazer+View.swift in Sources */,
-				B2B022FDCC25498E003E49DB /* StargazerCell.swift in Sources */,
+				B2B022FDCC25498E003E49DB /* UserCell.swift in Sources */,
 				6C43304B3E016988F361E04E /* UsersRequest.swift in Sources */,
 				029C9C0DE44B0941BD3C704A /* StargazersListViewController+Binder.swift in Sources */,
 				41A81875604C3633DA41AA65 /* UsersListViewController.swift in Sources */,
@@ -824,7 +824,7 @@
 				EA7DFEDF3EECA19B70B30A33 /* SearchViewController.swift in Sources */,
 				4EC1505CC2E42C47AB4971A1 /* Users+Feature.swift in Sources */,
 				6D88D313165549CB2087A6B9 /* Stargazer+View.swift in Sources */,
-				AE7C8569A7B328721222CA7D /* StargazerCell.swift in Sources */,
+				AE7C8569A7B328721222CA7D /* UserCell.swift in Sources */,
 				256CFC0999DF802641A3F369 /* UsersRequest.swift in Sources */,
 				A67E87EA9BF39014ADB68593 /* StargazersListViewController+Binder.swift in Sources */,
 				3358E7720131796FE06983F9 /* UsersListViewController.swift in Sources */,

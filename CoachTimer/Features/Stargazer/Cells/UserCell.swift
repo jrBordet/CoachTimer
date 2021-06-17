@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StargazerCell: UITableViewCell {
+class UserCell: UITableViewCell {
 	
 	@IBOutlet var nameLabel: UILabel!
 	@IBOutlet var avatarImage: UIImageView! {
