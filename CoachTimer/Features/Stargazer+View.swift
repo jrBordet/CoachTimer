@@ -9,7 +9,7 @@ import Foundation
 import RxComposableArchitecture
 
 public struct UsersViewState: Equatable {
-	public var list: [UserState]
+	public var list: [User]
 	public var repo: String
 	public var owner: String
 	public var isLoading: Bool
@@ -17,7 +17,7 @@ public struct UsersViewState: Equatable {
 	public var currentPage: Int
 	
 	public init(
-		list: [UserState],
+		list: [User],
 		repo: String,
 		owner: String,
 		isLoading: Bool,
@@ -38,7 +38,8 @@ public struct UsersViewState: Equatable {
 				list: self.list,
 				isLoading: self.isLoading,
 				alert: self.alert,
-				currentPage: currentPage
+				currentPage: currentPage,
+				currentUser: nil
 			)
 		}
 		
@@ -88,8 +89,8 @@ extension UsersViewState {
 	
 	static var sample_1 = Self(
 		list: [
-			UserState.sample,
-			UserState.sample_1
+			User.sample,
+			User.sample_1
 		],
 		repo: "octocat",
 		owner: "hello-world",
@@ -100,8 +101,8 @@ extension UsersViewState {
 	
 	static var test = Self(
 		list: [
-			UserState.sample,
-			UserState.sample_1
+			User.sample,
+			User.sample_1
 		],
 		repo: "octocat",
 		owner: "hello-world",

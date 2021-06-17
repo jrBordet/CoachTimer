@@ -33,9 +33,9 @@ extension UsersEnvironment {
 			
 			return request
 				.execute(with: URLSession.shared)
-				.map { (model: SeedUserRequestModel) -> [UserState] in
-					model.results.map { (model: UserRequestModel) -> UserState in
-						UserState(
+				.map { (model: SeedUserRequestModel) -> [User] in
+					model.results.map { (model: UserRequestModel) -> User in
+						User(
 							id: model.id(),
 							name: model.name.first,
 							imageUrl: URL(string:  model.picture.large)!

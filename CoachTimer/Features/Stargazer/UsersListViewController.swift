@@ -25,7 +25,7 @@ class UsersListViewController: UIViewController {
 	
 	// MARK: - RxDataSource
 	
-	typealias ArrivalsDeparturesListSectionModel = AnimatableSectionModel<String, StargazerSectionItem>
+	typealias ArrivalsDeparturesListSectionModel = AnimatableSectionModel<String, UserSectionItem>
 	
 	var dataSource: RxTableViewSectionedAnimatedDataSource<ArrivalsDeparturesListSectionModel>!
 	
@@ -111,9 +111,9 @@ class UsersListViewController: UIViewController {
 		
 		store
 			.value
-			.map { (state: UsersViewState) -> [StargazerSectionItem] in
-				state.list.map { (model: UserState) -> StargazerSectionItem in
-					StargazerSectionItem(
+			.map { (state: UsersViewState) -> [UserSectionItem] in
+				state.list.map { (model: User) -> UserSectionItem in
+					UserSectionItem(
 						id: model.id,
 						name: model.name,
 						imageUrl: model.imageUrl
@@ -121,7 +121,7 @@ class UsersListViewController: UIViewController {
 				}
 			}
 			.distinctUntilChanged()
-			.map { (items: [StargazerSectionItem]) -> [ArrivalsDeparturesListSectionModel] in
+			.map { (items: [UserSectionItem]) -> [ArrivalsDeparturesListSectionModel] in
 				[
 					ArrivalsDeparturesListSectionModel(
 						model: "",
@@ -170,13 +170,13 @@ extension UsersListViewController {
 
 // MARK: - RxDataSource models
 
-struct StargazerSectionItem {
+struct UserSectionItem {
 	var id: String
 	var name: String
 	var imageUrl: URL?
 }
 
-extension StargazerSectionItem: IdentifiableType {
+extension UserSectionItem: IdentifiableType {
 	public typealias Identity = String
 	
 	public var identity: String {
@@ -184,4 +184,4 @@ extension StargazerSectionItem: IdentifiableType {
 	}
 }
 
-extension StargazerSectionItem: Equatable { }
+extension UserSectionItem: Equatable { }

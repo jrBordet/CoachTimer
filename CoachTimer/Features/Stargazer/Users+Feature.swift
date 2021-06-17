@@ -51,20 +51,20 @@ public func usersReducer(
 		state.currentPage = 1
 		
 		return []
+	case .selectUser(_):
+		return []
 	}
 }
 
 // MARK: - Feature domain
 
-public struct UserState {
+public struct User: Equatable {
 	let id: String
 	let name: String
 	let imageUrl: URL?
 }
 
-extension UserState: Equatable { }
-
-extension UserState {
+extension User {
 	static var notFound = Self(
 		id: "notFound",
 		name: "not-found",
@@ -91,21 +91,24 @@ extension UserState {
 }
 
 public struct UsersState: Equatable {
-	var list: [UserState]
+	var list: [User]
 	var isLoading: Bool
 	var alert: String?
 	var currentPage: Int
+	var currentUser: User?
 	
 	public init(
-		list: [UserState],
+		list: [User],
 		isLoading: Bool,
 		alert: String?,
-		currentPage: Int = 1
+		currentPage: Int = 1,
+		currentUser: User?
 	) {
 		self.list = list
 		self.isLoading = isLoading
 		self.alert = alert
 		self.currentPage = currentPage
+		self.currentUser = currentUser
 	}
 }
 
@@ -113,14 +116,17 @@ extension UsersState {
 	static var empty = Self(
 		list: [],
 		isLoading: false,
-		alert: nil
+		alert: nil,
+		currentPage: 0,
+		currentUser: nil
 	)
 }
 
 public enum UsersAction: Equatable {
 	case purge
 	case fetch
-	case fetchResponse([UserState])
+	case fetchResponse([User])
+	case selectUser(User)
 }
 
 // MARK: - Environment
@@ -132,6 +138,6 @@ public struct UsersEnvironment {
 	/// fetch()
 	/// ```
 	/// - Returns:  a collection of `UserState`.
-	var fetch: () -> Effect<[UserState]>
+	var fetch: () -> Effect<[User]>
 }
 

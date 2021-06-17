@@ -37,8 +37,8 @@ extension UsersEnvironment {
 }
 
 extension UserRequestModel {
-	func map() -> UserState {
-		UserState(
+	func map() -> User {
+		User(
 			id: self.id(),
 			name: self.name.first,
 			imageUrl: URL(string: self.picture.thumbnail)!

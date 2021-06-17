@@ -29,12 +29,12 @@ public func searchReducer(
 // MARK: - State
 
 public struct SearchState  {
-	var list: [UserState]
+	var list: [User]
 	var repo: String
 	var owner: String
 	
 	public init(
-		list: [UserState],
+		list: [User],
 		repo: String,
 		owner: String
 	) {
