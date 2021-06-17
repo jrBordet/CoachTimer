@@ -1,0 +1,1274 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		029C9C0DE44B0941BD3C704A /* StargazersListViewController+Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286402CFDDF75AB1A01AA8B /* StargazersListViewController+Binder.swift */; };
+		08503E99703940F4941166BD /* departures_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = D4403A6C44C4C855ADA00707 /* departures_broken.json */; };
+		0A09CF2A95D6C8B16E93018C /* stations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 433C887A11F19A6F5BA1F5C9 /* stations.txt */; };
+		0AAAE369315929389FBEDF64 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F451DA0E00BCA99250087FF /* SearchViewController.xib */; };
+		0CC160175A6A4785D56ECE0E /* Stargazer+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E63BA4F6FBBEF9894DAED67 /* Stargazer+Feature.swift */; };
+		0FBD2A2315695EBD6B35493F /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C06C2AFF4B5C617016E544 /* NetworkingTests.swift */; };
+		1430DA2E91E48D8A29385187 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B86BF80A354B072BDF60F /* SearchViewController.swift */; };
+		19ACB6B63AF234FAFCBEC0D4 /* StargazerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E44577EC927EC67693EF6 /* StargazerCell.xib */; };
+		1D6A2D596D14D20664061735 /* Application+Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */; };
+		1FA97CE426ADC053B16A872B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C3361818A40D12C7C5A69 /* Networking.swift */; };
+		1FB9394DC3344FE1F593A4DE /* Mock+resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4776AC8690020FA0DD6D0BE /* Mock+resources.swift */; };
+		243FA9B657F37916E7A53C1E /* installations.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9ADB27CAD581ED65A9839544 /* installations.csv */; };
+		256CFC0999DF802641A3F369 /* UsersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B39F9CEA3411F7D523B6C /* UsersRequest.swift */; };
+		26C304A25BF7AE79DDED30BC /* train_sections.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D0BED7970AC0866E86DA35C /* train_sections.json */; };
+		270CCF7DEABDD975A3ED0368 /* trend.json in Resources */ = {isa = PBXBuildFile; fileRef = 825D735B89ADA7A6EE01A6C6 /* trend.json */; };
+		278CE063AEF870B68097B5B2 /* arrivals_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = 33D1AD8017B7C5896293FEC6 /* arrivals_broken.json */; };
+		2E5F963B763AF86EB86EA750 /* Application+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC298075A45185081B226BBC /* Application+State.swift */; };
+		2F1B93DB5719B9AD4065DB69 /* Difference+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5D6CB9B33E0FE2CE3BE80 /* Difference+.swift */; };
+		311FBE7835B15DD44478E2CE /* trend.json in Resources */ = {isa = PBXBuildFile; fileRef = 825D735B89ADA7A6EE01A6C6 /* trend.json */; };
+		3358E7720131796FE06983F9 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F8CDBD8A07D7CF68B36F9 /* UsersListViewController.swift */; };
+		33CF0851D1FD98B73A68A48C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5C8B4B04454165E152B69E /* AppDelegate.swift */; };
+		35A39F38C8D23D3F5DFE9287 /* Mock+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F52511041654B3770A834A /* Mock+.swift */; };
+		375A6BBA356BBC5632FAA5E5 /* Search+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393502593CF7E708AB85319F /* Search+Feature.swift */; };
+		38FE37781BB85A35B969BC07 /* SearchViewController+Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9689753F29AAEB1FD10B02 /* SearchViewController+Binder.swift */; };
+		3BD967F862D69B940F8C9FE9 /* Application+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26D87084DE40C1690E514A9 /* Application+Store.swift */; };
+		3C0F76124B43FF3597BA23B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF25484621F4F3422B6B2C98 /* Assets.xcassets */; };
+		3D5A357F36994D4DE863A23F /* Application+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC298075A45185081B226BBC /* Application+State.swift */; };
+		3E452CE2DD1E65267FAB3B00 /* UsersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6102394726149986F86C0D84 /* UsersListViewController.xib */; };
+		400318E409AF79A1CCB6303F /* Search+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393502593CF7E708AB85319F /* Search+Feature.swift */; };
+		403931F33AFADEE9C3BC8C26 /* URLRequests+HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC2C93FA9F31637D43235B4 /* URLRequests+HTTPStatusCodes.swift */; };
+		40671C1E87AEA7C2A4BE846F /* Mock+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F52511041654B3770A834A /* Mock+.swift */; };
+		41A024C33F471E76FC9F39A8 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A104AB0C8253ACCB9E78EF /* Localizable.swift */; };
+		41A81875604C3633DA41AA65 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F8CDBD8A07D7CF68B36F9 /* UsersListViewController.swift */; };
+		41E3AB29CC6DFF90ADB716B9 /* stations_broken.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4ADB842B1059B49EA91EA2D6 /* stations_broken.txt */; };
+		4272B836F1A578E4A894567D /* train_sections_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = 88A5A73DC2561E88447F12A0 /* train_sections_broken.json */; };
+		45CA6E8907F89B5D9909E95E /* Utils+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C9313E451759E72113D559 /* Utils+Rx.swift */; };
+		4740B94AC0A1490A14726D05 /* Utils+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C9313E451759E72113D559 /* Utils+Rx.swift */; };
+		4B3935A707674077C6CB5EFD /* trend_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = C7B60B1E1C1A35B8572F7642 /* trend_broken.json */; };
+		4EC1505CC2E42C47AB4971A1 /* Stargazer+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E63BA4F6FBBEF9894DAED67 /* Stargazer+Feature.swift */; };
+		51BD7B6A3B8B7D208799CCDA /* train_sections_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = 88A5A73DC2561E88447F12A0 /* train_sections_broken.json */; };
+		585086A7BE3CC6627C457FD6 /* rate.csv in Resources */ = {isa = PBXBuildFile; fileRef = A0B9ECC493994C9F083EC96C /* rate.csv */; };
+		5B7496EF6D59040BD143A67C /* arrivals_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = 33D1AD8017B7C5896293FEC6 /* arrivals_broken.json */; };
+		5DAF4C720C4BBF63394F170F /* train_sections.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D0BED7970AC0866E86DA35C /* train_sections.json */; };
+		5FC82788E659E3DEABE5A0D8 /* arrivals.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DD1907085871F01626364E6 /* arrivals.json */; };
+		60B4F61BA4AF2527CD980E3D /* departures_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = D4403A6C44C4C855ADA00707 /* departures_broken.json */; };
+		611555502249480F5A4AFF53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF25484621F4F3422B6B2C98 /* Assets.xcassets */; };
+		68B0F17D90894F833DD44D2C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C111B7E12980E628FDF7F /* BaseViewController.swift */; };
+		692B188F62E13A0E32C08DE6 /* trend_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = C7B60B1E1C1A35B8572F7642 /* trend_broken.json */; };
+		6A719AD7A502BD926899AFDE /* installations.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9ADB27CAD581ED65A9839544 /* installations.csv */; };
+		6C43304B3E016988F361E04E /* UsersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6B39F9CEA3411F7D523B6C /* UsersRequest.swift */; };
+		6D88D313165549CB2087A6B9 /* Stargazer+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451C92541EC440D2D8CB19E /* Stargazer+View.swift */; };
+		7A0E46ADC6DC401CFB2B9A79 /* Stargazer+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9451C92541EC440D2D8CB19E /* Stargazer+View.swift */; };
+		7A69D911A7CD79F8CF310B3A /* trend_milano_centrale.json in Resources */ = {isa = PBXBuildFile; fileRef = EA681DBAA378A4C265DA1ED9 /* trend_milano_centrale.json */; };
+		7CE21AC635CFF3923D1826A2 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8377571E952B1A5F4C57C524 /* Rate.swift */; };
+		7E2AB2D12EB46F32CA9A3FBA /* trend_torino_p_nuova_reggio_calabria.json in Resources */ = {isa = PBXBuildFile; fileRef = C206A931E020938C75930B04 /* trend_torino_p_nuova_reggio_calabria.json */; };
+		7ECF63CC43C4AF9A7856F548 /* stations_broken.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4ADB842B1059B49EA91EA2D6 /* stations_broken.txt */; };
+		7FC0A13C7C2955C5FC45CDC5 /* departures.json in Resources */ = {isa = PBXBuildFile; fileRef = D13F8EF4FF89F0294C796D37 /* departures.json */; };
+		81B378AA959F95175DFEBB7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5C8B4B04454165E152B69E /* AppDelegate.swift */; };
+		834145D70A421C0054F07922 /* StargazerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E44577EC927EC67693EF6 /* StargazerCell.xib */; };
+		848C08BF6008BF79B920FE77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96775DF5AAE2B07E4A822304 /* Localizable.strings */; };
+		84A56F09ABC59E8D1EA7A469 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F451DA0E00BCA99250087FF /* SearchViewController.xib */; };
+		86CF0799C2DD3D6EFCFADA48 /* Environment+live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9E4420F179D5B4D5BE4F0 /* Environment+live.swift */; };
+		874B62190DB637FD359C33C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96775DF5AAE2B07E4A822304 /* Localizable.strings */; };
+		886991A7072CCC2AA585BA09 /* Application+Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3744C8347C068A7F46AACC5 /* Application+Environment.swift */; };
+		8AF3E4B1BA416916FB6A0621 /* Application+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9154A888151F198170A2AD9 /* Application+Action.swift */; };
+		8B8E17EAE771ACF5B47D2993 /* Application+ActivityFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA427A8B5FE5FBD97BD198 /* Application+ActivityFeed.swift */; };
+		90467FD0811B78F614C28EF6 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8377571E952B1A5F4C57C524 /* Rate.swift */; };
+		95DD2FE48E3F40AA8C8A7690 /* trend_milano_centrale.json in Resources */ = {isa = PBXBuildFile; fileRef = EA681DBAA378A4C265DA1ED9 /* trend_milano_centrale.json */; };
+		971E91888E0886AB899DEC84 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12497E7F765CF4F306DE6CE /* APIRequest.swift */; };
+		9887362B8AB5C6A062D97884 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A104AB0C8253ACCB9E78EF /* Localizable.swift */; };
+		99BD5E946DAD4697213BD660 /* Application+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26D87084DE40C1690E514A9 /* Application+Store.swift */; };
+		9A42B73CBA902FFE40ABA543 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C111B7E12980E628FDF7F /* BaseViewController.swift */; };
+		9E8A10D24BFD2C7EAD9F901A /* UsersReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC9DDD45682926BD5C1FF22 /* UsersReducerTests.swift */; };
+		A39251B1BB97E5D5ED834A24 /* UsersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6102394726149986F86C0D84 /* UsersListViewController.xib */; };
+		A67E87EA9BF39014ADB68593 /* StargazersListViewController+Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286402CFDDF75AB1A01AA8B /* StargazersListViewController+Binder.swift */; };
+		A9EE3507375D9F94042C9E19 /* trend_torino_p_nuova_reggio_calabria.json in Resources */ = {isa = PBXBuildFile; fileRef = C206A931E020938C75930B04 /* trend_torino_p_nuova_reggio_calabria.json */; };
+		ADC73F0645C36E04063A38FA /* Pods_CoachTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84E2AFCA042D3DC618CFC0D /* Pods_CoachTimer.framework */; };
+		AE7C8569A7B328721222CA7D /* StargazerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5B82C3832C69F81B8A7270 /* StargazerCell.swift */; };
+		B10438E28971523335C1504A /* rate.csv in Resources */ = {isa = PBXBuildFile; fileRef = A0B9ECC493994C9F083EC96C /* rate.csv */; };
+		B2B022FDCC25498E003E49DB /* StargazerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5B82C3832C69F81B8A7270 /* StargazerCell.swift */; };
+		B2F823BF11A63A16D255AA47 /* Application+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9154A888151F198170A2AD9 /* Application+Action.swift */; };
+		BC4547A63BC4516DDEBBB8B4 /* Application+Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */; };
+		BE3F9D23FD21694206FA55A5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C3361818A40D12C7C5A69 /* Networking.swift */; };
+		BF8F0F6B7DC837565520D01E /* Environment+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5928F3797C707E83936C82A /* Environment+mock.swift */; };
+		C2A1CCE5A357B84FE52EA2DB /* SearchViewController+Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9689753F29AAEB1FD10B02 /* SearchViewController+Binder.swift */; };
+		C40C8904B080299578919BBF /* Application+Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3744C8347C068A7F46AACC5 /* Application+Environment.swift */; };
+		D064842D6B9412FB1B30ED42 /* Pods_CoachTimerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5380ED598A1367AB20E99CE /* Pods_CoachTimerTests.framework */; };
+		D80EF86C78D03B54C30E27A8 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12497E7F765CF4F306DE6CE /* APIRequest.swift */; };
+		DFF6AB2B56C93ECAB48D5320 /* Environment+live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9E4420F179D5B4D5BE4F0 /* Environment+live.swift */; };
+		E5E34CF4713B232E9F65305D /* departures.json in Resources */ = {isa = PBXBuildFile; fileRef = D13F8EF4FF89F0294C796D37 /* departures.json */; };
+		E6416BB7C6D63A99A0851FE9 /* Pods_CoachTimerMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5A8B14E1B6377C77AE9598 /* Pods_CoachTimerMock.framework */; };
+		E72C5DA9C197FF8C7C7D7524 /* Environment+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5928F3797C707E83936C82A /* Environment+mock.swift */; };
+		E97DDEB71DFE89E5F292B32D /* URLRequests+HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC2C93FA9F31637D43235B4 /* URLRequests+HTTPStatusCodes.swift */; };
+		EA7DFEDF3EECA19B70B30A33 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B86BF80A354B072BDF60F /* SearchViewController.swift */; };
+		F4AB102E4DAB8A94A60D3471 /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C48B2F132118F01C070FD5F /* MockUrlProtocol.swift */; };
+		F8AEA0AAC6DB0F1AAF103E3F /* Application+ActivityFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA427A8B5FE5FBD97BD198 /* Application+ActivityFeed.swift */; };
+		F9775398CCFCDB8C2AA6F730 /* arrivals.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DD1907085871F01626364E6 /* arrivals.json */; };
+		FA6E91BDA1043C475F03732E /* ApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F61B400F5288CE3A8D59AF6 /* ApplicationTests.swift */; };
+		FBA78B7128F99726852D83CA /* stations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 433C887A11F19A6F5BA1F5C9 /* stations.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2E1D0FB3C3423BB1FB8EBBC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86B9227427AE16BA130E0490 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F5B0B20A389810A4CA8169E;
+			remoteInfo = CoachTimer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		002C111B7E12980E628FDF7F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0A9A0B81EE4CBB0C6884EBA0 /* Pods-CoachTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimer.debug.xcconfig"; path = "Target Support Files/Pods-CoachTimer/Pods-CoachTimer.debug.xcconfig"; sourceTree = "<group>"; };
+		0F61B400F5288CE3A8D59AF6 /* ApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTests.swift; sourceTree = "<group>"; };
+		10D361346D49D86718BF16AC /* CoachTimerMock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoachTimerMock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13EF95B9484A630B0EB87A8B /* Pods-CoachTimer.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimer.mock.xcconfig"; path = "Target Support Files/Pods-CoachTimer/Pods-CoachTimer.mock.xcconfig"; sourceTree = "<group>"; };
+		15C9313E451759E72113D559 /* Utils+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+Rx.swift"; sourceTree = "<group>"; };
+		168F8CDBD8A07D7CF68B36F9 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
+		1B5C8B4B04454165E152B69E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1E5AA60B1C8C469EF3D127EA /* CoachTimerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CoachTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FF5D6CB9B33E0FE2CE3BE80 /* Difference+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Difference+.swift"; sourceTree = "<group>"; };
+		200F1C6BFDD07D8B76755878 /* Pods-CoachTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimer.release.xcconfig"; path = "Target Support Files/Pods-CoachTimer/Pods-CoachTimer.release.xcconfig"; sourceTree = "<group>"; };
+		21C05FCF6823C4716C7CBE74 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2D6B39F9CEA3411F7D523B6C /* UsersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRequest.swift; sourceTree = "<group>"; };
+		2DD1907085871F01626364E6 /* arrivals.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = arrivals.json; sourceTree = "<group>"; };
+		33D1AD8017B7C5896293FEC6 /* arrivals_broken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = arrivals_broken.json; sourceTree = "<group>"; };
+		393502593CF7E708AB85319F /* Search+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Feature.swift"; sourceTree = "<group>"; };
+		3C5B82C3832C69F81B8A7270 /* StargazerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StargazerCell.swift; sourceTree = "<group>"; };
+		3F451DA0E00BCA99250087FF /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		3FC9DDD45682926BD5C1FF22 /* UsersReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersReducerTests.swift; sourceTree = "<group>"; };
+		40810AA31E8CC62D34822B28 /* Pods-CoachTimerMock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.release.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.release.xcconfig"; sourceTree = "<group>"; };
+		41E1CD91752BA0DA3B3635EE /* Pods-CoachTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.debug.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		433C887A11F19A6F5BA1F5C9 /* stations.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = stations.txt; sourceTree = "<group>"; };
+		4A0C3361818A40D12C7C5A69 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		4ADB842B1059B49EA91EA2D6 /* stations_broken.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = stations_broken.txt; sourceTree = "<group>"; };
+		57E9E4420F179D5B4D5BE4F0 /* Environment+live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+live.swift"; sourceTree = "<group>"; };
+		6102394726149986F86C0D84 /* UsersListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersListViewController.xib; sourceTree = "<group>"; };
+		6A5BF1AB89D8C997443E3050 /* CoachTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoachTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A2C98FFA8E5EB73E3594C55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7D9689753F29AAEB1FD10B02 /* SearchViewController+Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+Binder.swift"; sourceTree = "<group>"; };
+		7E63BA4F6FBBEF9894DAED67 /* Stargazer+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stargazer+Feature.swift"; sourceTree = "<group>"; };
+		7F5A8B14E1B6377C77AE9598 /* Pods_CoachTimerMock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoachTimerMock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		825D735B89ADA7A6EE01A6C6 /* trend.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trend.json; sourceTree = "<group>"; };
+		8377571E952B1A5F4C57C524 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		88A5A73DC2561E88447F12A0 /* train_sections_broken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = train_sections_broken.json; sourceTree = "<group>"; };
+		89F52511041654B3770A834A /* Mock+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+.swift"; sourceTree = "<group>"; };
+		8C48B2F132118F01C070FD5F /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
+		9286402CFDDF75AB1A01AA8B /* StargazersListViewController+Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StargazersListViewController+Binder.swift"; sourceTree = "<group>"; };
+		9451C92541EC440D2D8CB19E /* Stargazer+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stargazer+View.swift"; sourceTree = "<group>"; };
+		94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Reducer.swift"; sourceTree = "<group>"; };
+		968717F7A11D62D227AAF5AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9ADB27CAD581ED65A9839544 /* installations.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = installations.csv; sourceTree = "<group>"; };
+		9D0BED7970AC0866E86DA35C /* train_sections.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = train_sections.json; sourceTree = "<group>"; };
+		A0B9ECC493994C9F083EC96C /* rate.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = rate.csv; sourceTree = "<group>"; };
+		A26D87084DE40C1690E514A9 /* Application+Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Store.swift"; sourceTree = "<group>"; };
+		A3744C8347C068A7F46AACC5 /* Application+Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Environment.swift"; sourceTree = "<group>"; };
+		AFFA427A8B5FE5FBD97BD198 /* Application+ActivityFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+ActivityFeed.swift"; sourceTree = "<group>"; };
+		B17B86BF80A354B072BDF60F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B4776AC8690020FA0DD6D0BE /* Mock+resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+resources.swift"; sourceTree = "<group>"; };
+		B84E2AFCA042D3DC618CFC0D /* Pods_CoachTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoachTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD4DE748BA98B85D5394EF0F /* Pods-CoachTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.release.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.release.xcconfig"; sourceTree = "<group>"; };
+		BF25484621F4F3422B6B2C98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C206A931E020938C75930B04 /* trend_torino_p_nuova_reggio_calabria.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trend_torino_p_nuova_reggio_calabria.json; sourceTree = "<group>"; };
+		C5380ED598A1367AB20E99CE /* Pods_CoachTimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoachTimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5928F3797C707E83936C82A /* Environment+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+mock.swift"; sourceTree = "<group>"; };
+		C7B60B1E1C1A35B8572F7642 /* trend_broken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trend_broken.json; sourceTree = "<group>"; };
+		C9154A888151F198170A2AD9 /* Application+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Action.swift"; sourceTree = "<group>"; };
+		D13F8EF4FF89F0294C796D37 /* departures.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = departures.json; sourceTree = "<group>"; };
+		D1A104AB0C8253ACCB9E78EF /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		D4403A6C44C4C855ADA00707 /* departures_broken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = departures_broken.json; sourceTree = "<group>"; };
+		D9581F5ADDD57E497552B393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D9AEA19888BED54FED9BBBF5 /* Pods-CoachTimerMock.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.mock.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.mock.xcconfig"; sourceTree = "<group>"; };
+		DCC2C93FA9F31637D43235B4 /* URLRequests+HTTPStatusCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequests+HTTPStatusCodes.swift"; sourceTree = "<group>"; };
+		E12497E7F765CF4F306DE6CE /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		EA681DBAA378A4C265DA1ED9 /* trend_milano_centrale.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trend_milano_centrale.json; sourceTree = "<group>"; };
+		EC298075A45185081B226BBC /* Application+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+State.swift"; sourceTree = "<group>"; };
+		EC3E44577EC927EC67693EF6 /* StargazerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StargazerCell.xib; sourceTree = "<group>"; };
+		EFF7B3A524EFFF790607A686 /* Pods-CoachTimerMock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.debug.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.debug.xcconfig"; sourceTree = "<group>"; };
+		F701327C27C764224559071E /* Pods-CoachTimerTests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.mock.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.mock.xcconfig"; sourceTree = "<group>"; };
+		F9C06C2AFF4B5C617016E544 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B1B5BD503C7789EFB8FC75B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D064842D6B9412FB1B30ED42 /* Pods_CoachTimerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C382A1D0BA494B793AA9C9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6416BB7C6D63A99A0851FE9 /* Pods_CoachTimerMock.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6A4174D0C84DCC71106C4C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADC73F0645C36E04063A38FA /* Pods_CoachTimer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C4D6EA96A6FA3B4DDF31833 /* Arrivals */ = {
+			isa = PBXGroup;
+			children = (
+				33D1AD8017B7C5896293FEC6 /* arrivals_broken.json */,
+				2DD1907085871F01626364E6 /* arrivals.json */,
+			);
+			path = Arrivals;
+			sourceTree = "<group>";
+		};
+		2FB9F5426233A643EB03A58E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E12497E7F765CF4F306DE6CE /* APIRequest.swift */,
+				4A0C3361818A40D12C7C5A69 /* Networking.swift */,
+				DCC2C93FA9F31637D43235B4 /* URLRequests+HTTPStatusCodes.swift */,
+				99B4A1CD4613DAA76A3F0A46 /* Requests */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		2FE76FA389E5CAC03AC0864B = {
+			isa = PBXGroup;
+			children = (
+				80185F90F8A1BB0F7B85B59F /* CoachTimer */,
+				BBF02D56FBF1C01C362C813E /* CoachTimerTests */,
+				501946461631D8D914A454A0 /* Products */,
+				DD639C052E74097D01C6B804 /* Pods */,
+				E563F8D4F9E3419583DA0772 /* Frameworks */,
+			);
+			indentWidth = 4;
+			sourceTree = "<group>";
+			tabWidth = 4;
+		};
+		304DB5A50E3B72572A934702 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				88A5A73DC2561E88447F12A0 /* train_sections_broken.json */,
+				9D0BED7970AC0866E86DA35C /* train_sections.json */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		40A61608899222D01CE95D82 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				1C4D6EA96A6FA3B4DDF31833 /* Arrivals */,
+				83870D0836C2E03C255380CE /* Departures */,
+				7ABD3B783CAB6DF8C8A1BE54 /* Rate */,
+				304DB5A50E3B72572A934702 /* Sections */,
+				4D89E9072393597706CECD35 /* Stations */,
+				747B17667BD14F46CC11C816 /* Trend */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		4547C35415BB24C29BB0122E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8377571E952B1A5F4C57C524 /* Rate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4D89E9072393597706CECD35 /* Stations */ = {
+			isa = PBXGroup;
+			children = (
+				4ADB842B1059B49EA91EA2D6 /* stations_broken.txt */,
+				433C887A11F19A6F5BA1F5C9 /* stations.txt */,
+			);
+			path = Stations;
+			sourceTree = "<group>";
+		};
+		501946461631D8D914A454A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A5BF1AB89D8C997443E3050 /* CoachTimer.app */,
+				10D361346D49D86718BF16AC /* CoachTimerMock.app */,
+				1E5AA60B1C8C469EF3D127EA /* CoachTimerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		592203DE72B06F9309D07BB4 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				393502593CF7E708AB85319F /* Search+Feature.swift */,
+				B17B86BF80A354B072BDF60F /* SearchViewController.swift */,
+				3F451DA0E00BCA99250087FF /* SearchViewController.xib */,
+				7D9689753F29AAEB1FD10B02 /* SearchViewController+Binder.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		739446D42E8DE6B655FD2DB0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				002C111B7E12980E628FDF7F /* BaseViewController.swift */,
+				89F52511041654B3770A834A /* Mock+.swift */,
+				15C9313E451759E72113D559 /* Utils+Rx.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		747B17667BD14F46CC11C816 /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				C7B60B1E1C1A35B8572F7642 /* trend_broken.json */,
+				EA681DBAA378A4C265DA1ED9 /* trend_milano_centrale.json */,
+				C206A931E020938C75930B04 /* trend_torino_p_nuova_reggio_calabria.json */,
+				825D735B89ADA7A6EE01A6C6 /* trend.json */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		77C3C05022C215C80F8F4793 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF25484621F4F3422B6B2C98 /* Assets.xcassets */,
+				7A2C98FFA8E5EB73E3594C55 /* Info.plist */,
+				40A61608899222D01CE95D82 /* Mock */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7ABD3B783CAB6DF8C8A1BE54 /* Rate */ = {
+			isa = PBXGroup;
+			children = (
+				9ADB27CAD581ED65A9839544 /* installations.csv */,
+				A0B9ECC493994C9F083EC96C /* rate.csv */,
+			);
+			path = Rate;
+			sourceTree = "<group>";
+		};
+		80185F90F8A1BB0F7B85B59F /* CoachTimer */ = {
+			isa = PBXGroup;
+			children = (
+				1B5C8B4B04454165E152B69E /* AppDelegate.swift */,
+				852950857CC207A16EE14BF8 /* Application */,
+				F65C19D9D1A3B236E8D4D855 /* Features */,
+				2FB9F5426233A643EB03A58E /* Networking */,
+				D03BAFBB22505051A80F2751 /* Resources */,
+				77C3C05022C215C80F8F4793 /* Supporting Files */,
+				739446D42E8DE6B655FD2DB0 /* Utilities */,
+			);
+			path = CoachTimer;
+			sourceTree = "<group>";
+		};
+		83870D0836C2E03C255380CE /* Departures */ = {
+			isa = PBXGroup;
+			children = (
+				D4403A6C44C4C855ADA00707 /* departures_broken.json */,
+				D13F8EF4FF89F0294C796D37 /* departures.json */,
+			);
+			path = Departures;
+			sourceTree = "<group>";
+		};
+		852950857CC207A16EE14BF8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C9154A888151F198170A2AD9 /* Application+Action.swift */,
+				AFFA427A8B5FE5FBD97BD198 /* Application+ActivityFeed.swift */,
+				A3744C8347C068A7F46AACC5 /* Application+Environment.swift */,
+				94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */,
+				EC298075A45185081B226BBC /* Application+State.swift */,
+				A26D87084DE40C1690E514A9 /* Application+Store.swift */,
+				8772E27FEC53F208A1024384 /* environments */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8772E27FEC53F208A1024384 /* environments */ = {
+			isa = PBXGroup;
+			children = (
+				57E9E4420F179D5B4D5BE4F0 /* Environment+live.swift */,
+				C5928F3797C707E83936C82A /* Environment+mock.swift */,
+			);
+			path = environments;
+			sourceTree = "<group>";
+		};
+		99B4A1CD4613DAA76A3F0A46 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				2D6B39F9CEA3411F7D523B6C /* UsersRequest.swift */,
+				4547C35415BB24C29BB0122E /* Models */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		99E80D3483AD728B2E24240E /* __Snapshots__ */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = __Snapshots__;
+			sourceTree = "<group>";
+		};
+		BBF02D56FBF1C01C362C813E /* CoachTimerTests */ = {
+			isa = PBXGroup;
+			children = (
+				1FF5D6CB9B33E0FE2CE3BE80 /* Difference+.swift */,
+				D9581F5ADDD57E497552B393 /* Info.plist */,
+				B4776AC8690020FA0DD6D0BE /* Mock+resources.swift */,
+				DB9248FCD6D93D28F7FF991B /* NetworkingTests */,
+			);
+			path = CoachTimerTests;
+			sourceTree = "<group>";
+		};
+		D03BAFBB22505051A80F2751 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				96775DF5AAE2B07E4A822304 /* Localizable.strings */,
+				D1A104AB0C8253ACCB9E78EF /* Localizable.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D7FD7D9E126BE742AAE86E76 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3C5B82C3832C69F81B8A7270 /* StargazerCell.swift */,
+				EC3E44577EC927EC67693EF6 /* StargazerCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		DB9248FCD6D93D28F7FF991B /* NetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				0F61B400F5288CE3A8D59AF6 /* ApplicationTests.swift */,
+				8C48B2F132118F01C070FD5F /* MockUrlProtocol.swift */,
+				F9C06C2AFF4B5C617016E544 /* NetworkingTests.swift */,
+				3FC9DDD45682926BD5C1FF22 /* UsersReducerTests.swift */,
+				99E80D3483AD728B2E24240E /* __Snapshots__ */,
+			);
+			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
+		DD639C052E74097D01C6B804 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A9A0B81EE4CBB0C6884EBA0 /* Pods-CoachTimer.debug.xcconfig */,
+				13EF95B9484A630B0EB87A8B /* Pods-CoachTimer.mock.xcconfig */,
+				200F1C6BFDD07D8B76755878 /* Pods-CoachTimer.release.xcconfig */,
+				EFF7B3A524EFFF790607A686 /* Pods-CoachTimerMock.debug.xcconfig */,
+				D9AEA19888BED54FED9BBBF5 /* Pods-CoachTimerMock.mock.xcconfig */,
+				40810AA31E8CC62D34822B28 /* Pods-CoachTimerMock.release.xcconfig */,
+				41E1CD91752BA0DA3B3635EE /* Pods-CoachTimerTests.debug.xcconfig */,
+				F701327C27C764224559071E /* Pods-CoachTimerTests.mock.xcconfig */,
+				BD4DE748BA98B85D5394EF0F /* Pods-CoachTimerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E563F8D4F9E3419583DA0772 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B84E2AFCA042D3DC618CFC0D /* Pods_CoachTimer.framework */,
+				7F5A8B14E1B6377C77AE9598 /* Pods_CoachTimerMock.framework */,
+				C5380ED598A1367AB20E99CE /* Pods_CoachTimerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED7C3F0F2E372C7C31B5BCEE /* Stargazer */ = {
+			isa = PBXGroup;
+			children = (
+				7E63BA4F6FBBEF9894DAED67 /* Stargazer+Feature.swift */,
+				168F8CDBD8A07D7CF68B36F9 /* UsersListViewController.swift */,
+				6102394726149986F86C0D84 /* UsersListViewController.xib */,
+				9286402CFDDF75AB1A01AA8B /* StargazersListViewController+Binder.swift */,
+				D7FD7D9E126BE742AAE86E76 /* Cells */,
+			);
+			path = Stargazer;
+			sourceTree = "<group>";
+		};
+		F65C19D9D1A3B236E8D4D855 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				9451C92541EC440D2D8CB19E /* Stargazer+View.swift */,
+				592203DE72B06F9309D07BB4 /* Search */,
+				ED7C3F0F2E372C7C31B5BCEE /* Stargazer */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F5B0B20A389810A4CA8169E /* CoachTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32691DEE64ACAA8C73AC9CE4 /* Build configuration list for PBXNativeTarget "CoachTimer" */;
+			buildPhases = (
+				00439B360E2EE7E277EBFCC3 /* [CP] Check Pods Manifest.lock */,
+				33D8A5EF41C7A1A890A04872 /* Sources */,
+				771D996A724AC7FB014718B2 /* Resources */,
+				A6A4174D0C84DCC71106C4C7 /* Frameworks */,
+				6D010F839298D55F4EA015C7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoachTimer;
+			productName = CoachTimer;
+			productReference = 6A5BF1AB89D8C997443E3050 /* CoachTimer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5952008752D2EA28C387A406 /* CoachTimerMock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5022CC0E7E141B8AE65DD946 /* Build configuration list for PBXNativeTarget "CoachTimerMock" */;
+			buildPhases = (
+				5406A3DC331B4A7807B97F4D /* [CP] Check Pods Manifest.lock */,
+				36988D78F20E3C70AC451E4E /* Sources */,
+				65BCC49CE61BEFCD724CE6B4 /* Resources */,
+				2C382A1D0BA494B793AA9C9F /* Frameworks */,
+				04A8AEB6F7DC23483FC9B8C2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoachTimerMock;
+			productName = CoachTimerMock;
+			productReference = 10D361346D49D86718BF16AC /* CoachTimerMock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A4C645B8BC9DDD8B9ABD0D0B /* CoachTimerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD44E8E09A8A994E62089187 /* Build configuration list for PBXNativeTarget "CoachTimerTests" */;
+			buildPhases = (
+				1B199D6B9049E35E093100C5 /* [CP] Check Pods Manifest.lock */,
+				7A70E6E1445D894156A5CEBE /* Sources */,
+				2B1B5BD503C7789EFB8FC75B /* Frameworks */,
+				EEE6C9FE3AB445056AF331A9 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB6B3611FB6B119C58B1C691 /* PBXTargetDependency */,
+			);
+			name = CoachTimerTests;
+			productName = CoachTimerTests;
+			productReference = 1E5AA60B1C8C469EF3D127EA /* CoachTimerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		86B9227427AE16BA130E0490 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1200;
+			};
+			buildConfigurationList = C6FBF9197B93F7B94CB52406 /* Build configuration list for PBXProject "CoachTimer" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				it,
+			);
+			mainGroup = 2FE76FA389E5CAC03AC0864B;
+			productRefGroup = 501946461631D8D914A454A0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F5B0B20A389810A4CA8169E /* CoachTimer */,
+				5952008752D2EA28C387A406 /* CoachTimerMock */,
+				A4C645B8BC9DDD8B9ABD0D0B /* CoachTimerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		65BCC49CE61BEFCD724CE6B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				611555502249480F5A4AFF53 /* Assets.xcassets in Resources */,
+				848C08BF6008BF79B920FE77 /* Localizable.strings in Resources */,
+				0AAAE369315929389FBEDF64 /* SearchViewController.xib in Resources */,
+				19ACB6B63AF234FAFCBEC0D4 /* StargazerCell.xib in Resources */,
+				A39251B1BB97E5D5ED834A24 /* UsersListViewController.xib in Resources */,
+				F9775398CCFCDB8C2AA6F730 /* arrivals.json in Resources */,
+				278CE063AEF870B68097B5B2 /* arrivals_broken.json in Resources */,
+				7FC0A13C7C2955C5FC45CDC5 /* departures.json in Resources */,
+				60B4F61BA4AF2527CD980E3D /* departures_broken.json in Resources */,
+				6A719AD7A502BD926899AFDE /* installations.csv in Resources */,
+				585086A7BE3CC6627C457FD6 /* rate.csv in Resources */,
+				FBA78B7128F99726852D83CA /* stations.txt in Resources */,
+				41E3AB29CC6DFF90ADB716B9 /* stations_broken.txt in Resources */,
+				5DAF4C720C4BBF63394F170F /* train_sections.json in Resources */,
+				4272B836F1A578E4A894567D /* train_sections_broken.json in Resources */,
+				311FBE7835B15DD44478E2CE /* trend.json in Resources */,
+				692B188F62E13A0E32C08DE6 /* trend_broken.json in Resources */,
+				7A69D911A7CD79F8CF310B3A /* trend_milano_centrale.json in Resources */,
+				7E2AB2D12EB46F32CA9A3FBA /* trend_torino_p_nuova_reggio_calabria.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		771D996A724AC7FB014718B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C0F76124B43FF3597BA23B3 /* Assets.xcassets in Resources */,
+				874B62190DB637FD359C33C9 /* Localizable.strings in Resources */,
+				84A56F09ABC59E8D1EA7A469 /* SearchViewController.xib in Resources */,
+				834145D70A421C0054F07922 /* StargazerCell.xib in Resources */,
+				3E452CE2DD1E65267FAB3B00 /* UsersListViewController.xib in Resources */,
+				5FC82788E659E3DEABE5A0D8 /* arrivals.json in Resources */,
+				5B7496EF6D59040BD143A67C /* arrivals_broken.json in Resources */,
+				E5E34CF4713B232E9F65305D /* departures.json in Resources */,
+				08503E99703940F4941166BD /* departures_broken.json in Resources */,
+				243FA9B657F37916E7A53C1E /* installations.csv in Resources */,
+				B10438E28971523335C1504A /* rate.csv in Resources */,
+				0A09CF2A95D6C8B16E93018C /* stations.txt in Resources */,
+				7ECF63CC43C4AF9A7856F548 /* stations_broken.txt in Resources */,
+				26C304A25BF7AE79DDED30BC /* train_sections.json in Resources */,
+				51BD7B6A3B8B7D208799CCDA /* train_sections_broken.json in Resources */,
+				270CCF7DEABDD975A3ED0368 /* trend.json in Resources */,
+				4B3935A707674077C6CB5EFD /* trend_broken.json in Resources */,
+				95DD2FE48E3F40AA8C8A7690 /* trend_milano_centrale.json in Resources */,
+				A9EE3507375D9F94042C9E19 /* trend_torino_p_nuova_reggio_calabria.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00439B360E2EE7E277EBFCC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoachTimer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		04A8AEB6F7DC23483FC9B8C2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B199D6B9049E35E093100C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoachTimerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5406A3DC331B4A7807B97F4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoachTimerMock-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D010F839298D55F4EA015C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoachTimer/Pods-CoachTimer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoachTimer/Pods-CoachTimer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoachTimer/Pods-CoachTimer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEE6C9FE3AB445056AF331A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		33D8A5EF41C7A1A890A04872 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D80EF86C78D03B54C30E27A8 /* APIRequest.swift in Sources */,
+				81B378AA959F95175DFEBB7C /* AppDelegate.swift in Sources */,
+				8AF3E4B1BA416916FB6A0621 /* Application+Action.swift in Sources */,
+				8B8E17EAE771ACF5B47D2993 /* Application+ActivityFeed.swift in Sources */,
+				886991A7072CCC2AA585BA09 /* Application+Environment.swift in Sources */,
+				BC4547A63BC4516DDEBBB8B4 /* Application+Reducer.swift in Sources */,
+				2E5F963B763AF86EB86EA750 /* Application+State.swift in Sources */,
+				3BD967F862D69B940F8C9FE9 /* Application+Store.swift in Sources */,
+				68B0F17D90894F833DD44D2C /* BaseViewController.swift in Sources */,
+				86CF0799C2DD3D6EFCFADA48 /* Environment+live.swift in Sources */,
+				E72C5DA9C197FF8C7C7D7524 /* Environment+mock.swift in Sources */,
+				41A024C33F471E76FC9F39A8 /* Localizable.swift in Sources */,
+				40671C1E87AEA7C2A4BE846F /* Mock+.swift in Sources */,
+				1FA97CE426ADC053B16A872B /* Networking.swift in Sources */,
+				90467FD0811B78F614C28EF6 /* Rate.swift in Sources */,
+				400318E409AF79A1CCB6303F /* Search+Feature.swift in Sources */,
+				38FE37781BB85A35B969BC07 /* SearchViewController+Binder.swift in Sources */,
+				1430DA2E91E48D8A29385187 /* SearchViewController.swift in Sources */,
+				0CC160175A6A4785D56ECE0E /* Stargazer+Feature.swift in Sources */,
+				7A0E46ADC6DC401CFB2B9A79 /* Stargazer+View.swift in Sources */,
+				B2B022FDCC25498E003E49DB /* StargazerCell.swift in Sources */,
+				6C43304B3E016988F361E04E /* UsersRequest.swift in Sources */,
+				029C9C0DE44B0941BD3C704A /* StargazersListViewController+Binder.swift in Sources */,
+				41A81875604C3633DA41AA65 /* UsersListViewController.swift in Sources */,
+				E97DDEB71DFE89E5F292B32D /* URLRequests+HTTPStatusCodes.swift in Sources */,
+				45CA6E8907F89B5D9909E95E /* Utils+Rx.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36988D78F20E3C70AC451E4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				971E91888E0886AB899DEC84 /* APIRequest.swift in Sources */,
+				33CF0851D1FD98B73A68A48C /* AppDelegate.swift in Sources */,
+				B2F823BF11A63A16D255AA47 /* Application+Action.swift in Sources */,
+				F8AEA0AAC6DB0F1AAF103E3F /* Application+ActivityFeed.swift in Sources */,
+				C40C8904B080299578919BBF /* Application+Environment.swift in Sources */,
+				1D6A2D596D14D20664061735 /* Application+Reducer.swift in Sources */,
+				3D5A357F36994D4DE863A23F /* Application+State.swift in Sources */,
+				99BD5E946DAD4697213BD660 /* Application+Store.swift in Sources */,
+				9A42B73CBA902FFE40ABA543 /* BaseViewController.swift in Sources */,
+				DFF6AB2B56C93ECAB48D5320 /* Environment+live.swift in Sources */,
+				BF8F0F6B7DC837565520D01E /* Environment+mock.swift in Sources */,
+				9887362B8AB5C6A062D97884 /* Localizable.swift in Sources */,
+				35A39F38C8D23D3F5DFE9287 /* Mock+.swift in Sources */,
+				BE3F9D23FD21694206FA55A5 /* Networking.swift in Sources */,
+				7CE21AC635CFF3923D1826A2 /* Rate.swift in Sources */,
+				375A6BBA356BBC5632FAA5E5 /* Search+Feature.swift in Sources */,
+				C2A1CCE5A357B84FE52EA2DB /* SearchViewController+Binder.swift in Sources */,
+				EA7DFEDF3EECA19B70B30A33 /* SearchViewController.swift in Sources */,
+				4EC1505CC2E42C47AB4971A1 /* Stargazer+Feature.swift in Sources */,
+				6D88D313165549CB2087A6B9 /* Stargazer+View.swift in Sources */,
+				AE7C8569A7B328721222CA7D /* StargazerCell.swift in Sources */,
+				256CFC0999DF802641A3F369 /* UsersRequest.swift in Sources */,
+				A67E87EA9BF39014ADB68593 /* StargazersListViewController+Binder.swift in Sources */,
+				3358E7720131796FE06983F9 /* UsersListViewController.swift in Sources */,
+				403931F33AFADEE9C3BC8C26 /* URLRequests+HTTPStatusCodes.swift in Sources */,
+				4740B94AC0A1490A14726D05 /* Utils+Rx.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A70E6E1445D894156A5CEBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA6E91BDA1043C475F03732E /* ApplicationTests.swift in Sources */,
+				2F1B93DB5719B9AD4065DB69 /* Difference+.swift in Sources */,
+				1FB9394DC3344FE1F593A4DE /* Mock+resources.swift in Sources */,
+				F4AB102E4DAB8A94A60D3471 /* MockUrlProtocol.swift in Sources */,
+				0FBD2A2315695EBD6B35493F /* NetworkingTests.swift in Sources */,
+				9E8A10D24BFD2C7EAD9F901A /* UsersReducerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB6B3611FB6B119C58B1C691 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F5B0B20A389810A4CA8169E /* CoachTimer */;
+			targetProxy = 2E1D0FB3C3423BB1FB8EBBC9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		96775DF5AAE2B07E4A822304 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				968717F7A11D62D227AAF5AA /* en */,
+				21C05FCF6823C4716C7CBE74 /* it */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		129355A87E2DB808E6E356FE /* Mock */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CUSTOM_BUILD_SETTING = mock;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = MOCK;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Mock;
+		};
+		365BE52A03A5FF7B2DF018DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD4DE748BA98B85D5394EF0F /* Pods-CoachTimerTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CoachTimerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimerTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoachTimer.app/CoachTimer";
+			};
+			name = Release;
+		};
+		431CA6DBD524C4F7D33EEDD9 /* Mock */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13EF95B9484A630B0EB87A8B /* Pods-CoachTimer.mock.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1.0;
+				INFOPLIST_FILE = "CoachTimer/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimer;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Mock;
+		};
+		5066D8671E4B00199FC45A61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41E1CD91752BA0DA3B3635EE /* Pods-CoachTimerTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CoachTimerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimerTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoachTimer.app/CoachTimer";
+			};
+			name = Debug;
+		};
+		61B20640C832673251913AD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CUSTOM_BUILD_SETTING = release;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		7493829328DC18257FC859E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40810AA31E8CC62D34822B28 /* Pods-CoachTimerMock.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1.0;
+				INFOPLIST_FILE = "CoachTimer/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimerMock;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		81BAB343C4B24E1864C9249B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFF7B3A524EFFF790607A686 /* Pods-CoachTimerMock.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1.0;
+				INFOPLIST_FILE = "CoachTimer/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimerMock;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		860879DD8BBAAED5271BBB33 /* Mock */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F701327C27C764224559071E /* Pods-CoachTimerTests.mock.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CoachTimerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimerTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoachTimer.app/CoachTimer";
+			};
+			name = Mock;
+		};
+		89941E9139387439198807AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A9A0B81EE4CBB0C6884EBA0 /* Pods-CoachTimer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1.0;
+				INFOPLIST_FILE = "CoachTimer/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimer;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D791EDA9972ED9FB27158239 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CUSTOM_BUILD_SETTING = debug;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E4EA3CA4D6D228952AB827F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 200F1C6BFDD07D8B76755878 /* Pods-CoachTimer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1.0;
+				INFOPLIST_FILE = "CoachTimer/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimer;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F6542A07CA7BEFA332F7B4D4 /* Mock */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9AEA19888BED54FED9BBBF5 /* Pods-CoachTimerMock.mock.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1.0;
+				INFOPLIST_FILE = "CoachTimer/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimerMock;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Mock;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32691DEE64ACAA8C73AC9CE4 /* Build configuration list for PBXNativeTarget "CoachTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89941E9139387439198807AE /* Debug */,
+				431CA6DBD524C4F7D33EEDD9 /* Mock */,
+				E4EA3CA4D6D228952AB827F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5022CC0E7E141B8AE65DD946 /* Build configuration list for PBXNativeTarget "CoachTimerMock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81BAB343C4B24E1864C9249B /* Debug */,
+				F6542A07CA7BEFA332F7B4D4 /* Mock */,
+				7493829328DC18257FC859E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AD44E8E09A8A994E62089187 /* Build configuration list for PBXNativeTarget "CoachTimerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5066D8671E4B00199FC45A61 /* Debug */,
+				860879DD8BBAAED5271BBB33 /* Mock */,
+				365BE52A03A5FF7B2DF018DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C6FBF9197B93F7B94CB52406 /* Build configuration list for PBXProject "CoachTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D791EDA9972ED9FB27158239 /* Debug */,
+				129355A87E2DB808E6E356FE /* Mock */,
+				61B20640C832673251913AD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 86B9227427AE16BA130E0490 /* Project object */;
+}

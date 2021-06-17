@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  GithubStargazers
+
+  Created by Jean Raphael Bordet on 17/06/2020.
+  
+*/
+
+"app.name" = "GithubStargazers";
+
+// MARK: - Common
+
+"app.stargazers.notfound" = "not found";
+
+// MARK: - Search
+
+"app.search.owner" = "owner";
+"app.search.repo" = "repo";
+"app.search.button.search" = "search";
+"app.search.button.cancel" = "cancel";
