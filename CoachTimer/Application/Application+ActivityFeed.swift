@@ -1,6 +1,6 @@
 //
 //  Application+ActivityFeed.swift
-//  ViaggioTreno
+//  CoachTimer
 //
 //  Created by Jean Raphael Bordet on 30/12/20.
 //

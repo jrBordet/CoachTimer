@@ -8,6 +8,8 @@
 import Foundation
 import RxComposableArchitecture
 
+// MARK: - Feature business logic
+
 public func usersReducer(
 	state: inout UsersState,
 	action: UsersAction,
@@ -52,7 +54,7 @@ public func usersReducer(
 	}
 }
 
-// MARK: - Model
+// MARK: - Feature domain
 
 public struct UserState {
 	let id: String
@@ -88,8 +90,6 @@ extension UserState {
 	)
 }
 
-// MARK: - State
-
 public struct UsersState: Equatable {
 	var list: [UserState]
 	var isLoading: Bool
@@ -116,8 +116,6 @@ extension UsersState {
 		alert: nil
 	)
 }
-
-// MARK: - Action
 
 public enum UsersAction: Equatable {
 	case purge

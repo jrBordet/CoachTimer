@@ -1,6 +1,6 @@
 //
 //  AppAction.swift
-//  GithubStargazers
+//  CoachTimer
 //
 
 import Foundation

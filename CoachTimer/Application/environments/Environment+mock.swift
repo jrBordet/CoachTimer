@@ -1,6 +1,6 @@
 //
 //  Environment+mock.swift
-//  GithubStargazers
+//  CoachTimer
 //
 //  Created by Jean Raphael Bordet on 25/05/21.
 //

@@ -1,6 +1,6 @@
 //
 //  AppStore.swift
-//  GithubStargazers
+//  CoachTimer
 //
 //  Created by Jean Raphael Bordet on 03/08/2020.
 //

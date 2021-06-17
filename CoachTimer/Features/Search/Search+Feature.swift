@@ -1,6 +1,6 @@
 //
 //  Search+Future.swift
-//  GithubStargazers
+//  CoachTimer
 //
 //  Created by Jean Raphael Bordet on 26/05/21.
 //

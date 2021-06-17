@@ -7,51 +7,7 @@
 
 import Foundation
 
-/**
-
-"results": [
-	{
-	  "name": {
-		"title": "Mr",
-		"first": "Lucas",
-		"last": "Harcourt"
-	  },
-	  "picture": {
-		"large": "https://randomuser.me/api/portraits/men/41.jpg",
-		"medium": "https://randomuser.me/api/portraits/med/men/41.jpg",
-		"thumbnail": "https://randomuser.me/api/portraits/thumb/men/41.jpg"
-	  }
-	}
-]
-
-*/
-
-public struct SeedUserRequestModel: Codable, Equatable {
-	public let results: [UserRequestModel]
-}
-
-public struct UserRequestModel: Codable, Equatable {
-	public let name: Name
-	public let picture: Picture
-	
-	public struct Name: Codable, Equatable {
-		public let title: String
-		public let first: String
-		public let last: String
-	}
-	
-	public struct Picture: Codable, Equatable {
-		public let large: String
-		public let medium: String
-		public let thumbnail: String
-	}
-	
-	func id() -> String {
-		(self.name.title + self.name.first + self.name.last).lowercased()
-	}
-}
-
-/// Refrences ...
+/// .
 /// Example:
 /// [Url ecample](https://randomuser.me/api/?seed=empatica&inc=name,picture&gender=male&results=10&noinfo)
 /// Mon Nov 20 2017 17:30:00 GMT+0100

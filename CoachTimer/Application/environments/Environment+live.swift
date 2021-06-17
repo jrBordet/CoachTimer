@@ -1,6 +1,6 @@
 //
 //  Environment+live.swift
-//  GithubStargazers
+//  CoachTimer
 //
 //  Created by Jean Raphael Bordet on 24/05/21.
 //
