@@ -15,12 +15,10 @@ public func searchReducer(
 ) -> [Effect<SearchAction>] {
 	switch action {
 	case let .owner(v):
-		state.owner = v
 		
 		return []
 		
 	case let .repo(v):
-		state.repo = v
 		
 		return []
 	}
@@ -30,25 +28,17 @@ public func searchReducer(
 
 public struct SearchState  {
 	var list: [User]
-	var repo: String
-	var owner: String
 	
 	public init(
-		list: [User],
-		repo: String,
-		owner: String
+		list: [User]
 	) {
 		self.list = list
-		self.repo = repo
-		self.owner = owner
 	}
 }
 
 extension SearchState {
 	static var empty = Self(
-		list: [],
-		repo: "",
-		owner: ""
+		list: []
 	)
 }
 

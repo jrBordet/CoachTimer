@@ -12,16 +12,16 @@ import RxCocoa
 import RxComposableArchitecture
 import SceneBuilder
 
-extension Reactive where Base: Store<UsersViewState, UsersViewAction> {
+extension Reactive where Base: Store<UsersSessionsViewState, UsersSessionsViewAction> {
 	var fetch: Binder<(Bool)> {
 		Binder(self.base) { store, value in
-			store.send(UsersViewAction.user(UsersAction.fetch))
+			store.send(UsersSessionsViewAction.user(UsersAction.fetch))
 		}
 	}
 	
 	var user: Binder<(User)> {
 		Binder(self.base) { store, value in
-			store.send(UsersViewAction.user(UsersAction.selectUser(value)))
+			store.send(UsersSessionsViewAction.user(UsersAction.selectUser(value)))
 		}
 	}
 }

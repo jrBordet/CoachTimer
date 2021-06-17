@@ -8,10 +8,8 @@
 import Foundation
 import RxComposableArchitecture
 
-public struct UsersViewState: Equatable {
+public struct UsersSessionsViewState: Equatable {
 	public var list: [User]
-	public var repo: String
-	public var owner: String
 	public var isLoading: Bool
 	public var alert: String?
 	public var currentPage: Int
@@ -20,16 +18,12 @@ public struct UsersViewState: Equatable {
 	
 	public init(
 		list: [User],
-		repo: String,
-		owner: String,
 		isLoading: Bool,
 		alert: String?,
 		currentPage: Int,
 		currentUser: User?
 	) {
 		self.list = list
-		self.repo = repo
-		self.owner = owner
 		self.isLoading = isLoading
 		self.alert = alert
 		self.currentPage = currentPage
@@ -59,25 +53,19 @@ public struct UsersViewState: Equatable {
 	var search: SearchState {
 		get {
 			SearchState(
-				list: self.list,
-				repo: self.repo,
-				owner: self.owner
+				list: self.list
 			)
 		}
 		
 		set {
 			self.list = newValue.list
-			self.repo = newValue.repo
-			self.owner = newValue.owner
 		}
 	}
 }
 
-extension UsersViewState {
+extension UsersSessionsViewState {
 	static var empty = Self(
 		list: [],
-		repo: "",
-		owner: "",
 		isLoading: false,
 		alert: nil,
 		currentPage: 1,
@@ -86,8 +74,6 @@ extension UsersViewState {
 	
 	static var sample = Self(
 		list: [],
-		repo: "octocat",
-		owner: "hello-world",
 		isLoading: false,
 		alert: nil,
 		currentPage: 1,
@@ -99,8 +85,6 @@ extension UsersViewState {
 			User.sample,
 			User.sample_1
 		],
-		repo: "octocat",
-		owner: "hello-world",
 		isLoading: false,
 		alert: nil,
 		currentPage: 1,
@@ -112,8 +96,6 @@ extension UsersViewState {
 			User.sample,
 			User.sample_1
 		],
-		repo: "octocat",
-		owner: "hello-world",
 		isLoading: false,
 		alert: nil,
 		currentPage: 1,
@@ -121,7 +103,7 @@ extension UsersViewState {
 	)
 }
 
-public enum UsersViewAction: Equatable {
+public enum UsersSessionsViewAction: Equatable {
 	case user(UsersAction)
 	case search(SearchAction)
 }
@@ -130,17 +112,17 @@ public struct UsersViewEnvironment {
 	var stargazersEnv: UsersEnvironment
 }
 
-public let stargazerViewReducer: Reducer<UsersViewState, UsersViewAction, UsersViewEnvironment> = combine(
+public let usersSessionsiewReducer: Reducer<UsersSessionsViewState, UsersSessionsViewAction, UsersViewEnvironment> = combine(
 	pullback(
 		usersReducer,
-		value: \UsersViewState.user,
-		action: /UsersViewAction.user,
+		value: \UsersSessionsViewState.user,
+		action: /UsersSessionsViewAction.user,
 		environment: { $0.stargazersEnv }
 	),
 	pullback(
 		searchReducer,
-		value: \UsersViewState.search,
-		action: /UsersViewAction.search,
+		value: \UsersSessionsViewState.search,
+		action: /UsersSessionsViewAction.search,
 		environment: { _ in SearchEnvironment() }
 	)
 )

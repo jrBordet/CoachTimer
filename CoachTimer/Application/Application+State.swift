@@ -10,13 +10,13 @@ import Foundation
 import RxComposableArchitecture
 
 public struct AppState {
-	var usersSession: UsersViewState
+	var usersSession: UsersSessionsViewState
 }
 
 extension AppState: Equatable { }
 
 extension AppState {
-	var starGazersFeature: UsersViewState {
+	var starGazersFeature: UsersSessionsViewState {
 		get {
 			self.usersSession
 		}

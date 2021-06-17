@@ -7,7 +7,7 @@ import Foundation
 import RxComposableArchitecture
 
 enum AppAction {
-	case userSessions(UsersViewAction)
+	case userSessions(UsersSessionsViewAction)
 }
 
 extension AppAction: Equatable { }

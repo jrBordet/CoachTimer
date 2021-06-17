@@ -1,6 +1,5 @@
 //
 //  Difference+.swift
-//  ViaggioTrenoTests
 //
 //  Created by Jean Raphael Bordet on 11/12/2020.
 //

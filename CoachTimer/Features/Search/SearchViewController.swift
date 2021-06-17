@@ -78,20 +78,6 @@ class SearchViewController: UIViewController {
 		
 		// MARK: - owner
 		
-		store.value
-			.map { $0.owner }
-			.bind(to: self.ownerField.rx.text)
-			.disposed(by: disposeBag)
-		
-		// MARK: - repo
-		
-		store.value
-			.map { $0.repo }
-			.bind(to: self.repoField.rx.text)
-			.disposed(by: disposeBag)
-		
-		// MARK: - owner
-		
 		ownerField.rx
 			.text
 			.map { $0 ?? "" }

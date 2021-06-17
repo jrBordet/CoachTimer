@@ -11,7 +11,7 @@ import RxSwift
 
 let appReducer: Reducer<AppState, AppAction, AppEnvironment> =  combine(
 	pullback(
-		stargazerViewReducer,
+		usersSessionsiewReducer,
 		value: \AppState.usersSession,
 		action: /AppAction.userSessions,
 		environment: { $0.userEnv }

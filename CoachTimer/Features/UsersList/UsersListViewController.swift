@@ -21,7 +21,7 @@ class UsersListViewController: UIViewController {
 	
 	// MARK: Store
 	
-	public var store: Store<UsersViewState, UsersViewAction>?
+	public var store: Store<UsersSessionsViewState, UsersSessionsViewAction>?
 	
 	// MARK: - RxDataSource
 	
@@ -44,10 +44,10 @@ class UsersListViewController: UIViewController {
 		)
 		
 		searchScene.closeClosure = { [weak self] in
-			self?.store?.send(UsersViewAction.user(UsersAction.purge))
+			self?.store?.send(UsersSessionsViewAction.user(UsersAction.purge))
 			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.28, execute: {
-				self?.store?.send(UsersViewAction.user(UsersAction.fetch))
+				self?.store?.send(UsersSessionsViewAction.user(UsersAction.fetch))
 			})
 		}
 		
@@ -63,7 +63,7 @@ class UsersListViewController: UIViewController {
 			return
 		}
 		
-		store.send(UsersViewAction.user(UsersAction.fetch))
+		store.send(UsersSessionsViewAction.user(UsersAction.fetch))
 		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "search", style: .plain, target: self, action: #selector(searchTapped))
 		let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
@@ -111,7 +111,7 @@ class UsersListViewController: UIViewController {
 		
 		store
 			.value
-			.map { (state: UsersViewState) -> [UserSectionItem] in
+			.map { (state: UsersSessionsViewState) -> [UserSectionItem] in
 				state.list.map { (model: User) -> UserSectionItem in
 					UserSectionItem(
 						id: model.id,
