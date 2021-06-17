@@ -24,8 +24,8 @@ class UsersReducerTests: XCTestCase {
 	let env_filled = UsersEnvironment(
 		fetch: {
 			.just([
-				UserState.sample,
-				UserState.sample_1
+				.sample,
+				.sample_1
 			])
 		}
 	)
@@ -46,7 +46,7 @@ class UsersReducerTests: XCTestCase {
 	
 	func testUsersEmpty() {
 		assert(
-			initialValue: UsersState(list: [], isLoading: false, alert: nil),
+			initialValue: UsersState(list: [], isLoading: false, alert: nil, currentUser: nil),
 			reducer: usersReducer,
 			environment: env_empty,
 			steps: Step(.send, UsersAction.fetch, { state in
@@ -61,16 +61,16 @@ class UsersReducerTests: XCTestCase {
 	
 	func testUsersFilled() {
 		assert(
-			initialValue: UsersState(list: [], isLoading: false, alert: nil),
+			initialValue: UsersState(list: [], isLoading: false, alert: nil, currentUser: nil),
 			reducer: usersReducer,
 			environment: env_filled,
 			steps: Step(.send, UsersAction.fetch, { state in
 				state.isLoading = true
 			}),
-			Step(.receive, UsersAction.fetchResponse([UserState.sample, UserState.sample_1]), { state in
+			Step(.receive, UsersAction.fetchResponse([.sample, .sample_1]), { state in
 				state.list = [
-					UserState.sample,
-					UserState.sample_1
+					.sample,
+					.sample_1
 				]
 				state.isLoading = false
 				state.currentPage = 2
@@ -80,7 +80,7 @@ class UsersReducerTests: XCTestCase {
 	
 	func testUsersFailure() {
 		assert(
-			initialValue: UsersState(list: [], isLoading: false, alert: nil),
+			initialValue: UsersState(list: [], isLoading: false, alert: nil, currentUser: nil),
 			reducer: usersReducer,
 			environment: env_not_found,
 			steps: Step(.send, UsersAction.fetch, { state in
@@ -93,5 +93,17 @@ class UsersReducerTests: XCTestCase {
 				state.currentPage = 1
 			})
 		)
+	}
+	
+	func testSingleUserSelection() {
+		assert(
+			initialValue: UsersState.init(list: [], isLoading: false, alert: nil, currentUser: nil),
+			reducer: usersReducer,
+			environment: env_filled,
+			steps: Step(.send, UsersAction.selectUser(.sample), { state in
+				state.currentUser = .sample
+			})
+		)
+		
 	}
 }

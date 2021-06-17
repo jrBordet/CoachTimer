@@ -51,44 +51,15 @@ public func usersReducer(
 		state.currentPage = 1
 		
 		return []
-	case .selectUser(_):
+		
+	case let .selectUser(u):
+		state.currentUser = u
+		
 		return []
 	}
 }
 
 // MARK: - Feature domain
-
-public struct User: Equatable {
-	let id: String
-	let name: String
-	let imageUrl: URL?
-}
-
-extension User {
-	static var notFound = Self(
-		id: "notFound",
-		name: "not-found",
-		imageUrl: nil
-	)
-	
-	static var empty = Self(
-		id: "empty",
-		name: "",
-		imageUrl: nil
-	)
-	
-	static var sample = Self(
-		id: "1",
-		name: "ryagas",
-		imageUrl: URL(string: "https://avatars.githubusercontent.com/u/553981?v=4")!
-	)
-	
-	static var sample_1 = Self(
-		id: "2",
-		name: "kjaikeerthi",
-		imageUrl: URL(string: "https://avatars.githubusercontent.com/u/351510?v=4")!
-	)
-}
 
 public struct UsersState: Equatable {
 	var list: [User]
