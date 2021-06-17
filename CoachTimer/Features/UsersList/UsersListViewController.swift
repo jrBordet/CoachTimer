@@ -32,7 +32,7 @@ class UsersListViewController: UIViewController {
 	private let disposeBag = DisposeBag()
 	
 	static let startLoadingOffset: CGFloat = 20.0
-		
+	
 	// MARK: - Life cycle
 	
 	@objc func searchTapped() {
@@ -45,7 +45,7 @@ class UsersListViewController: UIViewController {
 		
 		searchScene.closeClosure = { [weak self] in
 			self?.store?.send(UsersViewAction.user(UsersAction.purge))
-
+			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.28, execute: {
 				self?.store?.send(UsersViewAction.user(UsersAction.fetch))
 			})
@@ -67,7 +67,7 @@ class UsersListViewController: UIViewController {
 		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "search", style: .plain, target: self, action: #selector(searchTapped))
 		let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-
+		
 		navigationItem.rightBarButtonItems = [search]
 		
 		// MARK: - Config cell
@@ -104,7 +104,7 @@ class UsersListViewController: UIViewController {
 		alert
 			.bind(to: tableView.rx.isHidden)
 			.disposed(by: disposeBag)
-
+		
 		// MARK: - Bind dataSource
 		
 		setupDataSource()
@@ -132,6 +132,24 @@ class UsersListViewController: UIViewController {
 			.asDriver(onErrorJustReturn: [])
 			.drive(tableView.rx.items(dataSource: dataSource))
 			.disposed(by: disposeBag)
+		
+		// MARK: - User selected
+		
+		tableView
+			.rx
+			.modelSelected(UserSectionItem.self)
+			.observeOn(MainScheduler.instance)
+			.map { (sectionItem: UserSectionItem) -> User in
+				User(
+					id: sectionItem.id,
+					name: sectionItem.name,
+					imageUrl: sectionItem.imageUrl
+				)
+			}
+			.bind(to: store.rx.user)
+			.disposed(by: disposeBag)
+		
+		//store.value.map { $0.cu }
 	}
 	
 	// MARK: - Data Source Configuration

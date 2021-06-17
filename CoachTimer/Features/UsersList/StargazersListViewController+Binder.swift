@@ -18,10 +18,10 @@ extension Reactive where Base: Store<UsersViewState, UsersViewAction> {
 			store.send(UsersViewAction.user(UsersAction.fetch))
 		}
 	}
-//	
-//	var repo: Binder<(String)> {
-//		Binder(self.base) { store, value in
-//			store.send(StargazerViewAction.stargazer(UsersAction.repo(value)))
-//		}
-//	}
+	
+	var user: Binder<(User)> {
+		Binder(self.base) { store, value in
+			store.send(UsersViewAction.user(UsersAction.selectUser(value)))
+		}
+	}
 }
