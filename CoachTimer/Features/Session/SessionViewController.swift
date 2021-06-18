@@ -84,7 +84,7 @@ class SessionViewController: UIViewController {
 		
 		func stringFromTimeInterval(_ ms: Int) -> String {
 			String(
-				format: "%0.2d:%0.2d.%0.2d",
+				format: "%0.2d:%0.2d.%0.1d",
 				arguments: [(ms / 600) % 600, (ms % 600 ) / 10, ms % 10]
 			)
 		}
@@ -115,12 +115,27 @@ class SessionViewController: UIViewController {
 			.asDriver(onErrorJustReturn: "")
 			.drive(timerLabel.rx.text)
 			.disposed(by: disposeBag)
-		
-		let laps = mainTimer
+
+		let lapsValues = mainTimer
 			.sample(lapButton.rx.tap)
 			.scan ([Int](), accumulator: { lapTimes, newTime in
-				[newTime - lapTimes.reduce (0, +)] + lapTimes
+				lapTimes + [newTime - lapTimes.reduce (0, +)]
 			})
+			.share(replay: 1)
+		
+		lapsValues
+			.map { laps  -> [Lap] in
+				laps.enumerated().map { index, value in
+					Lap(
+						id: index,
+						time: value
+					)
+				}
+			}
+			.bind(to: store.rx.laps)
+			.disposed(by: disposeBag)
+				
+		let laps = lapsValues
 			.map { $0.map { stringFromTimeInterval($0) } }
 			.share(replay: 1)
 		

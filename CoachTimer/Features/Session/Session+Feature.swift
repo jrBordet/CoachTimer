@@ -22,6 +22,11 @@ public func sessionReducer(
 		state.laps.append(v)
 		
 		return []
+	case let .laps(v):
+		state.laps = v
+		
+		return []
+		
 	}
 }
 
@@ -56,6 +61,7 @@ extension SessionState {
 public enum SessionAction: Equatable {
 	case distance(Int?)
 	case lap(Lap)
+	case laps([Lap])
 }
 
 // MARK: - Environment

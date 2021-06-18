@@ -19,4 +19,16 @@ extension Reactive where Base: Store<SessionState, SessionAction> {
 			store.send(SessionAction.distance(value))
 		}
 	}
+	
+	var lap: Binder<(Lap)> {
+		Binder(self.base) { store, value in
+			store.send(SessionAction.lap(value))
+		}
+	}
+	
+	var laps: Binder<([Lap])> {
+		Binder(self.base) { store, value in
+			store.send(SessionAction.laps(value))
+		}
+	}
 }
