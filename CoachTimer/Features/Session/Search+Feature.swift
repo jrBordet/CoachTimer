@@ -9,16 +9,12 @@ import Foundation
 import RxComposableArchitecture
 
 public func searchReducer(
-	state: inout SearchState,
-	action: SearchAction,
+	state: inout SessionState,
+	action: SessionAction,
 	environment: SearchEnvironment
-) -> [Effect<SearchAction>] {
+) -> [Effect<SessionAction>] {
 	switch action {
 	case let .owner(v):
-		
-		return []
-		
-	case let .repo(v):
 		
 		return []
 	}
@@ -26,27 +22,26 @@ public func searchReducer(
 
 // MARK: - State
 
-public struct SearchState  {
-	var list: [User]
+public struct SessionState  {
+	var user: User?
 	
 	public init(
-		list: [User]
+		user: User?
 	) {
-		self.list = list
+		self.user = user
 	}
 }
 
-extension SearchState {
+extension SessionState {
 	static var empty = Self(
-		list: []
+		user: nil
 	)
 }
 
 // MARK: - Action
 
-public enum SearchAction: Equatable {
+public enum SessionAction: Equatable {
 	case owner(String)
-	case repo(String)
 }
 
 // MARK: - Environment

@@ -13,16 +13,10 @@ import RxSwift
 import RxCocoa
 import RxComposableArchitecture
 
-extension Reactive where Base: Store<SearchState, SearchAction> {
+extension Reactive where Base: Store<SessionState, SessionAction> {
 	var owner: Binder<(String)> {
 		Binder(self.base) { store, value in
-			store.send(SearchAction.owner(value))
-		}
-	}
-	
-	var repo: Binder<(String)> {
-		Binder(self.base) { store, value in
-			store.send(SearchAction.repo(value))
+			store.send(SessionAction.owner(value))
 		}
 	}
 }

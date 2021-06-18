@@ -25,35 +25,33 @@ class UsersListViewController: UIViewController {
 	
 	// MARK: - RxDataSource
 	
-	typealias ArrivalsDeparturesListSectionModel = AnimatableSectionModel<String, UserSectionItem>
+	typealias USersListSectionModel = AnimatableSectionModel<String, UserSectionItem>
 	
-	var dataSource: RxTableViewSectionedAnimatedDataSource<ArrivalsDeparturesListSectionModel>!
+	var dataSource: RxTableViewSectionedAnimatedDataSource<USersListSectionModel>!
 	
 	private let disposeBag = DisposeBag()
-	
-	static let startLoadingOffset: CGFloat = 20.0
-	
+		
 	// MARK: - Life cycle
 	
-	@objc func searchTapped() {
-		let searchScene = Scene<SearchViewController>().render()
-		
-		searchScene.store = self.store?.view(
-			value: { $0.search },
-			action: { .search($0) }
-		)
-		
-		searchScene.closeClosure = { [weak self] in
-			self?.store?.send(UsersSessionsViewAction.user(UsersAction.purge))
-			
-			DispatchQueue.main.asyncAfter(deadline: .now() + 0.28, execute: {
-				self?.store?.send(UsersSessionsViewAction.user(UsersAction.fetch))
-			})
-		}
-		
-		self.navigationController?.present(searchScene, animated: true, completion: nil)
-	}
-	
+//	@objc func searchTapped() {
+//		let searchScene = Scene<SessionViewController>().render()
+//
+//		searchScene.store = self.store?.view(
+//			value: { $0.session },
+//			action: { .session($0) }
+//		)
+//
+//		searchScene.closeClosure = { [weak self] in
+//			self?.store?.send(UsersSessionsViewAction.user(UsersAction.purge))
+//
+//			DispatchQueue.main.asyncAfter(deadline: .now() + 0.28, execute: {
+//				self?.store?.send(UsersSessionsViewAction.user(UsersAction.fetch))
+//			})
+//		}
+//
+//		self.navigationController?.present(searchScene, animated: true, completion: nil)
+//	}
+//
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -63,12 +61,13 @@ class UsersListViewController: UIViewController {
 			return
 		}
 		
+		// MARK: - fetch users
 		store.send(UsersSessionsViewAction.user(UsersAction.fetch))
 		
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "search", style: .plain, target: self, action: #selector(searchTapped))
-		let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-		
-		navigationItem.rightBarButtonItems = [search]
+//		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "search", style: .plain, target: self, action: #selector(searchTapped))
+//		let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
+//
+//		navigationItem.rightBarButtonItems = [search]
 		
 		// MARK: - Config cell
 		
@@ -121,9 +120,9 @@ class UsersListViewController: UIViewController {
 				}
 			}
 			.distinctUntilChanged()
-			.map { (items: [UserSectionItem]) -> [ArrivalsDeparturesListSectionModel] in
+			.map { (items: [UserSectionItem]) -> [USersListSectionModel] in
 				[
-					ArrivalsDeparturesListSectionModel(
+					USersListSectionModel(
 						model: "",
 						items: items
 					)
@@ -149,13 +148,21 @@ class UsersListViewController: UIViewController {
 			.bind(to: store.rx.user)
 			.disposed(by: disposeBag)
 		
-		//store.value.map { $0.cu }
+		// MARK: - Present Session
+		
+		store.value
+			.map { $0.currentUser }
+			.distinctUntilChanged()
+			.ignoreNil()
+			.map { _ in Void() }
+			.bind(to: self.rx.pushSession)
+			.disposed(by: disposeBag)
 	}
 	
 	// MARK: - Data Source Configuration
 	
 	private func setupDataSource() {
-		dataSource = RxTableViewSectionedAnimatedDataSource<ArrivalsDeparturesListSectionModel>(
+		dataSource = RxTableViewSectionedAnimatedDataSource<USersListSectionModel>(
 			animationConfiguration: AnimationConfiguration(
 				insertAnimation: .none,
 				reloadAnimation: .none
@@ -166,10 +173,26 @@ class UsersListViewController: UIViewController {
 	
 }
 
+extension Reactive where Base: UsersListViewController {
+	var pushSession: Binder<Void> {
+		Binder(self.base) { vc, interact in
+			
+			let searchScene = Scene<SessionViewController>().render()
+			
+			searchScene.store = vc.store?.view(
+				value: { $0.session },
+				action: { .session($0) }
+			)
+			
+			vc.navigationController?.pushViewController(searchScene, animated: true)
+		}
+	}
+}
+
 // MARK: - cell
 
 extension UsersListViewController {
-	private var configureCell: RxTableViewSectionedAnimatedDataSource<ArrivalsDeparturesListSectionModel>.ConfigureCell {
+	private var configureCell: RxTableViewSectionedAnimatedDataSource<USersListSectionModel>.ConfigureCell {
 		return { _, table, idxPath, item in
 			guard let cell = table.dequeueReusableCell(withIdentifier: "UserCell", for: idxPath) as? UserCell else {
 				return UITableViewCell(style: .default, reuseIdentifier: nil)

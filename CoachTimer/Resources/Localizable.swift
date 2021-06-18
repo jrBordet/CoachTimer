@@ -12,7 +12,7 @@ import Foundation
 internal enum L10n {
 
   internal enum App {
-    /// GithubStargazers
+    /// CoachTimer
     internal static let name = L10n.tr("Localizable", "app.name")
     internal enum Search {
       /// owner

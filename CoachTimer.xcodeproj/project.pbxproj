@@ -10,10 +10,10 @@
 		029C9C0DE44B0941BD3C704A /* StargazersListViewController+Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286402CFDDF75AB1A01AA8B /* StargazersListViewController+Binder.swift */; };
 		08503E99703940F4941166BD /* departures_broken.json in Resources */ = {isa = PBXBuildFile; fileRef = D4403A6C44C4C855ADA00707 /* departures_broken.json */; };
 		0A09CF2A95D6C8B16E93018C /* stations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 433C887A11F19A6F5BA1F5C9 /* stations.txt */; };
-		0AAAE369315929389FBEDF64 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F451DA0E00BCA99250087FF /* SearchViewController.xib */; };
+		0AAAE369315929389FBEDF64 /* SessionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F451DA0E00BCA99250087FF /* SessionViewController.xib */; };
 		0CC160175A6A4785D56ECE0E /* Users+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E63BA4F6FBBEF9894DAED67 /* Users+Feature.swift */; };
 		0FBD2A2315695EBD6B35493F /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C06C2AFF4B5C617016E544 /* NetworkingTests.swift */; };
-		1430DA2E91E48D8A29385187 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B86BF80A354B072BDF60F /* SearchViewController.swift */; };
+		1430DA2E91E48D8A29385187 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B86BF80A354B072BDF60F /* SessionViewController.swift */; };
 		19ACB6B63AF234FAFCBEC0D4 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E44577EC927EC67693EF6 /* UserCell.xib */; };
 		1D6A2D596D14D20664061735 /* Application+Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */; };
 		1FA97CE426ADC053B16A872B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C3361818A40D12C7C5A69 /* Networking.swift */; };
@@ -66,7 +66,7 @@
 		81B378AA959F95175DFEBB7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5C8B4B04454165E152B69E /* AppDelegate.swift */; };
 		834145D70A421C0054F07922 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E44577EC927EC67693EF6 /* UserCell.xib */; };
 		848C08BF6008BF79B920FE77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96775DF5AAE2B07E4A822304 /* Localizable.strings */; };
-		84A56F09ABC59E8D1EA7A469 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F451DA0E00BCA99250087FF /* SearchViewController.xib */; };
+		84A56F09ABC59E8D1EA7A469 /* SessionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F451DA0E00BCA99250087FF /* SessionViewController.xib */; };
 		86CF0799C2DD3D6EFCFADA48 /* Environment+live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9E4420F179D5B4D5BE4F0 /* Environment+live.swift */; };
 		874B62190DB637FD359C33C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96775DF5AAE2B07E4A822304 /* Localizable.strings */; };
 		886991A7072CCC2AA585BA09 /* Application+Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3744C8347C068A7F46AACC5 /* Application+Environment.swift */; };
@@ -98,7 +98,7 @@
 		E6416BB7C6D63A99A0851FE9 /* Pods_CoachTimerMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5A8B14E1B6377C77AE9598 /* Pods_CoachTimerMock.framework */; };
 		E72C5DA9C197FF8C7C7D7524 /* Environment+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5928F3797C707E83936C82A /* Environment+mock.swift */; };
 		E97DDEB71DFE89E5F292B32D /* URLRequests+HTTPStatusCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC2C93FA9F31637D43235B4 /* URLRequests+HTTPStatusCodes.swift */; };
-		EA7DFEDF3EECA19B70B30A33 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B86BF80A354B072BDF60F /* SearchViewController.swift */; };
+		EA7DFEDF3EECA19B70B30A33 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17B86BF80A354B072BDF60F /* SessionViewController.swift */; };
 		F4AB102E4DAB8A94A60D3471 /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C48B2F132118F01C070FD5F /* MockUrlProtocol.swift */; };
 		F8AEA0AAC6DB0F1AAF103E3F /* Application+ActivityFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA427A8B5FE5FBD97BD198 /* Application+ActivityFeed.swift */; };
 		F8C79280267BB095002C49C2 /* SeedUserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7927F267BB095002C49C2 /* SeedUserRequestModel.swift */; };
@@ -139,7 +139,7 @@
 		33D1AD8017B7C5896293FEC6 /* arrivals_broken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = arrivals_broken.json; sourceTree = "<group>"; };
 		393502593CF7E708AB85319F /* Search+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Feature.swift"; sourceTree = "<group>"; };
 		3C5B82C3832C69F81B8A7270 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		3F451DA0E00BCA99250087FF /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		3F451DA0E00BCA99250087FF /* SessionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionViewController.xib; sourceTree = "<group>"; };
 		3FC9DDD45682926BD5C1FF22 /* UsersReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersReducerTests.swift; sourceTree = "<group>"; };
 		40810AA31E8CC62D34822B28 /* Pods-CoachTimerMock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.release.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.release.xcconfig"; sourceTree = "<group>"; };
 		41E1CD91752BA0DA3B3635EE /* Pods-CoachTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.debug.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		A26D87084DE40C1690E514A9 /* Application+Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Store.swift"; sourceTree = "<group>"; };
 		A3744C8347C068A7F46AACC5 /* Application+Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Environment.swift"; sourceTree = "<group>"; };
 		AFFA427A8B5FE5FBD97BD198 /* Application+ActivityFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+ActivityFeed.swift"; sourceTree = "<group>"; };
-		B17B86BF80A354B072BDF60F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B17B86BF80A354B072BDF60F /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		B4776AC8690020FA0DD6D0BE /* Mock+resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mock+resources.swift"; sourceTree = "<group>"; };
 		B84E2AFCA042D3DC618CFC0D /* Pods_CoachTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoachTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD4DE748BA98B85D5394EF0F /* Pods-CoachTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.release.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -305,15 +305,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		592203DE72B06F9309D07BB4 /* Search */ = {
+		592203DE72B06F9309D07BB4 /* Session */ = {
 			isa = PBXGroup;
 			children = (
 				393502593CF7E708AB85319F /* Search+Feature.swift */,
-				B17B86BF80A354B072BDF60F /* SearchViewController.swift */,
-				3F451DA0E00BCA99250087FF /* SearchViewController.xib */,
+				B17B86BF80A354B072BDF60F /* SessionViewController.swift */,
+				3F451DA0E00BCA99250087FF /* SessionViewController.xib */,
 				7D9689753F29AAEB1FD10B02 /* SearchViewController+Binder.swift */,
 			);
-			path = Search;
+			path = Session;
 			sourceTree = "<group>";
 		};
 		739446D42E8DE6B655FD2DB0 /* Utilities */ = {
@@ -495,7 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				9451C92541EC440D2D8CB19E /* UsersSessions+View.swift */,
-				592203DE72B06F9309D07BB4 /* Search */,
+				592203DE72B06F9309D07BB4 /* Session */,
 				ED7C3F0F2E372C7C31B5BCEE /* UsersList */,
 			);
 			path = Features;
@@ -605,7 +605,7 @@
 			files = (
 				611555502249480F5A4AFF53 /* Assets.xcassets in Resources */,
 				848C08BF6008BF79B920FE77 /* Localizable.strings in Resources */,
-				0AAAE369315929389FBEDF64 /* SearchViewController.xib in Resources */,
+				0AAAE369315929389FBEDF64 /* SessionViewController.xib in Resources */,
 				19ACB6B63AF234FAFCBEC0D4 /* UserCell.xib in Resources */,
 				A39251B1BB97E5D5ED834A24 /* UsersListViewController.xib in Resources */,
 				F9775398CCFCDB8C2AA6F730 /* arrivals.json in Resources */,
@@ -631,7 +631,7 @@
 			files = (
 				3C0F76124B43FF3597BA23B3 /* Assets.xcassets in Resources */,
 				874B62190DB637FD359C33C9 /* Localizable.strings in Resources */,
-				84A56F09ABC59E8D1EA7A469 /* SearchViewController.xib in Resources */,
+				84A56F09ABC59E8D1EA7A469 /* SessionViewController.xib in Resources */,
 				834145D70A421C0054F07922 /* UserCell.xib in Resources */,
 				3E452CE2DD1E65267FAB3B00 /* UsersListViewController.xib in Resources */,
 				5FC82788E659E3DEABE5A0D8 /* arrivals.json in Resources */,
@@ -796,7 +796,7 @@
 				1FA97CE426ADC053B16A872B /* Networking.swift in Sources */,
 				400318E409AF79A1CCB6303F /* Search+Feature.swift in Sources */,
 				38FE37781BB85A35B969BC07 /* SearchViewController+Binder.swift in Sources */,
-				1430DA2E91E48D8A29385187 /* SearchViewController.swift in Sources */,
+				1430DA2E91E48D8A29385187 /* SessionViewController.swift in Sources */,
 				0CC160175A6A4785D56ECE0E /* Users+Feature.swift in Sources */,
 				7A0E46ADC6DC401CFB2B9A79 /* UsersSessions+View.swift in Sources */,
 				B2B022FDCC25498E003E49DB /* UserCell.swift in Sources */,
@@ -830,7 +830,7 @@
 				BE3F9D23FD21694206FA55A5 /* Networking.swift in Sources */,
 				375A6BBA356BBC5632FAA5E5 /* Search+Feature.swift in Sources */,
 				C2A1CCE5A357B84FE52EA2DB /* SearchViewController+Binder.swift in Sources */,
-				EA7DFEDF3EECA19B70B30A33 /* SearchViewController.swift in Sources */,
+				EA7DFEDF3EECA19B70B30A33 /* SessionViewController.swift in Sources */,
 				4EC1505CC2E42C47AB4971A1 /* Users+Feature.swift in Sources */,
 				6D88D313165549CB2087A6B9 /* UsersSessions+View.swift in Sources */,
 				AE7C8569A7B328721222CA7D /* UserCell.swift in Sources */,

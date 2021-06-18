@@ -8,6 +8,8 @@
 import Foundation
 import RxComposableArchitecture
 
+// MARK: - Feature domain
+
 public struct UsersSessionsViewState: Equatable {
 	public var list: [User]
 	public var isLoading: Bool
@@ -15,19 +17,22 @@ public struct UsersSessionsViewState: Equatable {
 	public var currentPage: Int
 	
 	public var currentUser: User?
+	public var currentSession: Session?
 	
 	public init(
 		list: [User],
 		isLoading: Bool,
 		alert: String?,
 		currentPage: Int,
-		currentUser: User?
+		currentUser: User?,
+		currentSession: Session?
 	) {
 		self.list = list
 		self.isLoading = isLoading
 		self.alert = alert
 		self.currentPage = currentPage
 		self.currentUser = currentUser
+		self.currentSession = currentSession
 	}
 	
 	var user: UsersState {
@@ -47,18 +52,25 @@ public struct UsersSessionsViewState: Equatable {
 			self.alert = newValue.alert
 			self.currentPage = newValue.currentPage
 			self.currentUser = newValue.currentUser
+			
+			// The session is derived from the user selection
+			self.session = SessionState(
+				user: newValue.currentUser
+			)
 		}
 	}
 	
-	var search: SearchState {
+	var session: SessionState {
 		get {
-			SearchState(
-				list: self.list
+			SessionState(
+				user: self.currentUser
 			)
 		}
 		
 		set {
-			self.list = newValue.list
+			self.currentSession = Session(
+				user: newValue.user
+			)
 		}
 	}
 }
@@ -69,7 +81,8 @@ extension UsersSessionsViewState {
 		isLoading: false,
 		alert: nil,
 		currentPage: 1,
-		currentUser: nil
+		currentUser: nil,
+		currentSession: nil
 	)
 	
 	static var sample = Self(
@@ -77,7 +90,8 @@ extension UsersSessionsViewState {
 		isLoading: false,
 		alert: nil,
 		currentPage: 1,
-		currentUser: nil
+		currentUser: nil,
+		currentSession: nil
 	)
 	
 	static var sample_1 = Self(
@@ -88,7 +102,8 @@ extension UsersSessionsViewState {
 		isLoading: false,
 		alert: nil,
 		currentPage: 1,
-		currentUser: nil
+		currentUser: nil,
+		currentSession: nil
 	)
 	
 	static var test = Self(
@@ -99,18 +114,21 @@ extension UsersSessionsViewState {
 		isLoading: false,
 		alert: nil,
 		currentPage: 1,
-		currentUser: nil
+		currentUser: nil,
+		currentSession: nil
 	)
 }
 
 public enum UsersSessionsViewAction: Equatable {
 	case user(UsersAction)
-	case search(SearchAction)
+	case session(SessionAction)
 }
 
 public struct UsersViewEnvironment {
 	var stargazersEnv: UsersEnvironment
 }
+
+// MARK: - Business logic
 
 public let usersSessionsiewReducer: Reducer<UsersSessionsViewState, UsersSessionsViewAction, UsersViewEnvironment> = combine(
 	pullback(
@@ -121,8 +139,8 @@ public let usersSessionsiewReducer: Reducer<UsersSessionsViewState, UsersSession
 	),
 	pullback(
 		searchReducer,
-		value: \UsersSessionsViewState.search,
-		action: /UsersSessionsViewAction.search,
+		value: \UsersSessionsViewState.session,
+		action: /UsersSessionsViewAction.session,
 		environment: { _ in SearchEnvironment() }
 	)
 )

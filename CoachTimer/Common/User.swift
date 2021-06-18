@@ -7,6 +7,10 @@
 
 import Foundation
 
+public struct Session: Equatable {
+	let user: User?
+}
+
 public struct User: Equatable {
 	let id: String
 	let name: String
