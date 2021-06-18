@@ -40,7 +40,6 @@ class UsersSessionsReducerTests: XCTestCase {
 	}
 	
 	func testSingleUserSelection() {
-		
 		assert(
 			initialValue: UsersSessionsViewState.empty,
 			reducer: usersSessionsiewReducer,
@@ -63,6 +62,15 @@ class UsersSessionsReducerTests: XCTestCase {
 				
 			})
 		)
+	}
+	
+	func testTimeFormat() {
+		let result = stringFromTimeInterval(1)
 		
+		XCTAssertEqual("00:00.01", result)
+		
+		let result2 = stringFromTimeInterval(4435 / 1000)
+		
+		XCTAssertEqual("00:00.04", result2)
 	}
 }

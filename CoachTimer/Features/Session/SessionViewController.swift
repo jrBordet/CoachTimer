@@ -82,18 +82,15 @@ class SessionViewController: UIViewController {
 			reuseIdentifier: "SessionCell"
 		)
 		
-		func stringFromTimeInterval(_ ms: Int) -> String {
-			String(
-				format: "%0.2d:%0.2d.%0.1d",
-				arguments: [(ms / 600) % 600, (ms % 600 ) / 10, ms % 10]
-			)
-		}
+		// MARK: - Username
 		
 		store
 			.value
 			.map { "\($0.user?.name ?? "") \($0.user?.surname ?? "")" }
 			.bind(to: usernameLabel.rx.text)
 			.disposed(by: disposeBag)
+		
+		// MARK: - Timer
 		
 		let start = startButton.rx.tap.map { true }.share(replay: 1, scope: .whileConnected)
 		let stop = stopButton.rx.tap.map { false }.share(replay: 1, scope: .whileConnected)
@@ -115,7 +112,7 @@ class SessionViewController: UIViewController {
 			.asDriver(onErrorJustReturn: "")
 			.drive(timerLabel.rx.text)
 			.disposed(by: disposeBag)
-
+		
 		let lapsValues = mainTimer
 			.sample(lapButton.rx.tap)
 			.scan ([Int](), accumulator: { lapTimes, newTime in
@@ -134,7 +131,7 @@ class SessionViewController: UIViewController {
 			}
 			.bind(to: store.rx.laps)
 			.disposed(by: disposeBag)
-				
+		
 		let laps = lapsValues
 			.map { $0.map { stringFromTimeInterval($0) } }
 			.share(replay: 1)
@@ -219,4 +216,11 @@ extension SessionViewController {
 			return cell
 		}
 	}
+}
+
+func stringFromTimeInterval(_ ms: Int) -> String {
+	String(
+		format: "%0.2d:%0.2d.%0.2d",
+		arguments: [(ms / 600) % 600, (ms % 600 ) / 10, ms % 10]
+	)
 }
