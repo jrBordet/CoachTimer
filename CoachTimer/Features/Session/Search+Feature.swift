@@ -14,9 +14,10 @@ public func searchReducer(
 	environment: SearchEnvironment
 ) -> [Effect<SessionAction>] {
 	switch action {
-	case let .owner(v):
-		
+	case let .distance(v):
+		state.distance = v
 		return []
+		
 	}
 }
 
@@ -24,24 +25,28 @@ public func searchReducer(
 
 public struct SessionState  {
 	var user: User?
+	var distance: Int?
 	
 	public init(
-		user: User?
+		user: User?,
+		distance: Int?
 	) {
 		self.user = user
+		self.distance = distance
 	}
 }
 
 extension SessionState {
 	static var empty = Self(
-		user: nil
+		user: nil,
+		distance: nil
 	)
 }
 
 // MARK: - Action
 
 public enum SessionAction: Equatable {
-	case owner(String)
+	case distance(Int?)
 }
 
 // MARK: - Environment

@@ -18,11 +18,38 @@ class UsersReducerTests: XCTestCase {
 	let env_empty = UsersEnvironment(
 		fetch: {
 			.just([])
+		},
+		persistUsers: { users in
+			.just(true)
+		},
+		loadUsers: {
+			.just([])
 		}
 	)
 	
 	let env_filled = UsersEnvironment(
 		fetch: {
+			.just([
+				.sample,
+				.sample_1
+			])
+		},
+		persistUsers: { users in
+			.just(true)
+		},
+		loadUsers: {
+			.just([])
+		}
+	)
+	
+	let env_filled_local_storage = UsersEnvironment(
+		fetch: {
+			fatalError("should not perform http request")
+		},
+		persistUsers: { users in
+			.just(true)
+		},
+		loadUsers: {
 			.just([
 				.sample,
 				.sample_1
@@ -35,6 +62,12 @@ class UsersReducerTests: XCTestCase {
 			.just([
 				.notFound
 			])
+		},
+		persistUsers: { users in
+			.just(true)
+		},
+		loadUsers: {
+			.just([])
 		}
 	)
 	
@@ -59,13 +92,16 @@ class UsersReducerTests: XCTestCase {
 		)
 	}
 	
-	func testUsersFilled() {
+	func testUsersFilledFromNetworking() {
 		assert(
 			initialValue: UsersState(list: [], isLoading: false, alert: nil, currentUser: nil),
 			reducer: usersReducer,
 			environment: env_filled,
-			steps: Step(.send, UsersAction.fetch, { state in
-				state.isLoading = true
+			steps: Step(.send, UsersAction.load, { state in
+				
+			}),
+			Step(.receive, UsersAction.loadResponse([]), { state in
+				
 			}),
 			Step(.receive, UsersAction.fetchResponse([.sample, .sample_1]), { state in
 				state.list = [
@@ -74,6 +110,26 @@ class UsersReducerTests: XCTestCase {
 				]
 				state.isLoading = false
 				state.currentPage = 2
+			}),
+			Step(.receive, UsersAction.persistUsersResponse(true), { state in
+				
+			})
+		)
+	}
+	
+	func testUsersFilledFromLocalStorage() {
+		assert(
+			initialValue: UsersState(list: [], isLoading: false, alert: nil, currentUser: nil),
+			reducer: usersReducer,
+			environment: env_filled_local_storage,
+			steps: Step(.send, UsersAction.load, { state in
+
+			}),
+			Step(.receive, UsersAction.loadResponse([.sample, .sample_1]), { state in
+				state.list = [
+					.sample,
+					.sample_1
+				]
 			})
 		)
 	}

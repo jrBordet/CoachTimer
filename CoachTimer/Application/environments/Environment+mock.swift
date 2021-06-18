@@ -19,7 +19,7 @@ extension AppEnvironment {
 
 extension UsersViewEnvironment {
 	static var mock = Self(
-		stargazersEnv: UsersEnvironment.mock
+		userEnv: UsersEnvironment.mock
 	)
 }
 
@@ -32,6 +32,12 @@ extension UsersEnvironment {
 					.mock(from: page_1)
 					.results
 					.map { $0.map() })
+		},
+		persistUsers: { users in
+			.just(true)
+		},
+		loadUsers: {
+			.just([])
 		}
 	)
 }
@@ -40,7 +46,9 @@ extension UserRequestModel {
 	func map() -> User {
 		User(
 			id: self.id(),
+			title: self.name.title,
 			name: self.name.first,
+			surname: self.name.last,
 			imageUrl: URL(string: self.picture.thumbnail)!
 		)
 	}

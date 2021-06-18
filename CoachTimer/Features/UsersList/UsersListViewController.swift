@@ -25,33 +25,20 @@ class UsersListViewController: UIViewController {
 	
 	// MARK: - RxDataSource
 	
-	typealias USersListSectionModel = AnimatableSectionModel<String, UserSectionItem>
+	typealias UsersListSectionModel = AnimatableSectionModel<String, UserSectionItem>
 	
-	var dataSource: RxTableViewSectionedAnimatedDataSource<USersListSectionModel>!
+	var dataSource: RxTableViewSectionedAnimatedDataSource<UsersListSectionModel>!
 	
 	private let disposeBag = DisposeBag()
 		
 	// MARK: - Life cycle
 	
-//	@objc func searchTapped() {
-//		let searchScene = Scene<SessionViewController>().render()
-//
-//		searchScene.store = self.store?.view(
-//			value: { $0.session },
-//			action: { .session($0) }
-//		)
-//
-//		searchScene.closeClosure = { [weak self] in
-//			self?.store?.send(UsersSessionsViewAction.user(UsersAction.purge))
-//
-//			DispatchQueue.main.asyncAfter(deadline: .now() + 0.28, execute: {
-//				self?.store?.send(UsersSessionsViewAction.user(UsersAction.fetch))
-//			})
-//		}
-//
-//		self.navigationController?.present(searchScene, animated: true, completion: nil)
-//	}
-//
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		store?.send(UsersSessionsViewAction.user(UsersAction.selectUser(nil)))
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -61,13 +48,12 @@ class UsersListViewController: UIViewController {
 			return
 		}
 		
-		// MARK: - fetch users
-		store.send(UsersSessionsViewAction.user(UsersAction.fetch))
+		// MARK: - load users
 		
-//		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "search", style: .plain, target: self, action: #selector(searchTapped))
-//		let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchTapped))
-//
-//		navigationItem.rightBarButtonItems = [search]
+		/// Use `fetch` instead to retrieve users frorm the network
+		// store.send(UsersSessionsViewAction.user(UsersAction.fetch))
+		
+		store.send(UsersSessionsViewAction.user(UsersAction.load))
 		
 		// MARK: - Config cell
 		
@@ -114,15 +100,17 @@ class UsersListViewController: UIViewController {
 				state.list.map { (model: User) -> UserSectionItem in
 					UserSectionItem(
 						id: model.id,
+						title: model.title,
 						name: model.name,
+						surname: model.surname,
 						imageUrl: model.imageUrl
 					)
 				}
 			}
 			.distinctUntilChanged()
-			.map { (items: [UserSectionItem]) -> [USersListSectionModel] in
+			.map { (items: [UserSectionItem]) -> [UsersListSectionModel] in
 				[
-					USersListSectionModel(
+					UsersListSectionModel(
 						model: "",
 						items: items
 					)
@@ -134,14 +122,15 @@ class UsersListViewController: UIViewController {
 		
 		// MARK: - User selected
 		
-		tableView
-			.rx
+		tableView.rx
 			.modelSelected(UserSectionItem.self)
 			.observeOn(MainScheduler.instance)
 			.map { (sectionItem: UserSectionItem) -> User in
 				User(
 					id: sectionItem.id,
+					title: sectionItem.title,
 					name: sectionItem.name,
+					surname: sectionItem.surname,
 					imageUrl: sectionItem.imageUrl
 				)
 			}
@@ -162,7 +151,7 @@ class UsersListViewController: UIViewController {
 	// MARK: - Data Source Configuration
 	
 	private func setupDataSource() {
-		dataSource = RxTableViewSectionedAnimatedDataSource<USersListSectionModel>(
+		dataSource = RxTableViewSectionedAnimatedDataSource<UsersListSectionModel>(
 			animationConfiguration: AnimationConfiguration(
 				insertAnimation: .none,
 				reloadAnimation: .none
@@ -192,13 +181,13 @@ extension Reactive where Base: UsersListViewController {
 // MARK: - cell
 
 extension UsersListViewController {
-	private var configureCell: RxTableViewSectionedAnimatedDataSource<USersListSectionModel>.ConfigureCell {
+	private var configureCell: RxTableViewSectionedAnimatedDataSource<UsersListSectionModel>.ConfigureCell {
 		return { _, table, idxPath, item in
 			guard let cell = table.dequeueReusableCell(withIdentifier: "UserCell", for: idxPath) as? UserCell else {
 				return UITableViewCell(style: .default, reuseIdentifier: nil)
 			}
-			
-			cell.nameLabel.text = item.name.lowercased()
+						
+			cell.nameLabel.text = item.title.capitalized + " " + item.name.capitalized + " " + item.surname.capitalized
 			
 			if let url = item.imageUrl {
 				cell.avatarImage?.load(url: url)
@@ -213,7 +202,9 @@ extension UsersListViewController {
 
 struct UserSectionItem {
 	var id: String
+	var title: String
 	var name: String
+	var surname: String
 	var imageUrl: URL?
 }
 

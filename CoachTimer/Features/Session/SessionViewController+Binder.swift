@@ -14,9 +14,9 @@ import RxCocoa
 import RxComposableArchitecture
 
 extension Reactive where Base: Store<SessionState, SessionAction> {
-	var owner: Binder<(String)> {
+	var distance: Binder<(Int?)> {
 		Binder(self.base) { store, value in
-			store.send(SessionAction.owner(value))
+			store.send(SessionAction.distance(value))
 		}
 	}
 }

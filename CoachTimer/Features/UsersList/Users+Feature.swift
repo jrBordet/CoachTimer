@@ -42,7 +42,9 @@ public func usersReducer(
 		state.list.append(contentsOf: result)
 		state.currentPage = state.currentPage + 1
 		
-		return []
+		return [
+			environment.persistUsers(state.list).map { UsersAction.persistUsersResponse($0) }
+		]
 		
 	case .purge:
 		state.list = []
@@ -56,6 +58,29 @@ public func usersReducer(
 		state.currentUser = u
 		
 		return []
+		
+	case .persistUsers:
+		return []
+		
+	case .persistUsersResponse:
+		// TODO: - handle persistence error
+		return []
+		
+	case .load:
+		return [
+			environment.loadUsers().map { UsersAction.loadResponse($0) }
+		]
+		
+	case let .loadResponse(users):
+		guard users.isEmpty else {
+			state.list = users
+
+			return []
+		}
+		
+		return [
+			environment.fetch().map { UsersAction.fetchResponse($0) }
+		]
 	}
 }
 
@@ -95,9 +120,13 @@ extension UsersState {
 
 public enum UsersAction: Equatable {
 	case purge
+	case load
+	case loadResponse([User])
 	case fetch
 	case fetchResponse([User])
-	case selectUser(User)
+	case persistUsers
+	case persistUsersResponse(Bool)
+	case selectUser(User?)
 }
 
 // MARK: - Environment
@@ -108,7 +137,10 @@ public struct UsersEnvironment {
 	/// ```
 	/// fetch()
 	/// ```
-	/// - Returns:  a collection of `UserState`.
+	/// - Returns:  a collection of `User`.
 	var fetch: () -> Effect<[User]>
+	
+	var persistUsers: ([User]) -> Effect<Bool>
+	var loadUsers: () -> Effect<[User]>
 }
 

@@ -17,12 +17,20 @@ import SnapshotTesting
 class UsersSessionsReducerTests: XCTestCase {
 	
 	let env_filled = UsersViewEnvironment(
-		stargazersEnv: UsersEnvironment(fetch: {
-			.just([
-				.sample,
-				.sample_1
-			])
-		})
+		userEnv: UsersEnvironment(
+			fetch: {
+				.just([
+					.sample,
+					.sample_1
+				])
+			},
+			persistUsers: { users in
+				.just(true)
+			},
+			loadUsers: {
+				.just([])
+			}
+		)
 	)
 	
 	override func setUp() {
@@ -39,6 +47,7 @@ class UsersSessionsReducerTests: XCTestCase {
 			environment: env_filled,
 			steps: Step(.send, UsersSessionsViewAction.user(UsersAction.fetch), { state in
 				state.isLoading = true
+				state.currentSession = Session(user: nil)
 			}),
 			Step(.receive, UsersSessionsViewAction.user(UsersAction.fetchResponse([.sample, .sample_1])), { state in
 				state.list = [
@@ -49,6 +58,9 @@ class UsersSessionsReducerTests: XCTestCase {
 				state.currentPage = 2
 				
 				state.isLoading = false
+			}),
+			Step(.receive, UsersSessionsViewAction.user(UsersAction.persistUsersResponse(true)), { state in
+				
 			})
 		)
 		
