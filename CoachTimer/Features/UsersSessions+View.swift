@@ -56,7 +56,8 @@ public struct UsersSessionsViewState: Equatable {
 			// The session is derived from the user selection
 			self.session = SessionState(
 				user: newValue.currentUser,
-				distance: nil
+				distance: nil,
+				laps: []
 			)
 		}
 	}
@@ -65,14 +66,16 @@ public struct UsersSessionsViewState: Equatable {
 		get {
 			SessionState(
 				user: self.currentUser,
-				distance: nil
+				distance: nil,
+				laps: []
 			)
 		}
 		
 		set {
 			self.currentSession = Session(
 				user: newValue.user,
-				distance: newValue.distance
+				distance: newValue.distance,
+				laps: newValue.laps
 			)
 		}
 	}
@@ -141,9 +144,9 @@ public let usersSessionsiewReducer: Reducer<UsersSessionsViewState, UsersSession
 		environment: { $0.userEnv }
 	),
 	pullback(
-		searchReducer,
+		sessionReducer,
 		value: \UsersSessionsViewState.session,
 		action: /UsersSessionsViewAction.session,
-		environment: { _ in SearchEnvironment() }
+		environment: { _ in SessionEnvironment() }
 	)
 )

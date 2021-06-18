@@ -8,38 +8,46 @@
 import Foundation
 import RxComposableArchitecture
 
-public func searchReducer(
+public func sessionReducer(
 	state: inout SessionState,
 	action: SessionAction,
-	environment: SearchEnvironment
+	environment: SessionEnvironment
 ) -> [Effect<SessionAction>] {
 	switch action {
 	case let .distance(v):
 		state.distance = v
 		return []
 		
+	case let .lap(v):
+		state.laps.append(v)
+		
+		return []
 	}
 }
 
 // MARK: - State
 
-public struct SessionState  {
+public struct SessionState: Equatable  {
 	var user: User?
 	var distance: Int?
+	var laps: [Lap]
 	
 	public init(
 		user: User?,
-		distance: Int?
+		distance: Int?,
+		laps: [Lap]
 	) {
 		self.user = user
 		self.distance = distance
+		self.laps = laps
 	}
 }
 
 extension SessionState {
 	static var empty = Self(
 		user: nil,
-		distance: nil
+		distance: nil,
+		laps: []
 	)
 }
 
@@ -47,9 +55,10 @@ extension SessionState {
 
 public enum SessionAction: Equatable {
 	case distance(Int?)
+	case lap(Lap)
 }
 
 // MARK: - Environment
 
-public struct SearchEnvironment {
+public struct SessionEnvironment {
 }

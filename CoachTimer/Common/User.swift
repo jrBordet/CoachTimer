@@ -7,9 +7,32 @@
 
 import Foundation
 
+public struct Lap: Equatable {
+	let id: Int
+	let time: Int
+}
+
+extension Lap {
+	static var lap_0 = Self(
+		id: 0,
+		time: 10000
+	)
+	
+	static var lap_1 = Self(
+		id: 1,
+		time: 15000
+	)
+	
+	static var lap_2 = Self(
+		id: 2,
+		time: 8000
+	)
+}
+
 public struct Session: Equatable {
 	let user: User?
 	let distance: Int?
+	let laps: [Lap]
 }
 
 public struct User: Equatable, Codable {
