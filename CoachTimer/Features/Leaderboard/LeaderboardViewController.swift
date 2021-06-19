@@ -66,49 +66,27 @@ class LeaderboardViewController: UIViewController {
 		
 		// MARK: - Bind dataSource
 		
-		/**
-		
-		sortingController.rx.selectedSegmentIndex.subscribe(onNext: { index in
-		let sortOrder = SortOrder(rawValue: index)
-		
-		store.send(CountriesViewAction.countriesView(CountriesAction.sort(sortOrder ?? .cases)))
-		
-		}).disposed(by: disposeBag)
-		
-		*/
-		
 		sortingController.rx
 			.selectedSegmentIndex
-			.subscribe(onNext: { [weak store] index in
+			.map { index in
 				if index == 0 {
-					store?.send(LeaderboardAction.sort(Sorting.speed))
+					return Sorting.speed
 				} else {
-					store?.send(LeaderboardAction.sort(Sorting.laps))
+					return Sorting.laps
 				}
-			}).disposed(by: disposeBag)
-		
-		
-//		sortingController.rx
-//			.value
-//			.distinctUntilChanged()
-//			.map { value -> Sorting in
-//				//return Sorting.laps
-//				
-//				if value == 1 {
-//					return Sorting.laps
-//				} else {
-//					return Sorting.speed
-//				}
-//			}
-//			.bind(to: store.rx.sort)
-//			.disposed(by: disposeBag)
-		
+			}
+			.bind(to: store.rx.sort)
+			.disposed(by: disposeBag)
+				
 		setupDataSource()
 		
 		store
 			.value
+			//.debug("[LEADERBOARD]", trimOutput: false)
 			.map { (state: LeaderboardState) -> [LeaderboardSectionItem] in
+				// TODO: check this, something goes wrong with RxDataSource
 //				return state
+//					.sessions
 //					.map { (model: Session) -> LeaderboardSectionItem in
 //						LeaderboardSectionItem(
 //							id: model.id,
