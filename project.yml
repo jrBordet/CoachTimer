@@ -1,0 +1,57 @@
+name: CoachTimer
+
+options:
+    bundleIdPrefix: com.bordet
+    createIntermediateGroups: true
+    indentWidth: 4
+    tabWidth: 4
+    deploymentTarget:
+        iOS: "10.0"
+configs:
+  Debug: debug
+  Mock: debug
+  Release: release
+settings:
+  configs:
+    debug:
+      CUSTOM_BUILD_SETTING: debug
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+    mock:
+      CUSTOM_BUILD_SETTING: mock
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: MOCK
+    release:
+      CUSTOM_BUILD_SETTING: release
+      
+targets:
+  
+  CoachTimer:
+    type: application
+    platform: iOS
+    deploymentTarget: 10.0
+    sources:
+        - path: CoachTimer
+    scheme:
+        gatherCoverageData: true
+        environmentVariables:
+          BASE_URL: "https://randomuser.me/api/"
+        testTargets:
+          - name: CoachTimerTests
+            parallelizable: false
+            randomExecutionOrder: true
+
+  CoachTimerTests:
+    type: bundle.unit-test
+    platform: iOS
+    gatherCoverageData: true
+    deploymentTarget: 10.0
+    sources:
+        - path: CoachTimerTests
+    dependencies:
+        - target: CoachTimer
+
+  CoachTimerMock:
+    type: application
+    platform: iOS
+    deploymentTarget: 10.0
+    sources:
+        - path: CoachTimer
