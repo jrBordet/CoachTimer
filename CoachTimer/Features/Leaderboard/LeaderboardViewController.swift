@@ -97,16 +97,73 @@ class LeaderboardViewController: UIViewController {
 		store
 			.value
 			.map { (state: LeaderboardState) -> [LeaderboardSectionItem] in
-				state.sessions.map { (model: Session) -> LeaderboardSectionItem in
-					LeaderboardSectionItem(
-						id: model.id,
-						title: model.user?.id ?? "",
-						name: model.user?.name ?? "",
-						surname: model.user?.surname ?? "",
-						imageUrl: model.user?.imageUrl,
-						laps: model.laps.count
-					)
+				if let sort = state.sort {
+					switch sort {
+					case .speed:
+						return state
+							.sessions
+							.sorted { s1, s2 in
+								s1.laps.count > s2.laps.count
+							}
+							.map { a in
+								print("[LAPS] count \(a.laps.count)")
+
+								return a
+							}
+							.map { (model: Session) -> LeaderboardSectionItem in
+								LeaderboardSectionItem(
+									id: model.id,
+									title: model.user?.id ?? "",
+									name: model.user?.name ?? "",
+									surname: model.user?.surname ?? "",
+									imageUrl: model.user?.imageUrl,
+									laps: model.laps.count
+								)
+							}
+					case .laps:
+						return state
+							.sessions
+							.sorted { s1, s2 in
+								s1.laps.count > s2.laps.count
+							}
+							.map { a in
+								print("[LAPS] count \(a.laps.count)")
+
+								return a
+							}
+							.map { (model: Session) -> LeaderboardSectionItem in
+								LeaderboardSectionItem(
+									id: model.id,
+									title: model.user?.id ?? "",
+									name: model.user?.name ?? "",
+									surname: model.user?.surname ?? "",
+									imageUrl: model.user?.imageUrl,
+									laps: model.laps.count
+								)
+							}
+					}
 				}
+				
+				return state
+					.sessions
+					.sorted { s1, s2 in
+						s1.laps.count > s2.laps.count
+					}
+					.map { a in
+						print("[LAPS] count \(a.laps.count)")
+
+						return a
+					}
+					.map { (model: Session) -> LeaderboardSectionItem in
+						LeaderboardSectionItem(
+							id: model.id,
+							title: model.user?.id ?? "",
+							name: model.user?.name ?? "",
+							surname: model.user?.surname ?? "",
+							imageUrl: model.user?.imageUrl,
+							laps: model.laps.count
+						)
+					}
 			}
 			//.distinctUntilChanged()
 			.map { (items: [LeaderboardSectionItem]) -> [UsersListSectionModel] in
