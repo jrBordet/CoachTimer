@@ -31,4 +31,10 @@ extension Reactive where Base: Store<SessionState, SessionAction> {
 			store.send(SessionAction.laps(value))
 		}
 	}
+	
+	var saveCurrentSession: Binder<(Void)> {
+		Binder(self.base) { store, value in
+			store.send(SessionAction.saveCurrentSession)
+		}
+	}
 }

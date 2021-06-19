@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let rootScene = Scene<UsersListViewController>().render()
 		
 		rootScene.store = applicationStore.view(
-			value: { $0.starGazersFeature },
+			value: { $0.usersSessionsFeature },
 			action: { .userSessions($0) }
 		)
 		

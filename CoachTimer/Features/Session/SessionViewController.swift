@@ -143,11 +143,12 @@ class SessionViewController: UIViewController {
 			.drive(timerLabel.rx.text)
 			.disposed(by: disposeBag)
 		
-//		Observable<Bool>.combineLatest(lap, stop) { l, s in
-//			return l || s
-//		}
-//		.subscribe()
+		// MARK: Save current session
 		
+		stopButton.rx
+			.tap
+			.bind(to: store.rx.saveCurrentSession)
+			.disposed(by: disposeBag)
 		
 		// MARK: - take lap
 		let lapsValues = mainTimer

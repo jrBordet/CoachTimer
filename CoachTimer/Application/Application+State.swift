@@ -16,7 +16,7 @@ public struct AppState {
 extension AppState: Equatable { }
 
 extension AppState {
-	var starGazersFeature: UsersSessionsViewState {
+	var usersSessionsFeature: UsersSessionsViewState {
 		get {
 			self.usersSession
 		}

@@ -64,6 +64,47 @@ class UsersSessionsReducerTests: XCTestCase {
 		)
 	}
 	
+	func testCompleteSession() {
+		assert(
+			initialValue: UsersSessionsViewState.empty,
+			reducer: usersSessionsiewReducer,
+			environment: env_filled,
+			steps: Step(.send, .user(.fetch), { state in
+				state.isLoading = true
+				state.currentSession = Session(id: "", user: nil, distance: nil, laps: [])
+			}),
+			Step(.receive, .user(.fetchResponse([.sample, .sample_1])), { state in
+				state.list = [
+					.sample,
+					.sample_1
+				]
+				
+				state.currentPage = 2
+				
+				state.isLoading = false
+			}),
+			Step(.receive, .user(.persistUsersResponse(true)), { state in
+				
+			}),
+			Step(.send, UsersSessionsViewAction.user(.selectUser(.sample)), { state in
+				state.currentUser = .sample
+				state.currentSession = Session(id: "", user: .sample, distance: nil, laps: [])
+			}),
+			Step(.send, UsersSessionsViewAction.session(.name("testing")), { state in
+				state.currentSession = Session(id: "testing", user: .sample, distance: 0, laps: [])
+			}),
+			Step(.send, UsersSessionsViewAction.session(.distance(100)), { state in
+				state.currentSession = Session(id: "testing", user: .sample, distance: 100, laps: [])
+			}),
+			Step(.send, UsersSessionsViewAction.session(.laps([.lap_0, .lap_1])), { state in
+				state.currentSession = Session(id: "testing", user: .sample, distance: 100, laps: [.lap_0, .lap_1])
+			}),
+			Step(.send, UsersSessionsViewAction.session(.saveCurrentSession), { state in
+				state.currentSession = Session(id: "testing", user: .sample, distance: 100, laps: [.lap_0, .lap_1])
+			})
+		)
+	}
+	
 	func testTimeFormat() {
 		let result = stringFromTimeInterval(1)
 		

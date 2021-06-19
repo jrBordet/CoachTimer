@@ -18,6 +18,7 @@ public struct UsersSessionsViewState: Equatable {
 	
 	public var currentUser: User?
 	public var currentSession: Session?
+	public var sessions: [Session]
 	
 	public init(
 		list: [User],
@@ -25,7 +26,8 @@ public struct UsersSessionsViewState: Equatable {
 		alert: String?,
 		currentPage: Int,
 		currentUser: User?,
-		currentSession: Session?
+		currentSession: Session?,
+		sessions: [Session]
 	) {
 		self.list = list
 		self.isLoading = isLoading
@@ -33,6 +35,7 @@ public struct UsersSessionsViewState: Equatable {
 		self.currentPage = currentPage
 		self.currentUser = currentUser
 		self.currentSession = currentSession
+		self.sessions = sessions
 	}
 	
 	var user: UsersState {
@@ -58,18 +61,22 @@ public struct UsersSessionsViewState: Equatable {
 				id: "",
 				user: newValue.currentUser,
 				distance: nil,
-				laps: []
+				laps: [],
+				sessions: []
 			)
+			
+			//self.sessions = self.sessions.append(session)
 		}
 	}
 	
 	var session: SessionState {
 		get {
 			SessionState(
-				id: "",
+				id: self.currentSession?.id ?? "",
 				user: self.currentUser,
-				distance: nil,
-				laps: []
+				distance: self.currentSession?.distance ?? 0,
+				laps: self.currentSession?.laps ?? [],
+				sessions: self.sessions
 			)
 		}
 		
@@ -80,6 +87,8 @@ public struct UsersSessionsViewState: Equatable {
 				distance: newValue.distance,
 				laps: newValue.laps
 			)
+
+			self.sessions = newValue.sessions
 		}
 	}
 }
@@ -91,7 +100,8 @@ extension UsersSessionsViewState {
 		alert: nil,
 		currentPage: 1,
 		currentUser: nil,
-		currentSession: nil
+		currentSession: nil,
+		sessions: []
 	)
 	
 	static var sample = Self(
@@ -100,7 +110,8 @@ extension UsersSessionsViewState {
 		alert: nil,
 		currentPage: 1,
 		currentUser: nil,
-		currentSession: nil
+		currentSession: nil,
+		sessions: []
 	)
 	
 	static var sample_1 = Self(
@@ -112,7 +123,8 @@ extension UsersSessionsViewState {
 		alert: nil,
 		currentPage: 1,
 		currentUser: nil,
-		currentSession: nil
+		currentSession: nil,
+		sessions: []
 	)
 	
 	static var test = Self(
@@ -124,7 +136,8 @@ extension UsersSessionsViewState {
 		alert: nil,
 		currentPage: 1,
 		currentUser: nil,
-		currentSession: nil
+		currentSession: nil,
+		sessions: []
 	)
 }
 

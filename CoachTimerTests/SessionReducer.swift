@@ -25,9 +25,9 @@ class SessionReducer: XCTestCase {
 		// Put teardown code here. This method is called after the invocation of each test method in the class.
 	}
 	
-	func testStartSession() {
+	func testStartAndCompleteSession() {
 		assert(
-			initialValue: SessionState(id: "", user: User.sample, distance: nil, laps: []),
+			initialValue: SessionState(id: "", user: User.sample, distance: nil, laps: [], sessions: []),
 			reducer: sessionReducer,
 			environment: env,
 			steps: Step(.send, SessionAction.name("test session name"), { state in
@@ -42,6 +42,19 @@ class SessionReducer: XCTestCase {
 				state.laps = [
 					.lap_0,
 					.lap_1
+				]
+			}),
+			Step(.send, SessionAction.saveCurrentSession, { state in
+				state.sessions = [
+					Session(
+						id: "test session name",
+						user: User.sample,
+						distance: 10,
+						laps: [
+							.lap_0,
+							.lap_1
+						]
+					)
 				]
 			})
 		)

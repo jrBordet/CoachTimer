@@ -23,12 +23,28 @@ public func sessionReducer(
 		
 		return []
 	case let .laps(v):
+		guard v.isEmpty == false else {
+			return []
+		}
+		
 		state.laps = v
 		
 		return []
 		
 	case let .name(id):
 		state.id = id ?? ""
+		
+		return []
+		
+	case .saveCurrentSession:
+		state.sessions.append(
+			Session(
+				id: state.id,
+				user: state.user,
+				distance: state.distance,
+				laps: state.laps
+			)
+		)
 		
 		return []
 	}
@@ -41,17 +57,20 @@ public struct SessionState: Equatable  {
 	var user: User?
 	var distance: Int?
 	var laps: [Lap]
+	var sessions: [Session]
 	
 	public init(
 		id: String,
 		user: User?,
 		distance: Int?,
-		laps: [Lap]
+		laps: [Lap],
+		sessions: [Session]
 	) {
 		self.id = id
 		self.user = user
 		self.distance = distance
 		self.laps = laps
+		self.sessions = sessions
 	}
 }
 
@@ -60,7 +79,8 @@ extension SessionState {
 		id: "",
 		user: nil,
 		distance: nil,
-		laps: []
+		laps: [],
+		sessions: []
 	)
 }
 
@@ -71,6 +91,7 @@ public enum SessionAction: Equatable {
 	case distance(Int?)
 	case lap(Lap)
 	case laps([Lap])
+	case saveCurrentSession
 }
 
 // MARK: - Environment
