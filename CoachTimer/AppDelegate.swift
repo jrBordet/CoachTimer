@@ -28,17 +28,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		let leaderboard = Scene<LeaderboardViewController>().render()
 		
-		leaderboard.store = Store(
-			initialValue: LeaderboardState(sessions: [
-				Session.one,
-				.two,
-				.three
-			],
-			sort: .speed
-			),
-			reducer: leaderboardReducer,
-			environment: LeaderboardEnvironment()
+		leaderboard.store = applicationStore.view(
+			value: { $0.leaderboard },
+			action: { .leaderboard($0) }
 		)
+		
+//		leaderboard.store = Store(
+//			initialValue: LeaderboardState(sessions: [
+//				Session.one,
+//				.two,
+//				.three
+//			],
+//			sort: .speed
+//			),
+//			reducer: leaderboardReducer,
+//			environment: LeaderboardEnvironment()
+//		)
 		
 		let tabBarController = UITabBarController()
 		

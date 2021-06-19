@@ -92,6 +92,7 @@ class SessionViewController: UIViewController {
 		
 		alert.addTextField { textField in
 			textField.placeholder = "session name"
+			textField.text = "default"
 		}
 		
 		alert.addAction(

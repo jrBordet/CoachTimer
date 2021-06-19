@@ -15,5 +15,11 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> =  combine(
 		value: \AppState.usersSession,
 		action: /AppAction.userSessions,
 		environment: { $0.userEnv }
+	),
+	pullback(
+		leaderboardReducer,
+		value: \AppState.leaderboard,
+		action: /AppAction.leaderboard,
+		environment: { _ in LeaderboardEnvironment() }
 	)
 )
