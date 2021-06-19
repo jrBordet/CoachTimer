@@ -62,10 +62,8 @@ public struct UsersSessionsViewState: Equatable {
 				user: newValue.currentUser,
 				distance: nil,
 				laps: [],
-				sessions: []
-			)
-			
-			//self.sessions = self.sessions.append(session)
+				sessions: self.sessions
+			)			
 		}
 	}
 	

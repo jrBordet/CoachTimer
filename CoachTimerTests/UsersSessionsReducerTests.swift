@@ -100,7 +100,9 @@ class UsersSessionsReducerTests: XCTestCase {
 				state.currentSession = Session(id: "testing", user: .sample, distance: 100, laps: [.lap_0, .lap_1])
 			}),
 			Step(.send, UsersSessionsViewAction.session(.saveCurrentSession), { state in
-				state.currentSession = Session(id: "testing", user: .sample, distance: 100, laps: [.lap_0, .lap_1])
+				state.sessions = [
+					Session(id: "testing", user: .sample, distance: 100, laps: [.lap_0, .lap_1])
+				]
 			})
 		)
 	}
