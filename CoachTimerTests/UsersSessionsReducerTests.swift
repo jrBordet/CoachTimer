@@ -67,10 +67,20 @@ class UsersSessionsReducerTests: XCTestCase {
 	func testTimeFormat() {
 		let result = stringFromTimeInterval(1)
 		
-		XCTAssertEqual("00:00.01", result)
+		XCTAssertEqual("00:00.1", result)
 		
 		let result2 = stringFromTimeInterval(4435 / 1000)
 		
-		XCTAssertEqual("00:00.04", result2)
+		XCTAssertEqual("00:00.4", result2)
+	}
+	
+	func testSpeedAccuracy() {
+		let result = stringFromTimeInterval(6375)
+		
+		XCTAssertEqual("10:37.5", result)
+		
+		let speed: Double = 10 / (6375 / 1000)
+		
+		XCTAssertEqual(1.56, speed, accuracy: 0.2)
 	}
 }

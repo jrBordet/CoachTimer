@@ -97,8 +97,9 @@ class SessionViewController: UIViewController {
 		
 		let startStop = Observable<Bool>.merge([start, stop])
 		
+		// MARK: - start timer
 		mainTimer = Observable<Int>
-			.interval(.milliseconds(1), scheduler: MainScheduler.instance)
+			.interval(.milliseconds(100), scheduler: MainScheduler.instance)
 			.withLatestFrom(startStop, resultSelector: { _, running in running })
 			.filter { $0 }
 			.scan(0, accumulator: { (acc, _) in
@@ -113,6 +114,7 @@ class SessionViewController: UIViewController {
 			.drive(timerLabel.rx.text)
 			.disposed(by: disposeBag)
 		
+		// MARK: - take lap
 		let lapsValues = mainTimer
 			.sample(lapButton.rx.tap)
 			.scan ([Int](), accumulator: { lapTimes, newTime in
@@ -140,17 +142,8 @@ class SessionViewController: UIViewController {
 		
 		store.value
 			.map { $0.user?.imageUrl }
-			.subscribe(onNext: { [weak self] url in
-				guard
-					let self = self,
-					let url = url else {
-					return
-				}
-				
-				// TODO: refactor this
-				
-				self.userImage.load(url: url)
-			})
+			.compactMap { $0 }
+			.bind(to: self.rx.image)
 			.disposed(by: disposeBag)
 		
 		// MARK: - Bind dataSource
@@ -219,8 +212,19 @@ extension SessionViewController {
 }
 
 func stringFromTimeInterval(_ ms: Int) -> String {
-	String(
-		format: "%0.2d:%0.2d.%0.2d",
+	print("[stringFromTimeInterval] \(ms)")
+	
+	return String(
+		format: "%0.2d:%0.2d.%0.1d",
 		arguments: [(ms / 600) % 600, (ms % 600 ) / 10, ms % 10]
 	)
+}
+
+
+extension Reactive where Base: SessionViewController {
+	var image: Binder<(URL)> {
+		Binder(base) { vc, url in
+			vc.userImage.load(url: url)
+		}
+	}
 }
