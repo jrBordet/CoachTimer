@@ -8,6 +8,8 @@
 import Foundation
 import RxComposableArchitecture
 
+// MARK: - Feature business logic
+
 public func sessionReducer(
 	state: inout SessionState,
 	action: SessionAction,
@@ -50,7 +52,7 @@ public func sessionReducer(
 	}
 }
 
-// MARK: - State
+// MARK: - Feature domain
 
 public struct SessionState: Equatable  {
 	var id: String
@@ -84,8 +86,6 @@ extension SessionState {
 	)
 }
 
-// MARK: - Action
-
 public enum SessionAction: Equatable {
 	case name(String?)
 	case distance(Int?)
@@ -93,8 +93,6 @@ public enum SessionAction: Equatable {
 	case laps([Lap])
 	case saveCurrentSession
 }
-
-// MARK: - Environment
 
 public struct SessionEnvironment {
 }

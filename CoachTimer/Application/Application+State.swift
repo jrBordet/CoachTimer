@@ -11,6 +11,7 @@ import RxComposableArchitecture
 
 public struct AppState {
 	var usersSession: UsersSessionsViewState
+	var sessions: [Session]
 }
 
 extension AppState: Equatable { }
@@ -22,10 +23,14 @@ extension AppState {
 		}
 		set {
 			self.usersSession = newValue
+			self.sessions = newValue.sessions
 		}
 	}
+	
+//	var leaderboard:
 }
 
 let initialAppState = AppState(
-	usersSession: .empty
+	usersSession: .empty,
+	sessions: []
 )

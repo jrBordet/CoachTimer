@@ -36,6 +36,38 @@ public struct Session: Equatable {
 	let laps: [Lap]
 }
 
+extension Session {
+	static var one = Self(
+		id: "one",
+		user: .sample,
+		distance: 100,
+		laps: [
+			Lap.lap_0
+		]
+	)
+	
+	static var two = Self(
+		id: "two",
+		user: .sample_1,
+		distance: 100,
+		laps: [
+			.lap_0,
+			.lap_1
+		]
+	)
+	
+	static var three = Self(
+		id: "three",
+		user: .sample_1,
+		distance: 100,
+		laps: [
+			.lap_0,
+			.lap_1,
+			.lap_2
+		]
+	)
+}
+
 public struct User: Equatable, Codable {
 	let id: String
 	let title: String
