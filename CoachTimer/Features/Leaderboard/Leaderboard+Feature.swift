@@ -21,6 +21,10 @@ public func leaderboardReducer(
 	case .sort(.speed):
 		state.sort = .speed
 		
+		state.sessions = state.sessions.sorted { s1, s2 in
+			s1.speed() > s2.speed()
+		}
+		
 		return []
 		
 	case .sort(.laps):
@@ -43,11 +47,11 @@ public enum Sorting: Equatable {
 
 public struct LeaderboardState: Equatable  {
 	var sessions: [Session]
-	var sort: Sorting?
+	var sort: Sorting
 	
 	public init(
 		sessions: [Session],
-		sort: Sorting?
+		sort: Sorting
 	) {
 		self.sessions = sessions
 		self.sort = sort
@@ -57,7 +61,7 @@ public struct LeaderboardState: Equatable  {
 extension LeaderboardState {
 	static var empty = Self(
 		sessions: [],
-		sort: nil
+		sort: .speed
 	)
 }
 

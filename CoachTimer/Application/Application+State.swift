@@ -27,7 +27,7 @@ extension AppState {
 						
 			self.leaderboard = LeaderboardState(
 				sessions: newValue.sessions,
-				sort: nil
+				sort: .speed
 			)
 		}
 	}
@@ -36,7 +36,7 @@ extension AppState {
 		get {
 			LeaderboardState(
 				sessions: self.usersSession.sessions,
-				sort: nil
+				sort: .speed
 			)
 		}
 		

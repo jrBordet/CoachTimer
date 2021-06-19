@@ -34,6 +34,13 @@ public struct Session: Equatable {
 	let user: User?
 	let distance: Int?
 	let laps: [Lap]
+	
+	func speed() -> Int {
+		laps.reduce(0) { (speed: Int, lap: Lap) -> Int in
+			distance ?? 1
+			//distance ?? 1 / lap.time
+		}
+	}
 }
 
 extension Session {

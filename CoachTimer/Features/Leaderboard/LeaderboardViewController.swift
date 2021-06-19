@@ -35,7 +35,7 @@ class LeaderboardViewController: UIViewController {
 	var dataSource: RxTableViewSectionedAnimatedDataSource<UsersListSectionModel>!
 	
 	private let disposeBag = DisposeBag()
-		
+	
 	// MARK: - Life cycle
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +50,7 @@ class LeaderboardViewController: UIViewController {
 		guard let store = self.store else {
 			return
 		}
-				
+		
 		// MARK: - Config cell
 		
 		tableView.rowHeight = 64
@@ -69,101 +69,95 @@ class LeaderboardViewController: UIViewController {
 		/**
 		
 		sortingController.rx.selectedSegmentIndex.subscribe(onNext: { index in
-			let sortOrder = SortOrder(rawValue: index)
-			
-			store.send(CountriesViewAction.countriesView(CountriesAction.sort(sortOrder ?? .cases)))
-			
+		let sortOrder = SortOrder(rawValue: index)
+		
+		store.send(CountriesViewAction.countriesView(CountriesAction.sort(sortOrder ?? .cases)))
+		
 		}).disposed(by: disposeBag)
 		
 		*/
 		
 		sortingController.rx
-			.value
-			.distinctUntilChanged()
-			.map { value -> Sorting in
-				return Sorting.laps
-				
-				if value == 1 {
-					return Sorting.laps
+			.selectedSegmentIndex
+			.subscribe(onNext: { [weak store] index in
+				if index == 0 {
+					store?.send(LeaderboardAction.sort(Sorting.speed))
 				} else {
-					return Sorting.speed
+					store?.send(LeaderboardAction.sort(Sorting.laps))
 				}
-			}
-			.bind(to: store.rx.sort)
-			.disposed(by: disposeBag)
+			}).disposed(by: disposeBag)
+		
+		
+//		sortingController.rx
+//			.value
+//			.distinctUntilChanged()
+//			.map { value -> Sorting in
+//				//return Sorting.laps
+//				
+//				if value == 1 {
+//					return Sorting.laps
+//				} else {
+//					return Sorting.speed
+//				}
+//			}
+//			.bind(to: store.rx.sort)
+//			.disposed(by: disposeBag)
 		
 		setupDataSource()
 		
 		store
 			.value
 			.map { (state: LeaderboardState) -> [LeaderboardSectionItem] in
-				if let sort = state.sort {
-					switch sort {
-					case .speed:
-						return state
-							.sessions
-							.sorted { s1, s2 in
-								s1.laps.count > s2.laps.count
-							}
-							.map { a in
-								print("[LAPS] count \(a.laps.count)")
-
-								return a
-							}
-							.map { (model: Session) -> LeaderboardSectionItem in
-								LeaderboardSectionItem(
-									id: model.id,
-									title: model.user?.id ?? "",
-									name: model.user?.name ?? "",
-									surname: model.user?.surname ?? "",
-									imageUrl: model.user?.imageUrl,
-									laps: model.laps.count
-								)
-							}
-					case .laps:
-						return state
-							.sessions
-							.sorted { s1, s2 in
-								s1.laps.count > s2.laps.count
-							}
-							.map { a in
-								print("[LAPS] count \(a.laps.count)")
-
-								return a
-							}
-							.map { (model: Session) -> LeaderboardSectionItem in
-								LeaderboardSectionItem(
-									id: model.id,
-									title: model.user?.id ?? "",
-									name: model.user?.name ?? "",
-									surname: model.user?.surname ?? "",
-									imageUrl: model.user?.imageUrl,
-									laps: model.laps.count
-								)
-							}
-					}
-				}
+//				return state
+//					.map { (model: Session) -> LeaderboardSectionItem in
+//						LeaderboardSectionItem(
+//							id: model.id,
+//							title: model.user?.id ?? "",
+//							name: model.user?.name ?? "",
+//							surname: model.user?.surname ?? "",
+//							imageUrl: model.user?.imageUrl,
+//							laps: model.laps.count,
+//							speed: model.speed()
+//						)
+//					}
 				
-				return state
-					.sessions
-					.sorted { s1, s2 in
-						s1.laps.count > s2.laps.count
-					}
-					.map { a in
-						print("[LAPS] count \(a.laps.count)")
-
-						return a
-					}
-					.map { (model: Session) -> LeaderboardSectionItem in
-						LeaderboardSectionItem(
-							id: model.id,
-							title: model.user?.id ?? "",
-							name: model.user?.name ?? "",
-							surname: model.user?.surname ?? "",
-							imageUrl: model.user?.imageUrl,
-							laps: model.laps.count
-						)
-					}
+				
+				switch state.sort {
+				case .laps:
+					return state
+						.sessions
+						.sorted { s1, s2 in
+							s1.laps.count > s2.laps.count
+						}
+						.map { (model: Session) -> LeaderboardSectionItem in
+							LeaderboardSectionItem(
+								id: model.id,
+								title: model.user?.id ?? "",
+								name: model.user?.name ?? "",
+								surname: model.user?.surname ?? "",
+								imageUrl: model.user?.imageUrl,
+								laps: model.laps.count,
+								speed: model.speed()
+							)
+						}
+				case .speed:
+					return state
+						.sessions
+						.sorted { s1, s2 in
+							s1.speed() > s2.speed()
+						}
+						.map { (model: Session) -> LeaderboardSectionItem in
+							LeaderboardSectionItem(
+								id: model.id,
+								title: model.user?.id ?? "",
+								name: model.user?.name ?? "",
+								surname: model.user?.surname ?? "",
+								imageUrl: model.user?.imageUrl,
+								laps: model.laps.count,
+								speed: model.speed()
+							)
+						}
+				}
 			}
 			//.distinctUntilChanged()
 			.map { (items: [LeaderboardSectionItem]) -> [UsersListSectionModel] in
@@ -201,9 +195,10 @@ extension LeaderboardViewController {
 			guard let cell = table.dequeueReusableCell(withIdentifier: "LeaderboardCell", for: idxPath) as? LeaderboardCell else {
 				return UITableViewCell(style: .default, reuseIdentifier: nil)
 			}
-						
+			
 			cell.nameLabel.text = item.name.capitalized + " " + item.surname.capitalized
 			cell.lapsLabel.text = "\(item.laps)"
+			cell.speedLabel.text = "\(item.speed)"
 			
 			if let url = item.imageUrl {
 				cell.avatarImage?.load(url: url)
@@ -223,6 +218,18 @@ struct LeaderboardSectionItem {
 	var surname: String
 	var imageUrl: URL?
 	var laps: Int
+	var speed: Int
+}
+
+extension LeaderboardSectionItem {
+	static var empty = Self(
+		id: "",
+		title: "",
+		name: "",
+		surname: "",
+		laps: 0,
+		speed: 0
+	)
 }
 
 extension LeaderboardSectionItem: IdentifiableType {
