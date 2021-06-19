@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			action: { .userSessions($0) }
 		)
 		
+		let homeScene = UINavigationController(rootViewController: rootScene)
+		
 		let leaderboard = Scene<LeaderboardViewController>().render()
 		
 		leaderboard.store = Store(
@@ -31,13 +33,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				Session.one,
 				.two,
 				.three
-			], sort: nil),
+			],
+			sort: .speed
+			),
 			reducer: leaderboardReducer,
 			environment: LeaderboardEnvironment()
 		)
 		
-		self.window?.rootViewController = UINavigationController(rootViewController: leaderboard)
-				
+		let tabBarController = UITabBarController()
+		
+		let item1 = UITabBarItem(title: "Home", image: UIImage(named: ""), tag: 0)
+		let item2 = UITabBarItem(title: "Leaderboard", image:  UIImage(named: ""), tag: 1)
+		
+		homeScene.tabBarItem = item1
+		leaderboard.tabBarItem = item2
+		
+		tabBarController.setViewControllers([
+			homeScene,
+			leaderboard
+		], animated: false)
+		
+		self.window?.rootViewController = tabBarController
+		
 		self.window?.makeKeyAndVisible()
 		self.window?.backgroundColor = .white
 		
