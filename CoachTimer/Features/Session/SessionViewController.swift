@@ -46,6 +46,13 @@ class SessionViewController: UIViewController {
 	
 	// MARK: - Life cycle
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		// MARK: Save current session
+		store?.send(.saveCurrentSession)
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -143,13 +150,11 @@ class SessionViewController: UIViewController {
 			.asDriver(onErrorJustReturn: "")
 			.drive(timerLabel.rx.text)
 			.disposed(by: disposeBag)
-		
-		// MARK: Save current session
-		
-		stopButton.rx
-			.tap
-			.bind(to: store.rx.saveCurrentSession)
-			.disposed(by: disposeBag)
+				
+//		stopButton.rx
+//			.tap
+//			.bind(to: store.rx.saveCurrentSession)
+//			.disposed(by: disposeBag)
 		
 		// MARK: - take lap
 		let lapsValues = mainTimer
