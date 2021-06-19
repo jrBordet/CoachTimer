@@ -16,6 +16,9 @@ class LeaderboardCell: UITableViewCell {
 		}
 	}
 	
+	@IBOutlet var lapsLabel: UILabel!
+	@IBOutlet var speedLabel: UILabel!
+	
 	public var avatarUrl: URL?
 	
     override func awakeFromNib() {

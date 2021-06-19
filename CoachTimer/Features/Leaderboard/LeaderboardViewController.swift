@@ -68,7 +68,8 @@ class LeaderboardViewController: UIViewController {
 						title: model.user?.id ?? "",
 						name: model.user?.name ?? "",
 						surname: model.user?.surname ?? "",
-						imageUrl: model.user?.imageUrl
+						imageUrl: model.user?.imageUrl,
+						laps: model.laps.count
 					)
 				}
 			}
@@ -109,7 +110,8 @@ extension LeaderboardViewController {
 				return UITableViewCell(style: .default, reuseIdentifier: nil)
 			}
 						
-			cell.nameLabel.text = item.title.capitalized + " " + item.name.capitalized + " " + item.surname.capitalized
+			cell.nameLabel.text = item.name.capitalized + " " + item.surname.capitalized
+			cell.lapsLabel.text = "\(item.laps)"
 			
 			if let url = item.imageUrl {
 				cell.avatarImage?.load(url: url)
@@ -128,6 +130,7 @@ struct LeaderboardSectionItem {
 	var name: String
 	var surname: String
 	var imageUrl: URL?
+	var laps: Int
 }
 
 extension LeaderboardSectionItem: IdentifiableType {
