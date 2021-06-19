@@ -24,7 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			action: { .userSessions($0) }
 		)
 		
-		self.window?.rootViewController = UINavigationController(rootViewController: rootScene)
+		let leaderboard = Scene<LeaderboardViewController>().render()
+		
+		leaderboard.store = Store(
+			initialValue: LeaderboardState(sessions: [
+				Session.one,
+				.two,
+				.three
+			], sort: nil),
+			reducer: leaderboardReducer,
+			environment: LeaderboardEnvironment()
+		)
+		
+		self.window?.rootViewController = UINavigationController(rootViewController: leaderboard)
 				
 		self.window?.makeKeyAndVisible()
 		self.window?.backgroundColor = .white
