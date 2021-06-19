@@ -116,6 +116,8 @@
 		F8C793CF267CCE42002C49C2 /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8C793CC267CCE41002C49C2 /* SessionCell.xib */; };
 		F8C793D0267CCE42002C49C2 /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8C793CC267CCE41002C49C2 /* SessionCell.xib */; };
 		F8C793F0267D006F002C49C2 /* SessionReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C793EF267D006F002C49C2 /* SessionReducer.swift */; };
+		F8C793F8267E26A2002C49C2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F8C793F7267E26A1002C49C2 /* README.md */; };
+		F8C793F9267E26A2002C49C2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F8C793F7267E26A1002C49C2 /* README.md */; };
 		F9775398CCFCDB8C2AA6F730 /* arrivals.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DD1907085871F01626364E6 /* arrivals.json */; };
 		FA6E91BDA1043C475F03732E /* ApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F61B400F5288CE3A8D59AF6 /* ApplicationTests.swift */; };
 		FBA78B7128F99726852D83CA /* stations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 433C887A11F19A6F5BA1F5C9 /* stations.txt */; };
@@ -208,6 +210,7 @@
 		F8C793CB267CCE41002C49C2 /* SessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		F8C793CC267CCE41002C49C2 /* SessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionCell.xib; sourceTree = "<group>"; };
 		F8C793EF267D006F002C49C2 /* SessionReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionReducer.swift; sourceTree = "<group>"; };
+		F8C793F7267E26A1002C49C2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F9C06C2AFF4B5C617016E544 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +265,7 @@
 		2FE76FA389E5CAC03AC0864B = {
 			isa = PBXGroup;
 			children = (
+				F8C793F7267E26A1002C49C2 /* README.md */,
 				80185F90F8A1BB0F7B85B59F /* CoachTimer */,
 				BBF02D56FBF1C01C362C813E /* CoachTimerTests */,
 				501946461631D8D914A454A0 /* Products */,
@@ -644,6 +648,7 @@
 				611555502249480F5A4AFF53 /* Assets.xcassets in Resources */,
 				848C08BF6008BF79B920FE77 /* Localizable.strings in Resources */,
 				0AAAE369315929389FBEDF64 /* SessionViewController.xib in Resources */,
+				F8C793F9267E26A2002C49C2 /* README.md in Resources */,
 				19ACB6B63AF234FAFCBEC0D4 /* UserCell.xib in Resources */,
 				A39251B1BB97E5D5ED834A24 /* UsersListViewController.xib in Resources */,
 				F9775398CCFCDB8C2AA6F730 /* arrivals.json in Resources */,
@@ -671,6 +676,7 @@
 				3C0F76124B43FF3597BA23B3 /* Assets.xcassets in Resources */,
 				874B62190DB637FD359C33C9 /* Localizable.strings in Resources */,
 				84A56F09ABC59E8D1EA7A469 /* SessionViewController.xib in Resources */,
+				F8C793F8267E26A2002C49C2 /* README.md in Resources */,
 				834145D70A421C0054F07922 /* UserCell.xib in Resources */,
 				3E452CE2DD1E65267FAB3B00 /* UsersListViewController.xib in Resources */,
 				5FC82788E659E3DEABE5A0D8 /* arrivals.json in Resources */,

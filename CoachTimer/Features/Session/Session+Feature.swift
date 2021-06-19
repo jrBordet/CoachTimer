@@ -27,21 +27,28 @@ public func sessionReducer(
 		
 		return []
 		
+	case let .name(id):
+		state.id = id ?? ""
+		
+		return []
 	}
 }
 
 // MARK: - State
 
 public struct SessionState: Equatable  {
+	var id: String
 	var user: User?
 	var distance: Int?
 	var laps: [Lap]
 	
 	public init(
+		id: String,
 		user: User?,
 		distance: Int?,
 		laps: [Lap]
 	) {
+		self.id = id
 		self.user = user
 		self.distance = distance
 		self.laps = laps
@@ -50,6 +57,7 @@ public struct SessionState: Equatable  {
 
 extension SessionState {
 	static var empty = Self(
+		id: "",
 		user: nil,
 		distance: nil,
 		laps: []
@@ -59,6 +67,7 @@ extension SessionState {
 // MARK: - Action
 
 public enum SessionAction: Equatable {
+	case name(String?)
 	case distance(Int?)
 	case lap(Lap)
 	case laps([Lap])

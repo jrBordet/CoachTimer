@@ -55,6 +55,7 @@ public struct UsersSessionsViewState: Equatable {
 			
 			// The session is derived from the user selection
 			self.session = SessionState(
+				id: "",
 				user: newValue.currentUser,
 				distance: nil,
 				laps: []
@@ -65,6 +66,7 @@ public struct UsersSessionsViewState: Equatable {
 	var session: SessionState {
 		get {
 			SessionState(
+				id: "",
 				user: self.currentUser,
 				distance: nil,
 				laps: []
@@ -73,6 +75,7 @@ public struct UsersSessionsViewState: Equatable {
 		
 		set {
 			self.currentSession = Session(
+				id: newValue.id,
 				user: newValue.user,
 				distance: newValue.distance,
 				laps: newValue.laps

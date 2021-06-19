@@ -30,6 +30,7 @@ extension Lap {
 }
 
 public struct Session: Equatable {
+	let id: String
 	let user: User?
 	let distance: Int?
 	let laps: [Lap]

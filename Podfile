@@ -21,7 +21,6 @@ target 'CoachTimer' do
   shared_pods
 
   pod 'RxDataSources', '4.0.1'
-	pod 'Tabman', '~> 2.9'
 	pod "SwiftPrettyPrint", "~> 1.1.0" #, :configuration => "Debug"
 	
 	# add the Firebase pod for Google Analytics
@@ -32,9 +31,10 @@ target 'CoachTimer' do
   target 'CoachTimerTests' do
     inherit! :search_paths
     # Pods for testing
+		
+		pod 'RxComposableArchitectureTests', '2.1.2'
     
-pod 'SnapshotTesting', '~> 1.7.2'
-    pod 'RxComposableArchitectureTests', '2.1.2'
+    pod 'SnapshotTesting', '~> 1.7.2'
     pod 'RxBlocking'
     pod 'RxTest'
     pod 'Difference'

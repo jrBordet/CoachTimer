@@ -46,7 +46,7 @@ class UsersSessionsReducerTests: XCTestCase {
 			environment: env_filled,
 			steps: Step(.send, UsersSessionsViewAction.user(UsersAction.fetch), { state in
 				state.isLoading = true
-				state.currentSession = Session(user: nil, distance: nil, laps: [])
+				state.currentSession = Session(id: "", user: nil, distance: nil, laps: [])
 			}),
 			Step(.receive, UsersSessionsViewAction.user(UsersAction.fetchResponse([.sample, .sample_1])), { state in
 				state.list = [

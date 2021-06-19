@@ -27,10 +27,12 @@ class SessionReducer: XCTestCase {
 	
 	func testStartSession() {
 		assert(
-			initialValue: SessionState(user: User.sample, distance: nil, laps: []),
+			initialValue: SessionState(id: "", user: User.sample, distance: nil, laps: []),
 			reducer: sessionReducer,
 			environment: env,
-			steps: Step(.send, SessionAction.distance(10), { state in
+			steps: Step(.send, SessionAction.name("test session name"), { state in
+				state.id = "test session name"
+			}), Step(.send, SessionAction.distance(10), { state in
 				state.distance = 10
 			}),
 			Step(.send, SessionAction.lap(Lap.lap_0), { state in

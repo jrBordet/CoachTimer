@@ -82,6 +82,35 @@ class SessionViewController: UIViewController {
 			reuseIdentifier: "SessionCell"
 		)
 		
+		// MARK: - session name
+		
+		let alert = UIAlertController(
+			title: "Session name",
+			message: "Enter a tag for the session",
+			preferredStyle: .alert
+		)
+		
+		alert.addTextField { textField in
+			textField.placeholder = "session name"
+		}
+		
+		alert.addAction(
+			UIAlertAction(
+				title: "Ok",
+				style: .default,
+				handler: { [weak alert, weak self] _ in
+					guard let textField = alert?.textFields?.first else {
+						return
+					}
+					
+					self?.store?.send(.name(textField.text))
+				}
+			)
+		)
+		
+		// 4. Present the alert.
+		self.present(alert, animated: true, completion: nil)
+		
 		// MARK: - Username
 		
 		store
@@ -113,6 +142,12 @@ class SessionViewController: UIViewController {
 			.asDriver(onErrorJustReturn: "")
 			.drive(timerLabel.rx.text)
 			.disposed(by: disposeBag)
+		
+//		Observable<Bool>.combineLatest(lap, stop) { l, s in
+//			return l || s
+//		}
+//		.subscribe()
+		
 		
 		// MARK: - take lap
 		let lapsValues = mainTimer
@@ -212,9 +247,7 @@ extension SessionViewController {
 }
 
 func stringFromTimeInterval(_ ms: Int) -> String {
-	print("[stringFromTimeInterval] \(ms)")
-	
-	return String(
+	String(
 		format: "%0.2d:%0.2d.%0.1d",
 		arguments: [(ms / 600) % 600, (ms % 600 ) / 10, ms % 10]
 	)
