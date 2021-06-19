@@ -117,7 +117,7 @@ class SessionViewController: UIViewController {
 		)
 		
 		// 4. Present the alert.
-		self.present(alert, animated: true, completion: nil)
+		//self.present(alert, animated: true, completion: nil)
 		
 		// MARK: - Username
 		

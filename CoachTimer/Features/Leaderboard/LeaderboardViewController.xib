@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaderboardViewController" customModule="CoachTimer" customModuleProvider="target">
             <connections>
+                <outlet property="sortingController" destination="1CX-Jk-zff" id="nUu-7m-MbP"/>
                 <outlet property="tableView" destination="ZBo-jM-XqH" id="ZVY-xh-chM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,20 +21,30 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1CX-Jk-zff">
+                    <rect key="frame" x="0.0" y="44" width="414" height="32"/>
+                    <segments>
+                        <segment title="laps"/>
+                        <segment title="speed"/>
+                    </segments>
+                </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZBo-jM-XqH">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="108" width="414" height="754"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="1CX-Jk-zff" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HUn-Cl-B1p"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZBo-jM-XqH" secondAttribute="bottom" id="HbE-d7-Hfp"/>
-                <constraint firstItem="ZBo-jM-XqH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OHg-iY-VNF"/>
+                <constraint firstItem="ZBo-jM-XqH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="OHg-iY-VNF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1CX-Jk-zff" secondAttribute="trailing" id="WrB-5j-vdk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZBo-jM-XqH" secondAttribute="trailing" id="XCn-2c-y94"/>
                 <constraint firstItem="ZBo-jM-XqH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gbb-1k-AFN"/>
+                <constraint firstItem="1CX-Jk-zff" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iqw-B2-cxS"/>
             </constraints>
-            <point key="canvasLocation" x="25" y="144"/>
+            <point key="canvasLocation" x="24.637681159420293" y="143.97321428571428"/>
         </view>
     </objects>
     <resources>

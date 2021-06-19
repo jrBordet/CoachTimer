@@ -12,8 +12,17 @@ import RxCocoa
 import RxComposableArchitecture
 import SceneBuilder
 
+extension Reactive where Base: Store<LeaderboardState, LeaderboardAction> {
+	var sort: Binder<(Sorting)> {
+		Binder(self.base) { store, value in
+			store.send(LeaderboardAction.sort(value))
+		}
+	}
+}
+
 class LeaderboardViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet var sortingController: UISegmentedControl!
 	
 	// MARK: Store
 	
@@ -57,6 +66,32 @@ class LeaderboardViewController: UIViewController {
 		
 		// MARK: - Bind dataSource
 		
+		/**
+		
+		sortingController.rx.selectedSegmentIndex.subscribe(onNext: { index in
+			let sortOrder = SortOrder(rawValue: index)
+			
+			store.send(CountriesViewAction.countriesView(CountriesAction.sort(sortOrder ?? .cases)))
+			
+		}).disposed(by: disposeBag)
+		
+		*/
+		
+		sortingController.rx
+			.value
+			.distinctUntilChanged()
+			.map { value -> Sorting in
+				return Sorting.laps
+				
+				if value == 1 {
+					return Sorting.laps
+				} else {
+					return Sorting.speed
+				}
+			}
+			.bind(to: store.rx.sort)
+			.disposed(by: disposeBag)
+		
 		setupDataSource()
 		
 		store
@@ -73,7 +108,7 @@ class LeaderboardViewController: UIViewController {
 					)
 				}
 			}
-			.distinctUntilChanged()
+			//.distinctUntilChanged()
 			.map { (items: [LeaderboardSectionItem]) -> [UsersListSectionModel] in
 				[
 					UsersListSectionModel(
@@ -137,7 +172,7 @@ extension LeaderboardSectionItem: IdentifiableType {
 	public typealias Identity = String
 	
 	public var identity: String {
-		return "\(id)"
+		return UUID().uuidString
 	}
 }
 
