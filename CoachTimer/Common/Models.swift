@@ -42,16 +42,7 @@ public struct Session: Equatable {
 	let laps: [Lap]
 	
 	func peakSpeed(distance d: Int = 1) -> Double {
-		let result = laps
-			.sorted { (l0, l1) -> Bool in
-				l0.speed(distance: d) > l1.speed(distance: 1)
-			}
-			.first
-			.map { (lap: Lap) -> Double in
-				lap.speed(distance: d)
-			}
-		
-		return result ?? 0
+		peakSpeedId(distance: distance ?? 0).1		
 	}
 	
 	func peakSpeedId(distance d: Int = 1) -> (Int, Double) {
