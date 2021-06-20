@@ -51,6 +51,11 @@ class ApplicationTests: XCTestCase {
 				loadUsers: {
 					.just([.sample])
 				}
+			),
+			sessionEnv: SessionEnvironment(
+				sync: { (s: Session) -> Effect<Bool> in
+					.just(true)
+				}
 			)
 		)
 		

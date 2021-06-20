@@ -45,15 +45,22 @@ public func sessionReducer(
 		return []
 		
 	case .saveCurrentSession:
+		let session = Session(
+			id: state.id,
+			   user: state.user,
+			   distance: state.distance,
+			   laps: state.laps
+		   )
+		
 		state.sessions.append(
-			Session(
-				id: state.id,
-				user: state.user,
-				distance: state.distance,
-				laps: state.laps
-			)
+			session
 		)
 		
+		return [
+			environment.sync(session).map(SessionAction.syncResponse)
+		]
+		
+	case .syncResponse:
 		return []
 	}
 }
@@ -106,7 +113,9 @@ public enum SessionAction: Equatable {
 	case lap(Lap)
 	case laps([Lap])
 	case saveCurrentSession
+	case syncResponse(Bool)
 }
 
 public struct SessionEnvironment {
+	var sync: (Session) -> Effect<Bool>
 }

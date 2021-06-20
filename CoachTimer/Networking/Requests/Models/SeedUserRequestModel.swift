@@ -7,6 +7,15 @@
 
 import Foundation
 
+public struct SessionModel: Codable, Equatable {
+	public var username: String
+	public var peakSpeed: Double
+}
+
+public struct SessionRequestModel: Codable, Equatable {
+	public let session: SessionModel
+}
+
 public struct SeedUserRequestModel: Codable, Equatable {
 	public let results: [UserRequestModel]
 }

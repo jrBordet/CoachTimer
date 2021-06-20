@@ -150,6 +150,7 @@ public enum UsersSessionsViewAction: Equatable {
 
 public struct UsersViewEnvironment {
 	var userEnv: UsersEnvironment
+	var sessionEnv: SessionEnvironment
 }
 
 // MARK: - Business logic
@@ -165,6 +166,6 @@ public let usersSessionsiewReducer: Reducer<UsersSessionsViewState, UsersSession
 		sessionReducer,
 		value: \UsersSessionsViewState.session,
 		action: /UsersSessionsViewAction.session,
-		environment: { _ in SessionEnvironment() }
+		environment: { $0.sessionEnv }
 	)
 )

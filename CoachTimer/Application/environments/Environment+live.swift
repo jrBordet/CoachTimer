@@ -19,7 +19,16 @@ extension AppEnvironment {
 
 extension UsersViewEnvironment {
 	static var live = Self(
-		userEnv: UsersEnvironment.live
+		userEnv: .live,
+		sessionEnv: .live
+	)
+}
+
+extension SessionEnvironment {
+	static var live = Self(
+		sync: { session in
+			.just(true)
+		}
 	)
 }
 

@@ -15,7 +15,11 @@ import RxComposableArchitectureTests
 import SnapshotTesting
 
 class SessionReducer: XCTestCase {
-	let env = SessionEnvironment()
+	let env = SessionEnvironment(
+		sync: { _ in
+			.just(true)
+		}
+	)
 	
 	func testStartAndCompleteSession() {
 		assert(
@@ -55,6 +59,9 @@ class SessionReducer: XCTestCase {
 				]
 				
 				state.peakSpeed = 0.01
+			}),
+			Step(StepType.receive, SessionAction.syncResponse(true), { state in
+				
 			})
 		)
 	}
