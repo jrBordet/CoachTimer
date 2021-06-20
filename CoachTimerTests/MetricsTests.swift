@@ -62,7 +62,7 @@ class MetricsTests: XCTestCase {
 			]
 		)
 		
-		let peakSpeed = session.peakSpeed(distance: distance)
+		let peakSpeed = session.peakSpeed()
 		
 		XCTAssertEqual(peakSpeed, 1.2, accuracy: 0.1)
 	}

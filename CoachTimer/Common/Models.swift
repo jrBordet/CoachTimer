@@ -11,6 +11,10 @@ public struct Lap: Equatable {
 	let id: Int
 	let time: Int
 	
+	
+	/// Compute the speed of a single lap
+	/// - Parameter d: an Int that represents the distance in meters
+	/// - Returns: a Double
 	func speed(distance d: Int) -> Double {
 		let sec: Double = Double(time) / 10.0
 		let d = Double(d)
@@ -41,10 +45,18 @@ public struct Session: Equatable {
 	let distance: Int?
 	let laps: [Lap]
 	
-	func peakSpeed(distance d: Int = 1) -> Double {
-		peakSpeedId(distance: distance ?? 0).1		
+	func peakSpeed() -> Double {
+		guard let distance = distance else {
+			return 0
+		}
+		
+		return peakSpeedId(distance: distance).1
 	}
 	
+	
+	/// Compute the peak speed froma a Session
+	/// - Parameter d: an Int that represents the distance in meters
+	/// - Returns: a touple composed by the Id of the lap and the peak speed
 	func peakSpeedId(distance d: Int = 1) -> (Int, Double) {
 		let result = laps
 			.sorted { (l0, l1) -> Bool in
