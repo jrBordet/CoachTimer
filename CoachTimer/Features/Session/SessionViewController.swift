@@ -16,7 +16,7 @@ class SessionViewController: UIViewController {
 	@IBOutlet var timerBackgroundView: UIView! {
 		didSet {
 			timerBackgroundView.clipsToBounds = true
-			timerBackgroundView.layer.cornerRadius = 5 //timerBackgroundView.frame.width / 2
+			timerBackgroundView.layer.cornerRadius = timerBackgroundView.frame.width / 2
 		}
 	}
 	
