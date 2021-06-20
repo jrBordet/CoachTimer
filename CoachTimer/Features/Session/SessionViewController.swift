@@ -60,6 +60,15 @@ class SessionViewController: UIViewController {
 			return
 		}
 		
+		// MARK: - Disable start button until the distance field filled
+		
+		distanceField.rx
+			.text
+			.compactMap { $0 }
+			.map { $0.isEmpty == false }
+			.bind(to: startButton.rx.isEnabled)
+			.disposed(by: disposeBag)
+		
 		// MARK: - resign keyboard
 		
 		startButton.rx
