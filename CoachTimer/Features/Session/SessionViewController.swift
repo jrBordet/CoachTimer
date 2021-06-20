@@ -34,6 +34,7 @@ class SessionViewController: UIViewController {
 	@IBOutlet var timeVarianceLabel: UILabel!
 	@IBOutlet var timeVariabilityLabel: UILabel!
 	@IBOutlet var averageTimeLapLabel: UILabel!
+	@IBOutlet var cadenceLabel: UILabel!
 	
 	// MARK: - RxDataSource
 	
@@ -74,6 +75,24 @@ class SessionViewController: UIViewController {
 			return "\(from) \(s)"
 		}
 		
+		// MARK: - Cadence
+		
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
+					return "cadence"
+				}
+
+				let result = cadence(tuple.1, distance: distance)
+				
+				return formatter(result, from: "lap/time:", format: ".1")
+			}
+			.bind(to: cadenceLabel.rx.text)
+			.disposed(by: disposeBag)
+		
 		// MARK: - AverageTimeLap
 		
 		store.value
@@ -91,7 +110,6 @@ class SessionViewController: UIViewController {
 			}
 			.bind(to: averageTimeLapLabel.rx.text)
 			.disposed(by: disposeBag)
-		
 		
 		/// disable start button for invalid distance
 		store.value

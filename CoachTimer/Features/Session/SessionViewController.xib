@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="averageSpeedLabel" destination="10y-Mm-wKB" id="3ne-O9-Eak"/>
                 <outlet property="averageTimeLapLabel" destination="bvw-ag-kx7" id="2DL-Zt-wbC"/>
+                <outlet property="cadenceLabel" destination="lHI-rv-9FE" id="MH6-aw-ekN"/>
                 <outlet property="lapButton" destination="bA0-4z-LfC" id="weA-e7-j9o"/>
                 <outlet property="lapsCountLabel" destination="tNi-QR-vNx" id="s7O-a7-v2a"/>
                 <outlet property="peakSpeedLabel" destination="bM1-fO-yPu" id="DgB-u0-EP8"/>
@@ -122,6 +123,29 @@
                         </label>
                     </subviews>
                 </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Pb5-To-Tu3">
+                    <rect key="frame" x="15" y="414" width="384" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHI-rv-9FE">
+                            <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goy-7f-2GH">
+                            <rect key="frame" x="128" y="0.0" width="128" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74u-9K-P80">
+                            <rect key="frame" x="256" y="0.0" width="128" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gJ2-c6-KQU">
                     <rect key="frame" x="15" y="306" width="384" height="50"/>
                     <subviews>
@@ -146,7 +170,7 @@
                     </subviews>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="REs-NA-BSj">
-                    <rect key="frame" x="0.0" y="429" width="414" height="433"/>
+                    <rect key="frame" x="0.0" y="464" width="414" height="398"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
@@ -156,9 +180,12 @@
                 <constraint firstItem="gJ2-c6-KQU" firstAttribute="top" secondItem="viM-dD-Ujs" secondAttribute="bottom" constant="8" id="22q-UJ-zc4"/>
                 <constraint firstItem="Nff-c2-ehf" firstAttribute="top" secondItem="kZa-2g-CI6" secondAttribute="top" id="4El-oe-UFi"/>
                 <constraint firstItem="5UF-3Y-Btq" firstAttribute="bottom" secondItem="Nff-c2-ehf" secondAttribute="bottom" constant="35" id="76k-Ux-MRE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Pb5-To-Tu3" secondAttribute="trailing" constant="15" id="BLw-4c-HhP"/>
                 <constraint firstItem="10a-H8-SDB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="D7c-DG-dRF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kZa-2g-CI6" secondAttribute="trailing" id="FOi-ci-0CN"/>
                 <constraint firstItem="REs-NA-BSj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GA3-le-zqb"/>
+                <constraint firstItem="REs-NA-BSj" firstAttribute="top" secondItem="Pb5-To-Tu3" secondAttribute="bottom" id="LK8-rJ-oEz"/>
+                <constraint firstItem="Pb5-To-Tu3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="MBA-36-Rd3"/>
                 <constraint firstItem="kZa-2g-CI6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SIc-nE-wfm"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="REs-NA-BSj" secondAttribute="trailing" id="U8l-KK-M8K"/>
                 <constraint firstItem="kZa-2g-CI6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ULS-Rg-dtG"/>
@@ -166,6 +193,7 @@
                 <constraint firstItem="EP2-QI-8JV" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="WKc-Ku-zMo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="viM-dD-Ujs" secondAttribute="trailing" id="WSO-ZZ-kqb"/>
                 <constraint firstItem="Nff-c2-ehf" firstAttribute="bottom" secondItem="kZa-2g-CI6" secondAttribute="bottom" id="ZeV-Fr-UY3"/>
+                <constraint firstItem="Pb5-To-Tu3" firstAttribute="top" secondItem="10a-H8-SDB" secondAttribute="bottom" id="bXy-Hg-N8N"/>
                 <constraint firstItem="10a-H8-SDB" firstAttribute="top" secondItem="gJ2-c6-KQU" secondAttribute="bottom" constant="8" id="dWV-vD-hZU"/>
                 <constraint firstItem="Nff-c2-ehf" firstAttribute="trailing" secondItem="kZa-2g-CI6" secondAttribute="trailing" id="dnV-0i-nyh"/>
                 <constraint firstItem="kZa-2g-CI6" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="g3r-BC-9Rl"/>
@@ -179,7 +207,6 @@
                 <constraint firstItem="EP2-QI-8JV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="rbf-c0-mRC"/>
                 <constraint firstItem="gJ2-c6-KQU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="w1u-JM-ZYE"/>
                 <constraint firstItem="EP2-QI-8JV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="wqo-xU-Nwe"/>
-                <constraint firstItem="REs-NA-BSj" firstAttribute="top" secondItem="10a-H8-SDB" secondAttribute="bottom" constant="15" id="x0F-vP-rNA"/>
             </constraints>
             <point key="canvasLocation" x="139" y="153"/>
         </view>
