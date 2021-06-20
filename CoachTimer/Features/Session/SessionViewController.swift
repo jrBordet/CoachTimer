@@ -29,6 +29,7 @@ class SessionViewController: UIViewController {
 	@IBOutlet var usernameLabel: UILabel!
 	@IBOutlet var tableView: UITableView!
 	@IBOutlet var lapsCountLabel: UILabel!
+	@IBOutlet var peakSpeedLabel: UILabel!
 	
 	// MARK: - RxDataSource
 	
@@ -62,12 +63,32 @@ class SessionViewController: UIViewController {
 			return
 		}
 		
+		store.value
+			.map { $0.distance }
+			.ignoreNil()
+			.map { $0 > 0 }
+			.bind(to: startButton.rx.isEnabled)
+			.disposed(by: disposeBag)
+		
 		// MARK: - Laps count
 		
 		store.value
 			.map { $0.lapsCount }
 			.map { "laps: \($0)" }
 			.bind(to: lapsCountLabel.rx.text)
+			.disposed(by: disposeBag)
+		
+		// MARK: - Peak speed
+		
+		store.value
+			.map { $0.peakSpeed }
+			.map { speed in
+				let speed = speed, speedFormat = ".1"
+				let result = "\(speed.format(f: speedFormat))"
+
+				return "peak speed: \(result)"
+			}
+			.bind(to: peakSpeedLabel.rx.text)
 			.disposed(by: disposeBag)
 	
 		// MARK: - Config cell

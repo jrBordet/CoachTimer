@@ -24,7 +24,8 @@ public func sessionReducer(
 		state.laps.append(v)
 		
 		state.lapsCount = state.laps.count
-		
+		state.peakSpeed = peakSpeed(laps: state.laps, distance: state.distance ?? 1)
+
 		return []
 	case let .laps(v):
 		guard v.isEmpty == false else {
@@ -34,6 +35,7 @@ public func sessionReducer(
 		state.laps = v
 		
 		state.lapsCount = state.laps.count
+		state.peakSpeed = peakSpeed(laps: state.laps, distance: state.distance ?? 1)
 		
 		return []
 		
@@ -65,6 +67,7 @@ public struct SessionState: Equatable  {
 	var laps: [Lap]
 	var sessions: [Session]
 	var lapsCount: Int
+	var peakSpeed: Double
 	
 	public init(
 		id: String,
@@ -72,7 +75,8 @@ public struct SessionState: Equatable  {
 		distance: Int?,
 		laps: [Lap],
 		sessions: [Session],
-		lapsCount: Int
+		lapsCount: Int,
+		peakSpeed: Double
 	) {
 		self.id = id
 		self.user = user
@@ -80,6 +84,7 @@ public struct SessionState: Equatable  {
 		self.laps = laps
 		self.sessions = sessions
 		self.lapsCount = lapsCount
+		self.peakSpeed = peakSpeed
 	}
 }
 
@@ -90,7 +95,8 @@ extension SessionState {
 		distance: nil,
 		laps: [],
 		sessions: [],
-		lapsCount: 0
+		lapsCount: 0,
+		peakSpeed: 0
 	)
 }
 

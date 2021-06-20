@@ -16,7 +16,7 @@ public struct Lap: Equatable {
 	/// - Parameter d: an Int that represents the distance in meters
 	/// - Returns: a Double
 	func speed(distance d: Int) -> Double {
-		let sec: Double = Double(time) / 10.0
+		let sec: Double = Double(time) / 10.0 // the timer is on 100 ms
 		let d = Double(d)
 		return d / sec
 	}
@@ -69,6 +69,19 @@ public struct Session: Equatable {
 		
 		return result ?? (0, 0)
 	}
+}
+
+func peakSpeed(laps: [Lap], distance: Int) -> Double {
+	let result = laps
+		.sorted { (l0, l1) -> Bool in
+			l0.speed(distance: distance) > l1.speed(distance: distance)
+		}
+		.first
+		.map { (lap: Lap) -> Double in
+			lap.speed(distance: distance)
+		}
+	
+	return result ?? 0
 }
 
 extension Session {

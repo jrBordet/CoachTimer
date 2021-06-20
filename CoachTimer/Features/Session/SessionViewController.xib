@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="lapButton" destination="bA0-4z-LfC" id="weA-e7-j9o"/>
                 <outlet property="lapsCountLabel" destination="tNi-QR-vNx" id="s7O-a7-v2a"/>
+                <outlet property="peakSpeedLabel" destination="bM1-fO-yPu" id="DgB-u0-EP8"/>
                 <outlet property="startButton" destination="3FZ-qr-pBH" id="HeV-9J-pC6"/>
                 <outlet property="stopButton" destination="dfH-2z-D3a" id="1Vd-8a-wGu"/>
                 <outlet property="tableView" destination="REs-NA-BSj" id="PNK-4L-oVh"/>
@@ -79,8 +80,8 @@
                     <rect key="frame" x="143" y="131" width="128" height="128"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYy-Wf-g5R">
-                            <rect key="frame" x="0.0" y="49" width="128" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <rect key="frame" x="0.0" y="46" width="128" height="36"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -105,8 +106,8 @@
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bM1-fO-yPu">
                             <rect key="frame" x="128" y="0.0" width="128" height="50"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvw-ag-kx7">

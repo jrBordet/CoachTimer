@@ -17,6 +17,44 @@ class MetricsTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+	
+	func testSessionPeakSpeed() {
+		let distance = 100
+		
+		let lap = Lap(
+			id: 1,
+			time: 100 // 100 -> 10 m/s
+		)
+		
+		let lap_2 = Lap(
+			id: 2,
+			time: 200 // 5 m/s
+		)
+		
+		let lap_3 = Lap(
+			id: 2,
+			time: 110
+		)
+		
+		let speedResult = lap.speed(distance: distance)
+		XCTAssertEqual(speedResult, 10.0, accuracy: 0.1)
+		
+		let speedResult2 = lap_2.speed(distance: distance)
+		XCTAssertEqual(speedResult2, 5.0, accuracy: 0.1)
+		
+		let speedResult3 = lap_3.speed(distance: distance)
+		XCTAssertEqual(speedResult3, 9.0, accuracy: 0.1)
+		
+		let result = peakSpeed(
+			laps: [
+				lap,
+				lap_2,
+				lap_3
+			],
+			distance: distance
+		)
+		XCTAssertEqual(result, 10.0, accuracy: 0.1)
+	}
 
     func testLapSpeed() {
 		let lap = Lap(
