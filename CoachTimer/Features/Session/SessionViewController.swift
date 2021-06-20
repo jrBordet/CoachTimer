@@ -17,6 +17,8 @@ class SessionViewController: UIViewController {
 		didSet {
 			timerBackgroundView.clipsToBounds = true
 			timerBackgroundView.layer.cornerRadius = timerBackgroundView.frame.width / 2
+			timerBackgroundView.layer.borderColor = UIColor.black.cgColor
+			timerBackgroundView.layer.borderWidth = 0.5
 		}
 	}
 	
