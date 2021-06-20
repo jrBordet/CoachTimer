@@ -32,6 +32,7 @@ class SessionViewController: UIViewController {
 	@IBOutlet var peakSpeedLabel: UILabel!
 	@IBOutlet var averageSpeedLabel: UILabel!
 	@IBOutlet var timeVarianceLabel: UILabel!
+	@IBOutlet var timeVariabilityLabel: UILabel!
 	
 	// MARK: - RxDataSource
 	
@@ -65,8 +66,8 @@ class SessionViewController: UIViewController {
 			return
 		}
 		
-		func formatter(_ v: Double, from: String) -> String {
-			let v1 = v, speedFormat = ".1"
+		func formatter(_ v: Double, from: String, format: String = ".1") -> String {
+			let v1 = v, speedFormat = format
 			let s = "\(v1.format(f: speedFormat))"
 
 			return "\(from) \(s)"
@@ -88,6 +89,24 @@ class SessionViewController: UIViewController {
 			.bind(to: lapsCountLabel.rx.text)
 			.disposed(by: disposeBag)
 		
+		// MARK: - Time variability
+		
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
+					return "time var.[%]:"
+				}
+
+				let result = timeVariability(tuple.1, distance: distance)
+				
+				return formatter(result, from: "time var.[%]:", format: ".3")
+			}
+			.bind(to: timeVariabilityLabel.rx.text)
+			.disposed(by: disposeBag)
+		
 		// MARK: - Time variance
 		
 		store.value
@@ -105,7 +124,6 @@ class SessionViewController: UIViewController {
 			}
 			.bind(to: timeVarianceLabel.rx.text)
 			.disposed(by: disposeBag)
-
 		
 		// MARK: - Average speed
 		

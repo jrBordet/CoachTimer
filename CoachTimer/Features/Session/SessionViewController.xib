@@ -18,6 +18,7 @@
                 <outlet property="startButton" destination="3FZ-qr-pBH" id="HeV-9J-pC6"/>
                 <outlet property="stopButton" destination="dfH-2z-D3a" id="1Vd-8a-wGu"/>
                 <outlet property="tableView" destination="REs-NA-BSj" id="PNK-4L-oVh"/>
+                <outlet property="timeVariabilityLabel" destination="Fig-Nw-QOd" id="oaf-cY-MNc"/>
                 <outlet property="timeVarianceLabel" destination="uS7-So-ner" id="l7g-Ld-0LF"/>
                 <outlet property="timerBackgroundView" destination="5UF-3Y-Btq" id="YbR-bh-AK3"/>
                 <outlet property="timerLabel" destination="jYy-Wf-g5R" id="Vfz-Bb-JUn"/>
@@ -144,7 +145,7 @@
                     </subviews>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="REs-NA-BSj">
-                    <rect key="frame" x="0.0" y="556" width="414" height="306"/>
+                    <rect key="frame" x="0.0" y="429" width="414" height="433"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
@@ -163,7 +164,6 @@
                 <constraint firstItem="5UF-3Y-Btq" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="W9d-Cg-Ac4"/>
                 <constraint firstItem="EP2-QI-8JV" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="WKc-Ku-zMo"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="viM-dD-Ujs" secondAttribute="trailing" id="WSO-ZZ-kqb"/>
-                <constraint firstItem="REs-NA-BSj" firstAttribute="top" secondItem="gJ2-c6-KQU" secondAttribute="bottom" constant="200" id="Z86-Df-Q3O"/>
                 <constraint firstItem="Nff-c2-ehf" firstAttribute="bottom" secondItem="kZa-2g-CI6" secondAttribute="bottom" id="ZeV-Fr-UY3"/>
                 <constraint firstItem="10a-H8-SDB" firstAttribute="top" secondItem="gJ2-c6-KQU" secondAttribute="bottom" constant="8" id="dWV-vD-hZU"/>
                 <constraint firstItem="Nff-c2-ehf" firstAttribute="trailing" secondItem="kZa-2g-CI6" secondAttribute="trailing" id="dnV-0i-nyh"/>
@@ -178,6 +178,7 @@
                 <constraint firstItem="EP2-QI-8JV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="rbf-c0-mRC"/>
                 <constraint firstItem="gJ2-c6-KQU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="w1u-JM-ZYE"/>
                 <constraint firstItem="EP2-QI-8JV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="wqo-xU-Nwe"/>
+                <constraint firstItem="REs-NA-BSj" firstAttribute="top" secondItem="10a-H8-SDB" secondAttribute="bottom" constant="15" id="x0F-vP-rNA"/>
             </constraints>
             <point key="canvasLocation" x="139" y="153"/>
         </view>

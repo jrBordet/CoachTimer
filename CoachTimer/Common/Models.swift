@@ -34,6 +34,32 @@ func averageSpeed(_ laps: [Lap], distance: Int) -> Double {
 	return sum / Double(laps.count)
 }
 
+/**
+
+Campo di variazione
+
+Questo indice di variabilità consiste nella differenza tra il valore più alto e quello più basso della distribuzione; tale indice non fornisce un dato molto preciso della variabilità della distribuzione.
+
+Ad esempio, se la distribuzione presenta i seguenti valori:
+
+x1=23,x2=10,x3=148,x4=7,x5=18,x6=34
+
+il valore più grande è 148, mentre quelli più piccolo è 7, perciò il campo di variazione è dato da 148 – 7 = 141.
+
+*/
+
+func timeVariability(_ laps: [Lap], distance: Int) -> Double {
+	let times = laps.map { $0.timeInSec() }
+	
+	guard
+		let max = times.max(),
+		let min = times.min() else {
+		return 0
+	}
+	
+	return Double((max - min) / 100)
+}
+
 // In statistica, con riferimento a una serie di valori, la media dei quadrati degli scarti dei singoli valori dalla loro media aritmetica.
 
 func timeVariance(_ laps: [Lap], distance: Int) -> Double {
