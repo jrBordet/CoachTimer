@@ -189,6 +189,7 @@ extension LeaderboardViewController {
 			case .laps:
 				cell.lapsLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
 				cell.speedLabel.font = UIFont.systemFont(ofSize: 20)
+				
 				break
 			}
 			
