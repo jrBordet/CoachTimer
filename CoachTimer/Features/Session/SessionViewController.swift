@@ -63,6 +63,7 @@ class SessionViewController: UIViewController {
 			return
 		}
 		
+		/// disable start button for invalid distance
 		store.value
 			.map { $0.distance }
 			.ignoreNil()
@@ -281,10 +282,4 @@ extension Reactive where Base: SessionViewController {
 			vc.userImage.load(url: url)
 		}
 	}
-	
-//	var resignFirstResponder: Binder<Void> {
-//		Binder(base) { vc, v in
-//			vc.distanceField.resignFirstResponder()
-//		}
-//	}
 }
