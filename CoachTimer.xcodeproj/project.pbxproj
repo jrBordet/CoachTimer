@@ -26,7 +26,6 @@
 		311FBE7835B15DD44478E2CE /* trend.json in Resources */ = {isa = PBXBuildFile; fileRef = 825D735B89ADA7A6EE01A6C6 /* trend.json */; };
 		3358E7720131796FE06983F9 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168F8CDBD8A07D7CF68B36F9 /* UsersListViewController.swift */; };
 		33CF0851D1FD98B73A68A48C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5C8B4B04454165E152B69E /* AppDelegate.swift */; };
-		35A39F38C8D23D3F5DFE9287 /* Mock+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F52511041654B3770A834A /* Mock+.swift */; };
 		375A6BBA356BBC5632FAA5E5 /* Session+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393502593CF7E708AB85319F /* Session+Feature.swift */; };
 		38FE37781BB85A35B969BC07 /* SessionViewController+Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9689753F29AAEB1FD10B02 /* SessionViewController+Binder.swift */; };
 		3BD967F862D69B940F8C9FE9 /* Application+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26D87084DE40C1690E514A9 /* Application+Store.swift */; };
@@ -132,6 +131,7 @@
 		F8C7952F267F428F002C49C2 /* MetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7952E267F428F002C49C2 /* MetricsTests.swift */; };
 		F8C79537267F75CE002C49C2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C79536267F75CD002C49C2 /* Utilities.swift */; };
 		F8C79538267F75CE002C49C2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C79536267F75CD002C49C2 /* Utilities.swift */; };
+		F8C7953F267F80B6002C49C2 /* Mock+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F52511041654B3770A834A /* Mock+.swift */; };
 		F9775398CCFCDB8C2AA6F730 /* arrivals.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DD1907085871F01626364E6 /* arrivals.json */; };
 		FA6E91BDA1043C475F03732E /* ApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F61B400F5288CE3A8D59AF6 /* ApplicationTests.swift */; };
 		FBA78B7128F99726852D83CA /* stations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 433C887A11F19A6F5BA1F5C9 /* stations.txt */; };
@@ -933,12 +933,12 @@
 				F8C794BA267E43DE002C49C2 /* LeaderboardViewController.swift in Sources */,
 				BF8F0F6B7DC837565520D01E /* Environment+mock.swift in Sources */,
 				9887362B8AB5C6A062D97884 /* Localizable.swift in Sources */,
-				35A39F38C8D23D3F5DFE9287 /* Mock+.swift in Sources */,
 				F8C79369267C7668002C49C2 /* FileClient.swift in Sources */,
 				F8C79284267BB0BB002C49C2 /* SeedUserRequestModel.swift in Sources */,
 				BE3F9D23FD21694206FA55A5 /* Networking.swift in Sources */,
 				375A6BBA356BBC5632FAA5E5 /* Session+Feature.swift in Sources */,
 				C2A1CCE5A357B84FE52EA2DB /* SessionViewController+Binder.swift in Sources */,
+				F8C7953F267F80B6002C49C2 /* Mock+.swift in Sources */,
 				EA7DFEDF3EECA19B70B30A33 /* SessionViewController.swift in Sources */,
 				4EC1505CC2E42C47AB4971A1 /* Users+Feature.swift in Sources */,
 				F8C794C6267E44A2002C49C2 /* LeaderboardCell.swift in Sources */,
