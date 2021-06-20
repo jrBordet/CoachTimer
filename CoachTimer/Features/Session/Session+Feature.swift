@@ -23,6 +23,8 @@ public func sessionReducer(
 	case let .lap(v):
 		state.laps.append(v)
 		
+		state.lapsCount = state.laps.count
+		
 		return []
 	case let .laps(v):
 		guard v.isEmpty == false else {
@@ -30,6 +32,8 @@ public func sessionReducer(
 		}
 		
 		state.laps = v
+		
+		state.lapsCount = state.laps.count
 		
 		return []
 		
@@ -60,19 +64,22 @@ public struct SessionState: Equatable  {
 	var distance: Int?
 	var laps: [Lap]
 	var sessions: [Session]
+	var lapsCount: Int
 	
 	public init(
 		id: String,
 		user: User?,
 		distance: Int?,
 		laps: [Lap],
-		sessions: [Session]
+		sessions: [Session],
+		lapsCount: Int
 	) {
 		self.id = id
 		self.user = user
 		self.distance = distance
 		self.laps = laps
 		self.sessions = sessions
+		self.lapsCount = lapsCount
 	}
 }
 
@@ -82,7 +89,8 @@ extension SessionState {
 		user: nil,
 		distance: nil,
 		laps: [],
-		sessions: []
+		sessions: [],
+		lapsCount: 0
 	)
 }
 

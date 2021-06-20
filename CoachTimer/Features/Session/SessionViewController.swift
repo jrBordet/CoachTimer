@@ -28,6 +28,7 @@ class SessionViewController: UIViewController {
 	@IBOutlet var timerLabel: UILabel!
 	@IBOutlet var usernameLabel: UILabel!
 	@IBOutlet var tableView: UITableView!
+	@IBOutlet var lapsCountLabel: UILabel!
 	
 	// MARK: - RxDataSource
 	
@@ -60,6 +61,14 @@ class SessionViewController: UIViewController {
 		guard let store = self.store else {
 			return
 		}
+		
+		// MARK: - Laps count
+		
+		store.value
+			.map { $0.lapsCount }
+			.map { "laps: \($0)" }
+			.bind(to: lapsCountLabel.rx.text)
+			.disposed(by: disposeBag)
 	
 		// MARK: - Config cell
 		

@@ -62,7 +62,8 @@ public struct UsersSessionsViewState: Equatable {
 				user: newValue.currentUser,
 				distance: nil,
 				laps: [],
-				sessions: self.sessions
+				sessions: self.sessions,
+				lapsCount: 0
 			)			
 		}
 	}
@@ -74,7 +75,8 @@ public struct UsersSessionsViewState: Equatable {
 				user: self.currentUser,
 				distance: self.currentSession?.distance ?? 0,
 				laps: self.currentSession?.laps ?? [],
-				sessions: self.sessions
+				sessions: self.sessions,
+				lapsCount: self.currentSession?.laps.count ?? 0
 			)
 		}
 		

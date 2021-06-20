@@ -27,7 +27,7 @@ class SessionReducer: XCTestCase {
 	
 	func testStartAndCompleteSession() {
 		assert(
-			initialValue: SessionState(id: "", user: User.sample, distance: nil, laps: [], sessions: []),
+			initialValue: SessionState(id: "", user: User.sample, distance: nil, laps: [], sessions: [], lapsCount: 0),
 			reducer: sessionReducer,
 			environment: env,
 			steps: Step(.send, SessionAction.name("test session name"), { state in
@@ -37,12 +37,15 @@ class SessionReducer: XCTestCase {
 			}),
 			Step(.send, SessionAction.lap(Lap.lap_0), { state in
 				state.laps = [.lap_0]
+				state.lapsCount = 1
 			}),
 			Step(.send, SessionAction.lap(Lap.lap_1), { state in
 				state.laps = [
 					.lap_0,
 					.lap_1
 				]
+				
+				state.lapsCount = 2
 			}),
 			Step(.send, SessionAction.saveCurrentSession, { state in
 				state.sessions = [
