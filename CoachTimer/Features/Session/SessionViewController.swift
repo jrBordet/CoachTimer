@@ -26,7 +26,6 @@ class SessionViewController: UIViewController {
 	@IBOutlet var timerLabel: UILabel!
 	@IBOutlet var usernameLabel: UILabel!
 	@IBOutlet var tableView: UITableView!
-	@IBOutlet var distanceField: UITextField!
 	
 	// MARK: - RxDataSource
 	
@@ -62,28 +61,28 @@ class SessionViewController: UIViewController {
 		
 		// MARK: - Disable start button until the distance field filled
 		
-		distanceField.rx
-			.text
-			.compactMap { $0 }
-			.map { $0.isEmpty == false }
-			.bind(to: startButton.rx.isEnabled)
-			.disposed(by: disposeBag)
+//		distanceField.rx
+//			.text
+//			.compactMap { $0 }
+//			.map { $0.isEmpty == false }
+//			.bind(to: startButton.rx.isEnabled)
+//			.disposed(by: disposeBag)
 		
 		// MARK: - resign keyboard
 		
-		startButton.rx
-			.tap
-			.bind(to: self.rx.resignFirstResponder)
-			.disposed(by: disposeBag)
+//		startButton.rx
+//			.tap
+//			.bind(to: self.rx.resignFirstResponder)
+//			.disposed(by: disposeBag)
 		
 		// MARK: - Distance
 		
-		distanceField.rx
-			.text
-			.compactMap { $0 }
-			.map { Int($0) }
-			.bind(to: store.rx.distance)
-			.disposed(by: disposeBag)
+//		distanceField.rx
+//			.text
+//			.compactMap { $0 }
+//			.map { Int($0) }
+//			.bind(to: store.rx.distance)
+//			.disposed(by: disposeBag)
 		
 		// MARK: - Config cell
 		
@@ -275,9 +274,9 @@ extension Reactive where Base: SessionViewController {
 		}
 	}
 	
-	var resignFirstResponder: Binder<Void> {
-		Binder(base) { vc, v in
-			vc.distanceField.resignFirstResponder()
-		}
-	}
+//	var resignFirstResponder: Binder<Void> {
+//		Binder(base) { vc, v in
+//			vc.distanceField.resignFirstResponder()
+//		}
+//	}
 }
