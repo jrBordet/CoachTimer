@@ -64,7 +64,7 @@ class NetworkingTests: XCTestCase {
 		)
 	}
 	
-	func testStargazerRequestDecodingError() throws {
+	func testUserRequestDecodingError() throws {
 		let response = """
 		empty_response
 		"""

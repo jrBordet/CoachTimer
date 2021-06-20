@@ -73,9 +73,7 @@ class SessionViewController: UIViewController {
 		
 		startButton.rx
 			.tap
-			.bind { [weak self] in
-				self?.distanceField.resignFirstResponder()
-			}
+			.bind(to: self.rx.resignFirstResponder)
 			.disposed(by: disposeBag)
 		
 		// MARK: - Distance
@@ -274,6 +272,12 @@ extension Reactive where Base: SessionViewController {
 	var image: Binder<(URL)> {
 		Binder(base) { vc, url in
 			vc.userImage.load(url: url)
+		}
+	}
+	
+	var resignFirstResponder: Binder<Void> {
+		Binder(base) { vc, v in
+			vc.distanceField.resignFirstResponder()
 		}
 	}
 }

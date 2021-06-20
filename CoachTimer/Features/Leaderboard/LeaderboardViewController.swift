@@ -115,7 +115,8 @@ class LeaderboardViewController: UIViewController {
 								surname: model.user?.surname ?? "",
 								imageUrl: model.user?.imageUrl,
 								laps: model.laps.count,
-								speed: model.peakSpeed()
+								speed: model.peakSpeed(),
+								sort: state.sort
 							)
 						}
 				case .speed:
@@ -132,12 +133,12 @@ class LeaderboardViewController: UIViewController {
 								surname: model.user?.surname ?? "",
 								imageUrl: model.user?.imageUrl,
 								laps: model.laps.count,
-								speed: model.peakSpeed()
+								speed: model.peakSpeed(),
+								sort: state.sort
 							)
 						}
 				}
 			}
-			//.distinctUntilChanged()
 			.map { (items: [LeaderboardSectionItem]) -> [UsersListSectionModel] in
 				[
 					UsersListSectionModel(
@@ -176,7 +177,20 @@ extension LeaderboardViewController {
 			
 			cell.nameLabel.text = item.name.capitalized + " " + item.surname.capitalized
 			cell.lapsLabel.text = "\(item.laps)"
-			cell.speedLabel.text = "\(item.speed)"
+			
+			let speed = item.speed, speedFormat = ".1"
+			cell.speedLabel.text = "\(speed.format(f: speedFormat))"
+			
+			switch item.sort {
+			case .speed:
+				cell.speedLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+				cell.lapsLabel.font = UIFont.systemFont(ofSize: 20)
+				break
+			case .laps:
+				cell.lapsLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+				cell.speedLabel.font = UIFont.systemFont(ofSize: 20)
+				break
+			}
 			
 			if let url = item.imageUrl {
 				cell.avatarImage?.load(url: url)
@@ -197,6 +211,7 @@ struct LeaderboardSectionItem {
 	var imageUrl: URL?
 	var laps: Int
 	var speed: Double
+	var sort: Sorting
 }
 
 extension LeaderboardSectionItem {
@@ -206,7 +221,8 @@ extension LeaderboardSectionItem {
 		name: "",
 		surname: "",
 		laps: 0,
-		speed: 0
+		speed: 0,
+		sort: .speed
 	)
 }
 

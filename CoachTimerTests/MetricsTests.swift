@@ -111,5 +111,19 @@ class MetricsTests: XCTestCase {
 		XCTAssertEqual(3, peakSpeed.0)
 		XCTAssertEqual(1.4, peakSpeed.1, accuracy: 0.1)
 	}
+	
+	func testFormat() {
+		let someInt = 4, someIntFormat = "03"
+		
+		let int_result = someInt.format(f: someIntFormat)
+		
+		XCTAssertEqual("004", int_result)
+
+		let someDouble = 3.14159265359, someDoubleFormat = ".3"
+		
+		let double_result = someDouble.format(f: someDoubleFormat)
+
+		XCTAssertEqual("3.142", double_result)
+	}
 
 }
