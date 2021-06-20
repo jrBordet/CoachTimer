@@ -30,6 +30,7 @@ class SessionViewController: UIViewController {
 	@IBOutlet var tableView: UITableView!
 	@IBOutlet var lapsCountLabel: UILabel!
 	@IBOutlet var peakSpeedLabel: UILabel!
+	@IBOutlet var averageSpeedLabel: UILabel!
 	
 	// MARK: - RxDataSource
 	
@@ -79,6 +80,24 @@ class SessionViewController: UIViewController {
 			.bind(to: lapsCountLabel.rx.text)
 			.disposed(by: disposeBag)
 		
+		// MARK: - Average speed
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard tuple.laps.count > 0 else {
+					return "avg speed:"
+				}
+				
+				let result = averageSpeed(tuple.1, distance: tuple.0 ?? 1)
+				
+				let speed = result, speedFormat = ".1"
+				let s = "\(speed.format(f: speedFormat))"
+
+				return "avg speed: \(s)"
+			}
+			.bind(to: averageSpeedLabel.rx.text)
+			.disposed(by: disposeBag)
+				
 		// MARK: - Peak speed
 		
 		store.value

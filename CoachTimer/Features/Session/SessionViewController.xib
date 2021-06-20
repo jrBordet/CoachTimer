@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SessionViewController" customModule="CoachTimer" customModuleProvider="target">
             <connections>
+                <outlet property="averageSpeedLabel" destination="bvw-ag-kx7" id="mKG-Lz-Ehg"/>
                 <outlet property="lapButton" destination="bA0-4z-LfC" id="weA-e7-j9o"/>
                 <outlet property="lapsCountLabel" destination="tNi-QR-vNx" id="s7O-a7-v2a"/>
                 <outlet property="peakSpeedLabel" destination="bM1-fO-yPu" id="DgB-u0-EP8"/>
@@ -112,8 +113,8 @@
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvw-ag-kx7">
                             <rect key="frame" x="256" y="0.0" width="128" height="50"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

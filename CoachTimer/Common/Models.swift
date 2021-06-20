@@ -22,6 +22,14 @@ public struct Lap: Equatable {
 	}
 }
 
+func averageSpeed(_ laps: [Lap], distance: Int) -> Double {
+	let sum = laps
+		.map { $0.speed(distance: distance) }
+		.reduce(0, +)
+	
+	return sum / Double(laps.count)
+}
+
 extension Lap {
 	static var lap_0 = Self(
 		id: 0,

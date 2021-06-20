@@ -55,6 +55,24 @@ class MetricsTests: XCTestCase {
 		)
 		XCTAssertEqual(result, 10.0, accuracy: 0.1)
 	}
+	
+	func testAverageSpeed() {
+		let distance = 100
+		
+		let lap = Lap(
+			id: 1,
+			time: 100 // 100 -> 10 m/s
+		)
+		
+		let lap_2 = Lap(
+			id: 2,
+			time: 200 // 5 m/s
+		)
+		
+		let result = averageSpeed([lap, lap_2], distance: distance)
+		
+		XCTAssertEqual(result, 7.5, accuracy: 0.1)
+	}
 
     func testLapSpeed() {
 		let lap = Lap(

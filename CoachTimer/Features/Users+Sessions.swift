@@ -65,7 +65,7 @@ public struct UsersSessionsViewState: Equatable {
 				sessions: self.sessions,
 				lapsCount: 0,
 				peakSpeed: 0
-			)			
+			)
 		}
 	}
 	
