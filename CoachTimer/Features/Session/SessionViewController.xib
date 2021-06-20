@@ -11,7 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SessionViewController" customModule="CoachTimer" customModuleProvider="target">
             <connections>
-                <outlet property="averageSpeedLabel" destination="bvw-ag-kx7" id="mKG-Lz-Ehg"/>
+                <outlet property="averageSpeedLabel" destination="10y-Mm-wKB" id="3ne-O9-Eak"/>
+                <outlet property="averageTimeLapLabel" destination="bvw-ag-kx7" id="2DL-Zt-wbC"/>
                 <outlet property="lapButton" destination="bA0-4z-LfC" id="weA-e7-j9o"/>
                 <outlet property="lapsCountLabel" destination="tNi-QR-vNx" id="s7O-a7-v2a"/>
                 <outlet property="peakSpeedLabel" destination="bM1-fO-yPu" id="DgB-u0-EP8"/>

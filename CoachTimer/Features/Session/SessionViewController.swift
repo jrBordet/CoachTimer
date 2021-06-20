@@ -33,6 +33,7 @@ class SessionViewController: UIViewController {
 	@IBOutlet var averageSpeedLabel: UILabel!
 	@IBOutlet var timeVarianceLabel: UILabel!
 	@IBOutlet var timeVariabilityLabel: UILabel!
+	@IBOutlet var averageTimeLapLabel: UILabel!
 	
 	// MARK: - RxDataSource
 	
@@ -72,6 +73,25 @@ class SessionViewController: UIViewController {
 
 			return "\(from) \(s)"
 		}
+		
+		// MARK: - AverageTimeLap
+		
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
+					return "avg time/lap:"
+				}
+
+				let result = averageTimeLap(tuple.1, distance: distance)
+				
+				return formatter(result, from: "avg time/lap:", format: ".1")
+			}
+			.bind(to: averageTimeLapLabel.rx.text)
+			.disposed(by: disposeBag)
+		
 		
 		/// disable start button for invalid distance
 		store.value

@@ -78,6 +78,22 @@ func timeVariance(_ laps: [Lap], distance: Int) -> Double {
 	return a1 / Double(laps.count)
 }
 
+func averageTimeLap(_ laps: [Lap], distance: Int) -> Double {
+	let sum = laps
+		.map { $0.timeInSec() }
+		.reduce(0, +)
+	
+	return sum / Double(laps.count)
+}
+
+func cadence(_ laps: [Lap], distance: Int) -> Double {
+	let sum = laps
+		.map { $0.timeInSec() }
+		.reduce(0, +)
+		
+	return Double(laps.count) / Double(sum) * 60	
+}
+
 extension Lap {
 	static var lap_0 = Self(
 		id: 0,

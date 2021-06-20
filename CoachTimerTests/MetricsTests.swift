@@ -109,6 +109,46 @@ class MetricsTests: XCTestCase {
 		
 		XCTAssertEqual(result, 0.1, accuracy: 0.1)		
 	}
+	
+	func testCadence() {
+		let distance = 100
+		
+		let lap = Lap(
+			id: 1,
+			time: 30 * 10
+		)
+		
+		XCTAssertEqual(lap.timeInSec(), 30)
+		
+		let lap_2 = Lap(
+			id: 2,
+			time: (30 * 10) //+ (10 * 10)
+		)
+		
+		let result = cadence([lap, lap_2], distance: distance)
+		
+		XCTAssertEqual(result, 2, accuracy: 0.1)
+	}
+	
+	func testCadence2() {
+		let distance = 100
+		
+		let lap = Lap(
+			id: 1,
+			time: 30 * 10
+		)
+		
+		XCTAssertEqual(lap.timeInSec(), 30)
+		
+		let lap_2 = Lap(
+			id: 2,
+			time: (30 * 10) + (10 * 10)
+		)
+		
+		let result = cadence([lap, lap_2], distance: distance)
+		
+		XCTAssertEqual(result, 1.7, accuracy: 0.1)
+	}
 
     func testLapSpeed() {
 		let lap = Lap(
