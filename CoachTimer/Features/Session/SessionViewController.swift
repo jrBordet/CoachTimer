@@ -31,6 +31,7 @@ class SessionViewController: UIViewController {
 	@IBOutlet var lapsCountLabel: UILabel!
 	@IBOutlet var peakSpeedLabel: UILabel!
 	@IBOutlet var averageSpeedLabel: UILabel!
+	@IBOutlet var timeVarianceLabel: UILabel!
 	
 	// MARK: - RxDataSource
 	
@@ -64,6 +65,13 @@ class SessionViewController: UIViewController {
 			return
 		}
 		
+		func formatter(_ v: Double, from: String) -> String {
+			let v1 = v, speedFormat = ".1"
+			let s = "\(v1.format(f: speedFormat))"
+
+			return "\(from) \(s)"
+		}
+		
 		/// disable start button for invalid distance
 		store.value
 			.map { $0.distance }
@@ -80,20 +88,39 @@ class SessionViewController: UIViewController {
 			.bind(to: lapsCountLabel.rx.text)
 			.disposed(by: disposeBag)
 		
-		// MARK: - Average speed
+		// MARK: - Time variance
+		
 		store.value
 			.map { (distance: $0.distance, laps: $0.laps) }
 			.map { tuple -> String in
-				guard tuple.laps.count > 0 else {
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
+					return "time var.:"
+				}
+
+				let result = timeVariance(tuple.1, distance: distance)
+				
+				return formatter(result, from: "time var.:")
+			}
+			.bind(to: timeVarianceLabel.rx.text)
+			.disposed(by: disposeBag)
+
+		
+		// MARK: - Average speed
+		
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
 					return "avg speed:"
 				}
-				
-				let result = averageSpeed(tuple.1, distance: tuple.0 ?? 1)
-				
-				let speed = result, speedFormat = ".1"
-				let s = "\(speed.format(f: speedFormat))"
 
-				return "avg speed: \(s)"
+				let result = averageSpeed(tuple.1, distance: distance)
+				
+				return formatter(result, from: "avg speed:")
 			}
 			.bind(to: averageSpeedLabel.rx.text)
 			.disposed(by: disposeBag)

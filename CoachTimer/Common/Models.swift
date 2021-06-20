@@ -20,6 +20,10 @@ public struct Lap: Equatable {
 		let d = Double(d)
 		return d / sec
 	}
+	
+	func timeInSec() -> Double {
+		Double(time) / 10.0
+	}
 }
 
 func averageSpeed(_ laps: [Lap], distance: Int) -> Double {
@@ -28,6 +32,24 @@ func averageSpeed(_ laps: [Lap], distance: Int) -> Double {
 		.reduce(0, +)
 	
 	return sum / Double(laps.count)
+}
+
+// In statistica, con riferimento a una serie di valori, la media dei quadrati degli scarti dei singoli valori dalla loro media aritmetica.
+
+func timeVariance(_ laps: [Lap], distance: Int) -> Double {
+	let sum = laps
+		.map { $0.timeInSec() }
+		.reduce(0, +)
+	
+	let avg = sum / Double(laps.count)
+	
+	let a1 = laps
+		.map { $0.timeInSec() }
+		.reduce(0) { (result: Double, v: Double) -> Double in
+			pow(v - avg, 2)
+		}
+	
+	return a1 / Double(laps.count)
 }
 
 extension Lap {
