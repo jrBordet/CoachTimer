@@ -8,6 +8,8 @@
 import Foundation
 import RxComposableArchitecture
 
+// MARK: - Feature business logic
+
 public func sessionReducer(
 	state: inout SessionState,
 	action: SessionAction,
@@ -21,6 +23,9 @@ public func sessionReducer(
 	case let .lap(v):
 		state.laps.append(v)
 		
+		state.lapsCount = state.laps.count
+		state.peakSpeed = peakSpeed(laps: state.laps, distance: state.distance ?? 1)
+
 		return []
 	case let .laps(v):
 		guard v.isEmpty == false else {
@@ -28,6 +33,9 @@ public func sessionReducer(
 		}
 		
 		state.laps = v
+		
+		state.lapsCount = state.laps.count
+		state.peakSpeed = peakSpeed(laps: state.laps, distance: state.distance ?? 1)
 		
 		return []
 		
@@ -37,20 +45,27 @@ public func sessionReducer(
 		return []
 		
 	case .saveCurrentSession:
+		let session = Session(
+			id: state.id,
+			   user: state.user,
+			   distance: state.distance,
+			   laps: state.laps
+		   )
+		
 		state.sessions.append(
-			Session(
-				id: state.id,
-				user: state.user,
-				distance: state.distance,
-				laps: state.laps
-			)
+			session
 		)
 		
+		return [
+			environment.sync(session).map(SessionAction.syncResponse)
+		]
+		
+	case .syncResponse:
 		return []
 	}
 }
 
-// MARK: - State
+// MARK: - Feature domain
 
 public struct SessionState: Equatable  {
 	var id: String
@@ -58,19 +73,25 @@ public struct SessionState: Equatable  {
 	var distance: Int?
 	var laps: [Lap]
 	var sessions: [Session]
+	var lapsCount: Int
+	var peakSpeed: Double
 	
 	public init(
 		id: String,
 		user: User?,
 		distance: Int?,
 		laps: [Lap],
-		sessions: [Session]
+		sessions: [Session],
+		lapsCount: Int,
+		peakSpeed: Double
 	) {
 		self.id = id
 		self.user = user
 		self.distance = distance
 		self.laps = laps
 		self.sessions = sessions
+		self.lapsCount = lapsCount
+		self.peakSpeed = peakSpeed
 	}
 }
 
@@ -80,11 +101,11 @@ extension SessionState {
 		user: nil,
 		distance: nil,
 		laps: [],
-		sessions: []
+		sessions: [],
+		lapsCount: 0,
+		peakSpeed: 0
 	)
 }
-
-// MARK: - Action
 
 public enum SessionAction: Equatable {
 	case name(String?)
@@ -92,9 +113,9 @@ public enum SessionAction: Equatable {
 	case lap(Lap)
 	case laps([Lap])
 	case saveCurrentSession
+	case syncResponse(Bool)
 }
 
-// MARK: - Environment
-
 public struct SessionEnvironment {
+	var sync: (Session) -> Effect<Bool>
 }

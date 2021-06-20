@@ -16,7 +16,9 @@ class SessionViewController: UIViewController {
 	@IBOutlet var timerBackgroundView: UIView! {
 		didSet {
 			timerBackgroundView.clipsToBounds = true
-			timerBackgroundView.layer.cornerRadius = 5 //timerBackgroundView.frame.width / 2
+			timerBackgroundView.layer.cornerRadius = timerBackgroundView.frame.width / 2
+			timerBackgroundView.layer.borderColor = UIColor.black.cgColor
+			timerBackgroundView.layer.borderWidth = 0.5
 		}
 	}
 	
@@ -26,7 +28,13 @@ class SessionViewController: UIViewController {
 	@IBOutlet var timerLabel: UILabel!
 	@IBOutlet var usernameLabel: UILabel!
 	@IBOutlet var tableView: UITableView!
-	@IBOutlet var distanceField: UITextField!
+	@IBOutlet var lapsCountLabel: UILabel!
+	@IBOutlet var peakSpeedLabel: UILabel!
+	@IBOutlet var averageSpeedLabel: UILabel!
+	@IBOutlet var timeVarianceLabel: UILabel!
+	@IBOutlet var timeVariabilityLabel: UILabel!
+	@IBOutlet var averageTimeLapLabel: UILabel!
+	@IBOutlet var cadenceLabel: UILabel!
 	
 	// MARK: - RxDataSource
 	
@@ -46,6 +54,13 @@ class SessionViewController: UIViewController {
 	
 	// MARK: - Life cycle
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		// MARK: Save current session
+		store?.send(.saveCurrentSession)
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -53,24 +68,132 @@ class SessionViewController: UIViewController {
 			return
 		}
 		
-		// MARK: - resign keyboard
+		func formatter(_ v: Double, from: String, format: String = ".1") -> String {
+			let v1 = v, speedFormat = format
+			let s = "\(v1.format(f: speedFormat))"
+
+			return "\(from) \(s)"
+		}
 		
-		startButton.rx
-			.tap
-			.bind { [weak self] in
-				self?.distanceField.resignFirstResponder()
+		// MARK: - Cadence
+		
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
+					return "cadence"
+				}
+
+				let result = cadence(tuple.1, distance: distance)
+				
+				return formatter(result, from: "lap/time:", format: ".1")
 			}
+			.bind(to: cadenceLabel.rx.text)
 			.disposed(by: disposeBag)
 		
-		// MARK: - Distance
+		// MARK: - AverageTimeLap
 		
-		distanceField.rx
-			.text
-			.compactMap { $0 }
-			.map { Int($0) }
-			.bind(to: store.rx.distance)
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
+					return "avg time/lap:"
+				}
+
+				let result = averageTimeLap(tuple.1, distance: distance)
+				
+				return formatter(result, from: "avg time/lap:", format: ".1")
+			}
+			.bind(to: averageTimeLapLabel.rx.text)
 			.disposed(by: disposeBag)
 		
+		/// disable start button for invalid distance
+		store.value
+			.map { $0.distance }
+			.ignoreNil()
+			.map { $0 > 0 }
+			.bind(to: startButton.rx.isEnabled)
+			.disposed(by: disposeBag)
+		
+		// MARK: - Laps count
+		
+		store.value
+			.map { $0.lapsCount }
+			.map { "laps: \($0)" }
+			.bind(to: lapsCountLabel.rx.text)
+			.disposed(by: disposeBag)
+		
+		// MARK: - Time variability
+		
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
+					return "time var.[%]:"
+				}
+
+				let result = timeVariability(tuple.1, distance: distance)
+				
+				return formatter(result, from: "time var.[%]:", format: ".3")
+			}
+			.bind(to: timeVariabilityLabel.rx.text)
+			.disposed(by: disposeBag)
+		
+		// MARK: - Time variance
+		
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
+					return "time var.:"
+				}
+
+				let result = timeVariance(tuple.1, distance: distance)
+				
+				return formatter(result, from: "time var.:")
+			}
+			.bind(to: timeVarianceLabel.rx.text)
+			.disposed(by: disposeBag)
+		
+		// MARK: - Average speed
+		
+		store.value
+			.map { (distance: $0.distance, laps: $0.laps) }
+			.map { tuple -> String in
+				guard
+					let distance = tuple.0,
+					tuple.laps.count > 0 else {
+					return "avg speed:"
+				}
+
+				let result = averageSpeed(tuple.1, distance: distance)
+				
+				return formatter(result, from: "avg speed:")
+			}
+			.bind(to: averageSpeedLabel.rx.text)
+			.disposed(by: disposeBag)
+				
+		// MARK: - Peak speed
+		
+		store.value
+			.map { $0.peakSpeed }
+			.map { speed in
+				let speed = speed, speedFormat = ".1"
+				let result = "\(speed.format(f: speedFormat))"
+
+				return "peak speed: \(result)"
+			}
+			.bind(to: peakSpeedLabel.rx.text)
+			.disposed(by: disposeBag)
+	
 		// MARK: - Config cell
 		
 		tableView.rowHeight = 33
@@ -85,13 +208,14 @@ class SessionViewController: UIViewController {
 		// MARK: - session name
 		
 		let alert = UIAlertController(
-			title: "Session name",
-			message: "Enter a tag for the session",
+			title: "Session distance",
+			message: "Enter a distance for this session",
 			preferredStyle: .alert
 		)
 		
 		alert.addTextField { textField in
-			textField.placeholder = "session name"
+			textField.placeholder = "distance in [m]"
+			textField.text = "100"
 		}
 		
 		alert.addAction(
@@ -103,7 +227,8 @@ class SessionViewController: UIViewController {
 						return
 					}
 					
-					self?.store?.send(.name(textField.text))
+					
+					self?.store?.send(.distance(Int(textField.text ?? "1")))
 				}
 			)
 		)
@@ -142,13 +267,11 @@ class SessionViewController: UIViewController {
 			.asDriver(onErrorJustReturn: "")
 			.drive(timerLabel.rx.text)
 			.disposed(by: disposeBag)
-		
-		// MARK: Save current session
-		
-		stopButton.rx
-			.tap
-			.bind(to: store.rx.saveCurrentSession)
-			.disposed(by: disposeBag)
+				
+//		stopButton.rx
+//			.tap
+//			.bind(to: store.rx.saveCurrentSession)
+//			.disposed(by: disposeBag)
 		
 		// MARK: - take lap
 		let lapsValues = mainTimer

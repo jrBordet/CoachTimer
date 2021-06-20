@@ -62,8 +62,10 @@ public struct UsersSessionsViewState: Equatable {
 				user: newValue.currentUser,
 				distance: nil,
 				laps: [],
-				sessions: self.sessions
-			)			
+				sessions: self.sessions,
+				lapsCount: 0,
+				peakSpeed: 0
+			)
 		}
 	}
 	
@@ -74,7 +76,9 @@ public struct UsersSessionsViewState: Equatable {
 				user: self.currentUser,
 				distance: self.currentSession?.distance ?? 0,
 				laps: self.currentSession?.laps ?? [],
-				sessions: self.sessions
+				sessions: self.sessions,
+				lapsCount: self.currentSession?.laps.count ?? 0,
+				peakSpeed: peakSpeed(laps: self.currentSession?.laps ?? [], distance: self.currentSession?.distance ?? 1)
 			)
 		}
 		
@@ -146,6 +150,7 @@ public enum UsersSessionsViewAction: Equatable {
 
 public struct UsersViewEnvironment {
 	var userEnv: UsersEnvironment
+	var sessionEnv: SessionEnvironment
 }
 
 // MARK: - Business logic
@@ -161,6 +166,6 @@ public let usersSessionsiewReducer: Reducer<UsersSessionsViewState, UsersSession
 		sessionReducer,
 		value: \UsersSessionsViewState.session,
 		action: /UsersSessionsViewAction.session,
-		environment: { _ in SessionEnvironment() }
+		environment: { $0.sessionEnv }
 	)
 )

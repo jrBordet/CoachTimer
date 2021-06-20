@@ -19,7 +19,16 @@ extension AppEnvironment {
 
 extension UsersViewEnvironment {
 	static var mock = Self(
-		userEnv: UsersEnvironment.mock
+		userEnv: .mock,
+		sessionEnv: .mock
+	)
+}
+
+extension SessionEnvironment {
+	static var mock = Self(
+		sync: { session in
+			.just(true)
+		}
 	)
 }
 

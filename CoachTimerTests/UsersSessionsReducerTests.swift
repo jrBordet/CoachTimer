@@ -15,7 +15,6 @@ import RxComposableArchitectureTests
 import SnapshotTesting
 
 class UsersSessionsReducerTests: XCTestCase {
-	
 	let env_filled = UsersViewEnvironment(
 		userEnv: UsersEnvironment(
 			fetch: {
@@ -29,6 +28,11 @@ class UsersSessionsReducerTests: XCTestCase {
 			},
 			loadUsers: {
 				.just([])
+			}
+		),
+		sessionEnv: SessionEnvironment(
+			sync: { _ in
+				.just(true)
 			}
 		)
 	)
@@ -103,6 +107,8 @@ class UsersSessionsReducerTests: XCTestCase {
 				state.sessions = [
 					Session(id: "testing", user: .sample, distance: 100, laps: [.lap_0, .lap_1])
 				]
+			}), Step(.receive, UsersSessionsViewAction.session(SessionAction.syncResponse(true)), { state in
+				
 			})
 		)
 	}

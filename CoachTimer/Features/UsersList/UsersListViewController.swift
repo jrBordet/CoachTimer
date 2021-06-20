@@ -42,7 +42,7 @@ class UsersListViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.title = L10n.App.name
+		self.title = "Users"
 		
 		guard let store = self.store else {
 			return

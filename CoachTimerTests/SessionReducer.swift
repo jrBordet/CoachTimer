@@ -15,19 +15,15 @@ import RxComposableArchitectureTests
 import SnapshotTesting
 
 class SessionReducer: XCTestCase {
-	let env = SessionEnvironment()
-	
-	override func setUpWithError() throws {
-		// Put setup code here. This method is called before the invocation of each test method in the class.
-	}
-	
-	override func tearDownWithError() throws {
-		// Put teardown code here. This method is called after the invocation of each test method in the class.
-	}
+	let env = SessionEnvironment(
+		sync: { _ in
+			.just(true)
+		}
+	)
 	
 	func testStartAndCompleteSession() {
 		assert(
-			initialValue: SessionState(id: "", user: User.sample, distance: nil, laps: [], sessions: []),
+			initialValue: SessionState(id: "", user: User.sample, distance: nil, laps: [], sessions: [], lapsCount: 0, peakSpeed: 0),
 			reducer: sessionReducer,
 			environment: env,
 			steps: Step(.send, SessionAction.name("test session name"), { state in
@@ -37,12 +33,17 @@ class SessionReducer: XCTestCase {
 			}),
 			Step(.send, SessionAction.lap(Lap.lap_0), { state in
 				state.laps = [.lap_0]
+				state.lapsCount = 1
+				state.peakSpeed = 0.01
 			}),
 			Step(.send, SessionAction.lap(Lap.lap_1), { state in
 				state.laps = [
 					.lap_0,
 					.lap_1
 				]
+				
+				state.lapsCount = 2
+				state.peakSpeed = 0.01
 			}),
 			Step(.send, SessionAction.saveCurrentSession, { state in
 				state.sessions = [
@@ -56,6 +57,11 @@ class SessionReducer: XCTestCase {
 						]
 					)
 				]
+				
+				state.peakSpeed = 0.01
+			}),
+			Step(StepType.receive, SessionAction.syncResponse(true), { state in
+				
 			})
 		)
 	}
