@@ -22,7 +22,7 @@ public func leaderboardReducer(
 		state.sort = .speed
 		
 		state.sessions = state.sessions.sorted { s1, s2 in
-			s1.speed() > s2.speed()
+			s1.peakSpeed() > s2.peakSpeed()
 		}
 		
 		return []

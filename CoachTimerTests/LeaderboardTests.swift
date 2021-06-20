@@ -26,16 +26,14 @@ class LeaderboardTests: XCTestCase {
 		// Put teardown code here. This method is called after the invocation of each test method in the class.
 	}
 	
-	func testLeaderboardLapsStort() throws {
-		// This is an example of a functional test case.
-		
+	func testLeaderboardLapsStort() throws {		
 		assert(
 			initialValue: LeaderboardState(
 				sessions: [
 					Session.one,
 					Session.two
 				],
-				sort: nil
+				sort: .speed
 			),
 			reducer: leaderboardReducer,
 			environment: env,

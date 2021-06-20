@@ -10,6 +10,12 @@ import Foundation
 public struct Lap: Equatable {
 	let id: Int
 	let time: Int
+	
+	func speed(distance d: Int) -> Double {
+		let sec: Double = Double(time) / 10.0
+		let d = Double(d)
+		return d / sec
+	}
 }
 
 extension Lap {
@@ -35,11 +41,30 @@ public struct Session: Equatable {
 	let distance: Int?
 	let laps: [Lap]
 	
-	func speed() -> Int {
-		laps.reduce(0) { (speed: Int, lap: Lap) -> Int in
-			distance ?? 1
-			//distance ?? 1 / lap.time
-		}
+	func peakSpeed(distance d: Int = 1) -> Double {
+		let result = laps
+			.sorted { (l0, l1) -> Bool in
+				l0.speed(distance: d) > l1.speed(distance: 1)
+			}
+			.first
+			.map { (lap: Lap) -> Double in
+				lap.speed(distance: d)
+			}
+		
+		return result ?? 0
+	}
+	
+	func peakSpeedId(distance d: Int = 1) -> (Int, Double) {
+		let result = laps
+			.sorted { (l0, l1) -> Bool in
+				l0.speed(distance: d) > l1.speed(distance: 1)
+			}
+			.first
+			.map { (lap: Lap) -> (Int, Double) in
+				(lap.id, lap.speed(distance: d))
+			}
+		
+		return result ?? (0, 0)
 	}
 }
 

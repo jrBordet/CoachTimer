@@ -101,8 +101,8 @@
 		F8AEA0AAC6DB0F1AAF103E3F /* Application+ActivityFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFA427A8B5FE5FBD97BD198 /* Application+ActivityFeed.swift */; };
 		F8C79280267BB095002C49C2 /* SeedUserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7927F267BB095002C49C2 /* SeedUserRequestModel.swift */; };
 		F8C79284267BB0BB002C49C2 /* SeedUserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7927F267BB095002C49C2 /* SeedUserRequestModel.swift */; };
-		F8C7929B267BB39C002C49C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7929A267BB39C002C49C2 /* User.swift */; };
-		F8C7929C267BB39C002C49C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7929A267BB39C002C49C2 /* User.swift */; };
+		F8C7929B267BB39C002C49C2 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7929A267BB39C002C49C2 /* Models.swift */; };
+		F8C7929C267BB39C002C49C2 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7929A267BB39C002C49C2 /* Models.swift */; };
 		F8C792B1267BB8A9002C49C2 /* UsersSessionsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C792B0267BB8A9002C49C2 /* UsersSessionsReducerTests.swift */; };
 		F8C79368267C7667002C49C2 /* FileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C79367267C7667002C49C2 /* FileClient.swift */; };
 		F8C79369267C7668002C49C2 /* FileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C79367267C7667002C49C2 /* FileClient.swift */; };
@@ -129,6 +129,7 @@
 		F8C794C6267E44A2002C49C2 /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C794C3267E44A2002C49C2 /* LeaderboardCell.swift */; };
 		F8C794C7267E44A2002C49C2 /* LeaderboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8C794C4267E44A2002C49C2 /* LeaderboardCell.xib */; };
 		F8C794C8267E44A2002C49C2 /* LeaderboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8C794C4267E44A2002C49C2 /* LeaderboardCell.xib */; };
+		F8C7952F267F428F002C49C2 /* MetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C7952E267F428F002C49C2 /* MetricsTests.swift */; };
 		F9775398CCFCDB8C2AA6F730 /* arrivals.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DD1907085871F01626364E6 /* arrivals.json */; };
 		FA6E91BDA1043C475F03732E /* ApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F61B400F5288CE3A8D59AF6 /* ApplicationTests.swift */; };
 		FBA78B7128F99726852D83CA /* stations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 433C887A11F19A6F5BA1F5C9 /* stations.txt */; };
@@ -211,7 +212,7 @@
 		EFF7B3A524EFFF790607A686 /* Pods-CoachTimerMock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.debug.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.debug.xcconfig"; sourceTree = "<group>"; };
 		F701327C27C764224559071E /* Pods-CoachTimerTests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.mock.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.mock.xcconfig"; sourceTree = "<group>"; };
 		F8C7927F267BB095002C49C2 /* SeedUserRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedUserRequestModel.swift; sourceTree = "<group>"; };
-		F8C7929A267BB39C002C49C2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F8C7929A267BB39C002C49C2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F8C792B0267BB8A9002C49C2 /* UsersSessionsReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersSessionsReducerTests.swift; sourceTree = "<group>"; };
 		F8C79367267C7667002C49C2 /* FileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileClient.swift; sourceTree = "<group>"; };
 		F8C79371267C7697002C49C2 /* FileClient+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileClient+User.swift"; sourceTree = "<group>"; };
@@ -228,6 +229,7 @@
 		F8C794B8267E43DE002C49C2 /* LeaderboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardViewController.xib; sourceTree = "<group>"; };
 		F8C794C3267E44A2002C49C2 /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
 		F8C794C4267E44A2002C49C2 /* LeaderboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardCell.xib; sourceTree = "<group>"; };
+		F8C7952E267F428F002C49C2 /* MetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsTests.swift; sourceTree = "<group>"; };
 		F9C06C2AFF4B5C617016E544 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -461,6 +463,7 @@
 				3FC9DDD45682926BD5C1FF22 /* UsersReducerTests.swift */,
 				F8C794AE267E4064002C49C2 /* LeaderboardTests.swift */,
 				F8C793EF267D006F002C49C2 /* SessionReducer.swift */,
+				F8C7952E267F428F002C49C2 /* MetricsTests.swift */,
 				D9581F5ADDD57E497552B393 /* Info.plist */,
 				DB9248FCD6D93D28F7FF991B /* NetworkingTests */,
 			);
@@ -546,7 +549,7 @@
 		F8C79299267BB38B002C49C2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				F8C7929A267BB39C002C49C2 /* User.swift */,
+				F8C7929A267BB39C002C49C2 /* Models.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -875,7 +878,7 @@
 				F8C79372267C7697002C49C2 /* FileClient+User.swift in Sources */,
 				8B8E17EAE771ACF5B47D2993 /* Application+ActivityFeed.swift in Sources */,
 				886991A7072CCC2AA585BA09 /* Application+Environment.swift in Sources */,
-				F8C7929B267BB39C002C49C2 /* User.swift in Sources */,
+				F8C7929B267BB39C002C49C2 /* Models.swift in Sources */,
 				BC4547A63BC4516DDEBBB8B4 /* Application+Reducer.swift in Sources */,
 				2E5F963B763AF86EB86EA750 /* Application+State.swift in Sources */,
 				3BD967F862D69B940F8C9FE9 /* Application+Store.swift in Sources */,
@@ -915,7 +918,7 @@
 				F8C79373267C7697002C49C2 /* FileClient+User.swift in Sources */,
 				F8AEA0AAC6DB0F1AAF103E3F /* Application+ActivityFeed.swift in Sources */,
 				C40C8904B080299578919BBF /* Application+Environment.swift in Sources */,
-				F8C7929C267BB39C002C49C2 /* User.swift in Sources */,
+				F8C7929C267BB39C002C49C2 /* Models.swift in Sources */,
 				1D6A2D596D14D20664061735 /* Application+Reducer.swift in Sources */,
 				3D5A357F36994D4DE863A23F /* Application+State.swift in Sources */,
 				99BD5E946DAD4697213BD660 /* Application+Store.swift in Sources */,
@@ -952,6 +955,7 @@
 				F8C7946A267E3A15002C49C2 /* Difference+.swift in Sources */,
 				F8C792B1267BB8A9002C49C2 /* UsersSessionsReducerTests.swift in Sources */,
 				F8C793F0267D006F002C49C2 /* SessionReducer.swift in Sources */,
+				F8C7952F267F428F002C49C2 /* MetricsTests.swift in Sources */,
 				F8C794AF267E4064002C49C2 /* LeaderboardTests.swift in Sources */,
 				F4AB102E4DAB8A94A60D3471 /* MockUrlProtocol.swift in Sources */,
 				F8C7946B267E3A15002C49C2 /* Mock+resources.swift in Sources */,

@@ -115,14 +115,14 @@ class LeaderboardViewController: UIViewController {
 								surname: model.user?.surname ?? "",
 								imageUrl: model.user?.imageUrl,
 								laps: model.laps.count,
-								speed: model.speed()
+								speed: model.peakSpeed()
 							)
 						}
 				case .speed:
 					return state
 						.sessions
 						.sorted { s1, s2 in
-							s1.speed() > s2.speed()
+							s1.peakSpeed() > s2.peakSpeed()
 						}
 						.map { (model: Session) -> LeaderboardSectionItem in
 							LeaderboardSectionItem(
@@ -132,7 +132,7 @@ class LeaderboardViewController: UIViewController {
 								surname: model.user?.surname ?? "",
 								imageUrl: model.user?.imageUrl,
 								laps: model.laps.count,
-								speed: model.speed()
+								speed: model.peakSpeed()
 							)
 						}
 				}
@@ -196,7 +196,7 @@ struct LeaderboardSectionItem {
 	var surname: String
 	var imageUrl: URL?
 	var laps: Int
-	var speed: Int
+	var speed: Double
 }
 
 extension LeaderboardSectionItem {
