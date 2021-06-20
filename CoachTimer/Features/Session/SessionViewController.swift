@@ -60,32 +60,7 @@ class SessionViewController: UIViewController {
 		guard let store = self.store else {
 			return
 		}
-		
-		// MARK: - Disable start button until the distance field filled
-		
-//		distanceField.rx
-//			.text
-//			.compactMap { $0 }
-//			.map { $0.isEmpty == false }
-//			.bind(to: startButton.rx.isEnabled)
-//			.disposed(by: disposeBag)
-		
-		// MARK: - resign keyboard
-		
-//		startButton.rx
-//			.tap
-//			.bind(to: self.rx.resignFirstResponder)
-//			.disposed(by: disposeBag)
-		
-		// MARK: - Distance
-		
-//		distanceField.rx
-//			.text
-//			.compactMap { $0 }
-//			.map { Int($0) }
-//			.bind(to: store.rx.distance)
-//			.disposed(by: disposeBag)
-		
+	
 		// MARK: - Config cell
 		
 		tableView.rowHeight = 33
@@ -100,14 +75,14 @@ class SessionViewController: UIViewController {
 		// MARK: - session name
 		
 		let alert = UIAlertController(
-			title: "Session name",
-			message: "Enter a tag for the session",
+			title: "Session distance",
+			message: "Enter a distance for this session",
 			preferredStyle: .alert
 		)
 		
 		alert.addTextField { textField in
-			textField.placeholder = "session name"
-			textField.text = "default"
+			textField.placeholder = "distance in [m]"
+			textField.text = "100"
 		}
 		
 		alert.addAction(
@@ -119,13 +94,14 @@ class SessionViewController: UIViewController {
 						return
 					}
 					
-					self?.store?.send(.name(textField.text))
+					
+					self?.store?.send(.distance(Int(textField.text ?? "1")))
 				}
 			)
 		)
 		
 		// 4. Present the alert.
-		//self.present(alert, animated: true, completion: nil)
+		self.present(alert, animated: true, completion: nil)
 		
 		// MARK: - Username
 		

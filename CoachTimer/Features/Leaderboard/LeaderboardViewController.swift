@@ -45,7 +45,7 @@ class LeaderboardViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.title = L10n.App.name
+		self.title = "Leaderboard"
 		
 		guard let store = self.store else {
 			return
