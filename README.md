@@ -28,6 +28,78 @@ Every feature is defined by some types and values that model your domain:
 * __Reducer__: A function that describes how to evolve the current state of the app to the next state given an action. The reducer is also responsible for returning any effects that should be run, such as API requests, which can be done by returning an Effect value.
 * __Store__: The runtime that actually drives your feature. You send all user actions to the store so that the store can run the reducer and effects, and you can observe state changes in the store so that you can update UI.
 
+The benefits of doing this is that you will instantly unlock testability of your feature, and you will be able to break large, complex features into smaller domains that can be glued together.
+
+### User list feature
+
+The State
+
+```swift 
+struct UsersState {
+	var list: [User]
+	var isLoading: Bool
+	var alert: String?
+	var currentPage: Int
+	var currentUser: User?
+}
+```
+
+The Actions
+
+```swift 
+public enum UsersAction: Equatable {
+	case purge
+	case load
+	case loadResponse([User])
+	case fetch
+	case fetchResponse([User])
+	case persistUsers
+	case persistUsersResponse(Bool)
+	case selectUser(User?)
+}
+```
+
+The Environment
+
+
+```swift 
+public struct UsersEnvironment {
+    // load users from a loca storage
+	var loadUsers: () -> Effect<[User]>
+    
+    // fetch users from remote
+	var fetch: () -> Effect<[User]>
+    
+    // persist locally a collection of User
+	var persistUsers: ([User]) -> Effect<Bool>
+}
+
+```
+
+The reducer
+
+```swift 
+public func usersReducer(
+	state: inout UsersState,
+	action: UsersAction,
+	environment: UsersEnvironment
+) -> [Effect<UsersAction>] {
+	switch action {
+	case .fetch:
+		state.isLoading = true
+		
+		return [
+			environment.fetch().map { UsersAction.fetchResponse($0) }
+		]
+        ...
+    }
+}
+```
+
+As you can see the enviromnet resolve extrenally the effect and then return the result in an action handled by the reducer.
+
+```environment.fetch().map { UsersAction.fetchResponse($0) }```
+
 ### Testing
 
 Testing
@@ -62,7 +134,7 @@ An then we should create an initial domain for our feature.
 			alert: nil,
 			currentUser: nil
 		)
-        ```
+```
 And then we are ready for testing
         
 ```swift

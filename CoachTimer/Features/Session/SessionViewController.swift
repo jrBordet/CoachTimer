@@ -10,6 +10,7 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 import RxComposableArchitecture
+import SceneBuilder
 
 class SessionViewController: UIViewController {
 	@IBOutlet var userImage: UIImageView!
@@ -54,6 +55,24 @@ class SessionViewController: UIViewController {
 	
 	// MARK: - Life cycle
 	
+	@objc func chartTapped() {
+		guard let store = self.store else {
+			return
+		}
+		
+		let chart = Scene<SessionChartViewController>().render()
+		
+		chart.store = store
+		
+		self.navigationController?.pushViewController(chart, animated: true)
+	}
+	
+	// MARK: - Life cycle
+	
+	deinit {
+		print("SessionViewController deinit")
+	}
+	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
@@ -67,6 +86,11 @@ class SessionViewController: UIViewController {
 		guard let store = self.store else {
 			return
 		}
+		
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "chart", style: .plain, target: self, action: #selector(chartTapped))
+		let search = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(chartTapped))
+
+		navigationItem.rightBarButtonItems = [search]
 		
 		// MARK: - Cadence
 		

@@ -45,17 +45,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //			environment: LeaderboardEnvironment()
 //		)
 		
+		let chart = Scene<SessionChartViewController>().render()
+		
+		/// 	public var store: Store<SessionState, SessionAction>?
+
+		let sessionStore = Store<SessionState, SessionAction>(
+			initialValue: SessionState(
+				id: "",
+				user: User.sample,
+				distance: 100,
+				laps: [.lap_0, .lap_1, .lap_2],
+				sessions: [],
+				lapsCount: 2,
+				peakSpeed: 100
+			),
+			reducer: sessionReducer,
+			environment: SessionEnvironment(sync: { sessio in
+				.just(true)
+			})
+		)
+		
+		chart.store = sessionStore
+		
 		let tabBarController = UITabBarController()
 		
 		let item1 = UITabBarItem(title: "Home", image: UIImage(named: ""), tag: 0)
 		let item2 = UITabBarItem(title: "Leaderboard", image:  UIImage(named: ""), tag: 1)
-		
+		let item3 = UITabBarItem(title: "chart", image:  UIImage(named: ""), tag: 1)
+
 		homeScene.tabBarItem = item1
 		leaderboard.tabBarItem = item2
+		chart.tabBarItem = item3
 		
 		tabBarController.setViewControllers([
 			homeScene,
-			leaderboard
+			leaderboard,
+			chart
 		], animated: false)
 		
 		self.window?.rootViewController = tabBarController

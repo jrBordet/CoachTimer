@@ -22,7 +22,8 @@ target 'CoachTimer' do
 
   pod 'RxDataSources', '4.0.1'
 	pod "SwiftPrettyPrint", "~> 1.1.0" #, :configuration => "Debug"
-	
+	pod 'SwiftCharts', :git => 'https://github.com/i-schuetz/SwiftCharts.git'
+
 	# add the Firebase pod for Google Analytics
 	# pod 'Firebase/Analytics'
 	# add pods for any other desired Firebase products
@@ -50,7 +51,7 @@ target 'CoachTimerMock' do
 
   shared_pods
 
-
+	pod 'SwiftCharts', :git => 'https://github.com/i-schuetz/SwiftCharts.git'
   pod 'RxDataSources', '4.0.1'
 	pod 'Tabman', '~> 2.9'
 	pod "SwiftPrettyPrint", "~> 1.1.0" #, :configuration => "Debug"
