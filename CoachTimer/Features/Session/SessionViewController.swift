@@ -68,13 +68,6 @@ class SessionViewController: UIViewController {
 			return
 		}
 		
-		func formatter(_ v: Double, from: String, format: String = ".1") -> String {
-			let v1 = v, speedFormat = format
-			let s = "\(v1.format(f: speedFormat))"
-
-			return "\(from) \(s)"
-		}
-		
 		// MARK: - Cadence
 		
 		store.value
@@ -233,8 +226,7 @@ class SessionViewController: UIViewController {
 			)
 		)
 		
-		// 4. Present the alert.
-		self.present(alert, animated: true, completion: nil)
+		present(alert, animated: true, completion: nil)
 		
 		// MARK: - Username
 		
@@ -377,6 +369,12 @@ func stringFromTimeInterval(_ ms: Int) -> String {
 	)
 }
 
+func formatter(_ v: Double, from: String, format: String = ".1") -> String {
+	let v1 = v, speedFormat = format
+	let s = "\(v1.format(f: speedFormat))"
+
+	return "\(from) \(s)"
+}
 
 extension Reactive where Base: SessionViewController {
 	var image: Binder<(URL)> {
