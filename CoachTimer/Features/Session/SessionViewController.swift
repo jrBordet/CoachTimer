@@ -304,10 +304,16 @@ class SessionViewController: UIViewController {
 //			.tap
 //			.bind(to: store.rx.saveCurrentSession)
 //			.disposed(by: disposeBag)
+				
+		// MARK: - take a lap
 		
-		// MARK: - take lap
 		let lapsValues = mainTimer
-			.sample(lapButton.rx.tap)
+			.sample(
+				Observable.merge(
+					lapButton.rx.tap.map { true },
+					stopButton.rx.tap.map { true }
+				)
+			)
 			.scan ([Int](), accumulator: { lapTimes, newTime in
 				lapTimes + [newTime - lapTimes.reduce (0, +)]
 			})
