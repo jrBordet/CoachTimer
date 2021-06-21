@@ -10,6 +10,7 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 import RxComposableArchitecture
+import SceneBuilder
 
 class SessionViewController: UIViewController {
 	@IBOutlet var userImage: UIImageView!
@@ -22,9 +23,24 @@ class SessionViewController: UIViewController {
 		}
 	}
 	
-	@IBOutlet var startButton: UIButton!
-	@IBOutlet var stopButton: UIButton!
-	@IBOutlet var lapButton: UIButton!
+	@IBOutlet var startButton: UIButton! {
+		didSet {
+			startButton.clipsToBounds = true
+			startButton.layer.cornerRadius = 5
+		}
+	}
+	@IBOutlet var stopButton: UIButton! {
+		didSet {
+			stopButton.clipsToBounds = true
+			stopButton.layer.cornerRadius = 5
+		}
+	}
+	@IBOutlet var lapButton: UIButton! {
+		didSet {
+			lapButton.clipsToBounds = true
+			lapButton.layer.cornerRadius = 5
+		}
+	}
 	@IBOutlet var timerLabel: UILabel!
 	@IBOutlet var usernameLabel: UILabel!
 	@IBOutlet var tableView: UITableView!
@@ -54,6 +70,25 @@ class SessionViewController: UIViewController {
 	
 	// MARK: - Life cycle
 	
+	@objc func chartTapped() {
+		guard let store = self.store else {
+			return
+		}
+		
+		let chart = Scene<SessionChartViewController>().render()
+		
+		chart.store = store
+		
+		self.navigationController?.pushViewController(chart, animated: true)
+		//self.present(chart, animated: true, completion: nil)
+	}
+	
+	// MARK: - Life cycle
+	
+	deinit {
+		print("SessionViewController deinit")
+	}
+	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
@@ -68,12 +103,10 @@ class SessionViewController: UIViewController {
 			return
 		}
 		
-		func formatter(_ v: Double, from: String, format: String = ".1") -> String {
-			let v1 = v, speedFormat = format
-			let s = "\(v1.format(f: speedFormat))"
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "chart", style: .plain, target: self, action: #selector(chartTapped))
+		let search = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(chartTapped))
 
-			return "\(from) \(s)"
-		}
+		navigationItem.rightBarButtonItems = [search]
 		
 		// MARK: - Cadence
 		
@@ -233,8 +266,7 @@ class SessionViewController: UIViewController {
 			)
 		)
 		
-		// 4. Present the alert.
-		self.present(alert, animated: true, completion: nil)
+		present(alert, animated: true, completion: nil)
 		
 		// MARK: - Username
 		
@@ -272,10 +304,16 @@ class SessionViewController: UIViewController {
 //			.tap
 //			.bind(to: store.rx.saveCurrentSession)
 //			.disposed(by: disposeBag)
+				
+		// MARK: - take a lap
 		
-		// MARK: - take lap
 		let lapsValues = mainTimer
-			.sample(lapButton.rx.tap)
+			.sample(
+				Observable.merge(
+					lapButton.rx.tap.map { true },
+					stopButton.rx.tap.map { true }
+				)
+			)
 			.scan ([Int](), accumulator: { lapTimes, newTime in
 				lapTimes + [newTime - lapTimes.reduce (0, +)]
 			})
@@ -285,17 +323,13 @@ class SessionViewController: UIViewController {
 			.map { laps  -> [Lap] in
 				laps.enumerated().map { index, value in
 					Lap(
-						id: index,
+						id: (index + 1),
 						time: value
 					)
 				}
 			}
 			.bind(to: store.rx.laps)
 			.disposed(by: disposeBag)
-		
-		let laps = lapsValues
-			.map { $0.map { stringFromTimeInterval($0) } }
-			.share(replay: 1)
 		
 		// MARK: - User Image
 		
@@ -305,23 +339,21 @@ class SessionViewController: UIViewController {
 			.bind(to: self.rx.image)
 			.disposed(by: disposeBag)
 		
-		// MARK: - Bind dataSource
+		// MARK: - Bind laps
 		
 		setupDataSource()
 		
-		laps.map {
-			$0.enumerated().map { index, value in
-				SessionSectionItem(id: String(index), time: value)
+		store.value
+			.map { $0.laps }
+			.map { $0.map { SessionSectionItem(id: String($0.id), time: stringFromTimeInterval($0.time)) } }
+			.map { items -> [SessionListSectionModel] in
+				[
+					SessionListSectionModel(model: "", items: items)
+				]
 			}
-		}
-		.map { items -> [SessionListSectionModel] in
-			[
-				SessionListSectionModel(model: "", items: items)
-			]
-		}
-		.asDriver(onErrorJustReturn: [])
-		.drive(tableView.rx.items(dataSource: dataSource))
-		.disposed(by: disposeBag)
+			.asDriver(onErrorJustReturn: [])
+			.drive(tableView.rx.items(dataSource: dataSource))
+			.disposed(by: disposeBag)
 	}
 	
 	// MARK: - Data Source Configuration
@@ -363,7 +395,7 @@ extension SessionViewController {
 				return UITableViewCell(style: .default, reuseIdentifier: nil)
 			}
 			
-			cell.timeLabel.text =  "\(item.id)" + " - " + item.time
+			cell.timeLabel.text =  "\(item.id)" + ". " + item.time
 			
 			return cell
 		}
@@ -377,6 +409,12 @@ func stringFromTimeInterval(_ ms: Int) -> String {
 	)
 }
 
+func formatter(_ v: Double, from: String, format: String = ".1") -> String {
+	let v1 = v, speedFormat = format
+	let s = "\(v1.format(f: speedFormat))"
+
+	return "\(from) \(s)"
+}
 
 extension Reactive where Base: SessionViewController {
 	var image: Binder<(URL)> {

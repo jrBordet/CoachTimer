@@ -13,6 +13,7 @@ import RxSwift
 import RxCocoa
 import RxComposableArchitectureTests
 import SnapshotTesting
+import SceneBuilder
 
 class SessionReducer: XCTestCase {
 	let env = SessionEnvironment(
@@ -21,22 +22,77 @@ class SessionReducer: XCTestCase {
 		}
 	)
 	
+	func testSessionUI() {
+		let state = SessionState(
+			id: "",
+			user: User.sample,
+			distance: 100,
+			laps: [Lap.lap_0, .lap_1, Lap.lap_2],
+			sessions: [],
+			lapsCount: 3,
+			peakSpeed: 10
+		)
+		
+		let store = Store<SessionState, SessionAction>(
+			initialValue: state,
+			reducer: sessionReducer,
+			environment: env
+		)
+		
+		let vc = Scene<SessionViewController>().render()
+		
+		vc.store = store
+
+		assertSnapshot(matching: vc, as: .image(on: .iPhoneX), record: false)
+	}
+	
+	func testChartUI() {
+		let state = SessionState(
+			id: "",
+			user: User.sample,
+			distance: 100,
+			laps: [Lap.lap_0, .lap_1, Lap.lap_2],
+			sessions: [],
+			lapsCount: 3,
+			peakSpeed: 10
+		)
+		
+		let store = Store<SessionState, SessionAction>(
+			initialValue: state,
+			reducer: sessionReducer,
+			environment: env
+		)
+		
+		let expectation = self.expectation(description: "Scaling")
+		
+		let vc = Scene<SessionChartViewController>().render()
+
+		vc.store = store
+		assertSnapshot(matching: vc, as: .image(on: .iPhoneX), record: true)
+		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+			expectation.fulfill()
+		})
+		
+		waitForExpectations(timeout: 5, handler: nil)
+	}
+	
 	func testStartAndCompleteSession() {
 		assert(
 			initialValue: SessionState(id: "", user: User.sample, distance: nil, laps: [], sessions: [], lapsCount: 0, peakSpeed: 0),
 			reducer: sessionReducer,
 			environment: env,
-			steps: Step(.send, SessionAction.name("test session name"), { state in
+			steps: Step(.send, .name("test session name"), { state in
 				state.id = "test session name"
-			}), Step(.send, SessionAction.distance(10), { state in
+			}), Step(.send, .distance(10), { state in
 				state.distance = 10
 			}),
-			Step(.send, SessionAction.lap(Lap.lap_0), { state in
+			Step(.send, .lap(Lap.lap_0), { state in
 				state.laps = [.lap_0]
 				state.lapsCount = 1
 				state.peakSpeed = 0.01
 			}),
-			Step(.send, SessionAction.lap(Lap.lap_1), { state in
+			Step(.send, .lap(Lap.lap_1), { state in
 				state.laps = [
 					.lap_0,
 					.lap_1
@@ -45,7 +101,7 @@ class SessionReducer: XCTestCase {
 				state.lapsCount = 2
 				state.peakSpeed = 0.01
 			}),
-			Step(.send, SessionAction.saveCurrentSession, { state in
+			Step(.send, .saveCurrentSession, { state in
 				state.sessions = [
 					Session(
 						id: "test session name",
@@ -60,7 +116,7 @@ class SessionReducer: XCTestCase {
 				
 				state.peakSpeed = 0.01
 			}),
-			Step(StepType.receive, SessionAction.syncResponse(true), { state in
+			Step(.receive, .syncResponse(true), { state in
 				
 			})
 		)

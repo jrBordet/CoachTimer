@@ -132,6 +132,10 @@
 		F8C79537267F75CE002C49C2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C79536267F75CD002C49C2 /* Utilities.swift */; };
 		F8C79538267F75CE002C49C2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C79536267F75CD002C49C2 /* Utilities.swift */; };
 		F8C7953F267F80B6002C49C2 /* Mock+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F52511041654B3770A834A /* Mock+.swift */; };
+		F8C795B826806A4F002C49C2 /* SessionChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C795B626806A4F002C49C2 /* SessionChartViewController.swift */; };
+		F8C795B926806A4F002C49C2 /* SessionChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C795B626806A4F002C49C2 /* SessionChartViewController.swift */; };
+		F8C795BA26806A4F002C49C2 /* SessionChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8C795B726806A4F002C49C2 /* SessionChartViewController.xib */; };
+		F8C795BB26806A4F002C49C2 /* SessionChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8C795B726806A4F002C49C2 /* SessionChartViewController.xib */; };
 		F9775398CCFCDB8C2AA6F730 /* arrivals.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DD1907085871F01626364E6 /* arrivals.json */; };
 		FA6E91BDA1043C475F03732E /* ApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F61B400F5288CE3A8D59AF6 /* ApplicationTests.swift */; };
 		FBA78B7128F99726852D83CA /* stations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 433C887A11F19A6F5BA1F5C9 /* stations.txt */; };
@@ -213,6 +217,8 @@
 		EC3E44577EC927EC67693EF6 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		EFF7B3A524EFFF790607A686 /* Pods-CoachTimerMock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.debug.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.debug.xcconfig"; sourceTree = "<group>"; };
 		F701327C27C764224559071E /* Pods-CoachTimerTests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.mock.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.mock.xcconfig"; sourceTree = "<group>"; };
+		F8AD0F2B2681249100983441 /* testSessionUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testSessionUI.1.png; sourceTree = "<group>"; };
+		F8AD0F3326812A3C00983441 /* testChartUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testChartUI.1.png; sourceTree = "<group>"; };
 		F8C7927F267BB095002C49C2 /* SeedUserRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedUserRequestModel.swift; sourceTree = "<group>"; };
 		F8C7929A267BB39C002C49C2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F8C792B0267BB8A9002C49C2 /* UsersSessionsReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersSessionsReducerTests.swift; sourceTree = "<group>"; };
@@ -233,6 +239,8 @@
 		F8C794C4267E44A2002C49C2 /* LeaderboardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardCell.xib; sourceTree = "<group>"; };
 		F8C7952E267F428F002C49C2 /* MetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsTests.swift; sourceTree = "<group>"; };
 		F8C79536267F75CD002C49C2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		F8C795B626806A4F002C49C2 /* SessionChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionChartViewController.swift; sourceTree = "<group>"; };
+		F8C795B726806A4F002C49C2 /* SessionChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionChartViewController.xib; sourceTree = "<group>"; };
 		F9C06C2AFF4B5C617016E544 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -459,6 +467,8 @@
 		BBF02D56FBF1C01C362C813E /* CoachTimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				F8AD0F292681249100983441 /* __Snapshots__ */,
+				F8AD0F1D268122BE00983441 /* SessionReducer */,
 				F8C79467267E3A15002C49C2 /* Utilities */,
 				F8C792B0267BB8A9002C49C2 /* UsersSessionsReducerTests.swift */,
 				F8C79377267C76F2002C49C2 /* FileClientTests.swift */,
@@ -541,12 +551,37 @@
 		F65C19D9D1A3B236E8D4D855 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F8C795B226806A2C002C49C2 /* Chart */,
 				9451C92541EC440D2D8CB19E /* Users+Sessions.swift */,
 				592203DE72B06F9309D07BB4 /* Session */,
 				ED7C3F0F2E372C7C31B5BCEE /* UsersList */,
 				F8C794B6267E43B7002C49C2 /* Leaderboard */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		F8AD0F1D268122BE00983441 /* SessionReducer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SessionReducer;
+			sourceTree = "<group>";
+		};
+		F8AD0F292681249100983441 /* __Snapshots__ */ = {
+			isa = PBXGroup;
+			children = (
+				F8AD0F2A2681249100983441 /* SessionReducer */,
+			);
+			path = __Snapshots__;
+			sourceTree = "<group>";
+		};
+		F8AD0F2A2681249100983441 /* SessionReducer */ = {
+			isa = PBXGroup;
+			children = (
+				F8AD0F3326812A3C00983441 /* testChartUI.1.png */,
+				F8AD0F2B2681249100983441 /* testSessionUI.1.png */,
+			);
+			path = SessionReducer;
 			sourceTree = "<group>";
 		};
 		F8C79299267BB38B002C49C2 /* Common */ = {
@@ -595,6 +630,15 @@
 				F8C794C4267E44A2002C49C2 /* LeaderboardCell.xib */,
 			);
 			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		F8C795B226806A2C002C49C2 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				F8C795B626806A4F002C49C2 /* SessionChartViewController.swift */,
+				F8C795B726806A4F002C49C2 /* SessionChartViewController.xib */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -695,6 +739,7 @@
 				848C08BF6008BF79B920FE77 /* Localizable.strings in Resources */,
 				F8C794C8267E44A2002C49C2 /* LeaderboardCell.xib in Resources */,
 				F8C794BC267E43DE002C49C2 /* LeaderboardViewController.xib in Resources */,
+				F8C795BB26806A4F002C49C2 /* SessionChartViewController.xib in Resources */,
 				0AAAE369315929389FBEDF64 /* SessionViewController.xib in Resources */,
 				F8C793F9267E26A2002C49C2 /* README.md in Resources */,
 				19ACB6B63AF234FAFCBEC0D4 /* UserCell.xib in Resources */,
@@ -725,6 +770,7 @@
 				874B62190DB637FD359C33C9 /* Localizable.strings in Resources */,
 				F8C794C7267E44A2002C49C2 /* LeaderboardCell.xib in Resources */,
 				F8C794BB267E43DE002C49C2 /* LeaderboardViewController.xib in Resources */,
+				F8C795BA26806A4F002C49C2 /* SessionChartViewController.xib in Resources */,
 				84A56F09ABC59E8D1EA7A469 /* SessionViewController.xib in Resources */,
 				F8C793F8267E26A2002C49C2 /* README.md in Resources */,
 				834145D70A421C0054F07922 /* UserCell.xib in Resources */,
@@ -897,6 +943,7 @@
 				F8C79280267BB095002C49C2 /* SeedUserRequestModel.swift in Sources */,
 				1FA97CE426ADC053B16A872B /* Networking.swift in Sources */,
 				400318E409AF79A1CCB6303F /* Session+Feature.swift in Sources */,
+				F8C795B826806A4F002C49C2 /* SessionChartViewController.swift in Sources */,
 				38FE37781BB85A35B969BC07 /* SessionViewController+Binder.swift in Sources */,
 				1430DA2E91E48D8A29385187 /* SessionViewController.swift in Sources */,
 				0CC160175A6A4785D56ECE0E /* Users+Feature.swift in Sources */,
@@ -938,6 +985,7 @@
 				BE3F9D23FD21694206FA55A5 /* Networking.swift in Sources */,
 				375A6BBA356BBC5632FAA5E5 /* Session+Feature.swift in Sources */,
 				C2A1CCE5A357B84FE52EA2DB /* SessionViewController+Binder.swift in Sources */,
+				F8C795B926806A4F002C49C2 /* SessionChartViewController.swift in Sources */,
 				F8C7953F267F80B6002C49C2 /* Mock+.swift in Sources */,
 				EA7DFEDF3EECA19B70B30A33 /* SessionViewController.swift in Sources */,
 				4EC1505CC2E42C47AB4971A1 /* Users+Feature.swift in Sources */,

@@ -17,15 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		self.window = UIWindow(frame: UIScreen.main.bounds)
 		
-		let rootScene = Scene<UsersListViewController>().render()
 		
-		rootScene.store = applicationStore.view(
+		// Users
+		let usersScene = Scene<UsersListViewController>().render()
+		
+		usersScene.store = applicationStore.view(
 			value: { $0.usersSessionsFeature },
 			action: { .userSessions($0) }
 		)
 		
-		let homeScene = UINavigationController(rootViewController: rootScene)
+		let homeScene = UINavigationController(rootViewController: usersScene)
 		
+		
+		// Leaderboard
 		let leaderboard = Scene<LeaderboardViewController>().render()
 		
 		leaderboard.store = applicationStore.view(
@@ -33,23 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			action: { .leaderboard($0) }
 		)
 		
-//		leaderboard.store = Store(
-//			initialValue: LeaderboardState(sessions: [
-//				Session.one,
-//				.two,
-//				.three
-//			],
-//			sort: .speed
-//			),
-//			reducer: leaderboardReducer,
-//			environment: LeaderboardEnvironment()
-//		)
-		
+		// Tab bar
 		let tabBarController = UITabBarController()
 		
 		let item1 = UITabBarItem(title: "Home", image: UIImage(named: ""), tag: 0)
 		let item2 = UITabBarItem(title: "Leaderboard", image:  UIImage(named: ""), tag: 1)
-		
+
 		homeScene.tabBarItem = item1
 		leaderboard.tabBarItem = item2
 		

@@ -93,8 +93,15 @@ class UsersReducerTests: XCTestCase {
 	}
 	
 	func testUsersFilledFromNetworking() {
+		let initalState = UsersState(
+			list: [],
+			isLoading: false,
+			alert: nil,
+			currentUser: nil
+		)
+		
 		assert(
-			initialValue: UsersState(list: [], isLoading: false, alert: nil, currentUser: nil),
+			initialValue: initalState,
 			reducer: usersReducer,
 			environment: env_filled,
 			steps: Step(.send, UsersAction.load, { state in

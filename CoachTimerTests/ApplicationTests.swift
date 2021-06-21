@@ -81,6 +81,9 @@ class ApplicationTests: XCTestCase {
 				state.usersSession.user.list = [
 					.sample
 				]
+			}),
+			Step(.send, .leaderboard(.sort(.speed)),{ state in
+				state.sort = .speed
 			})
 		)
 	}
