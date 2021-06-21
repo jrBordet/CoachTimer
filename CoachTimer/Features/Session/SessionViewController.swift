@@ -23,9 +23,24 @@ class SessionViewController: UIViewController {
 		}
 	}
 	
-	@IBOutlet var startButton: UIButton!
-	@IBOutlet var stopButton: UIButton!
-	@IBOutlet var lapButton: UIButton!
+	@IBOutlet var startButton: UIButton! {
+		didSet {
+			startButton.clipsToBounds = true
+			startButton.layer.cornerRadius = 5
+		}
+	}
+	@IBOutlet var stopButton: UIButton! {
+		didSet {
+			stopButton.clipsToBounds = true
+			stopButton.layer.cornerRadius = 5
+		}
+	}
+	@IBOutlet var lapButton: UIButton! {
+		didSet {
+			lapButton.clipsToBounds = true
+			lapButton.layer.cornerRadius = 5
+		}
+	}
 	@IBOutlet var timerLabel: UILabel!
 	@IBOutlet var usernameLabel: UILabel!
 	@IBOutlet var tableView: UITableView!
