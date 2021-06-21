@@ -43,6 +43,12 @@ class LeaderboardTests: XCTestCase {
 					.two,
 					.one
 				]
+			}), Step(.send, LeaderboardAction.sort(.speed), { state in
+				state.sort = .speed
+				state.sessions = [
+					.one,
+					.two
+				]
 			})
 		)
 	}
