@@ -48,7 +48,6 @@ extension Reactive where Base: SessionChartViewController {
 
 
 class TrendlineExample: UIViewController {
-	
 	fileprivate var chart: Chart? // arc
 	
 	public var laps: [Lap] = []
@@ -62,7 +61,7 @@ class TrendlineExample: UIViewController {
 				
 		let chartPoints: [ChartPoint] =
 			laps
-			.map { ($0.id, $0.timeInSec()) }
+			.map { ($0.id, $0.time) }
 			.map {
 				ChartPoint(
 					x: ChartAxisValueDouble($0.0, labelSettings: labelSettings),
@@ -77,8 +76,8 @@ class TrendlineExample: UIViewController {
 
 		let trendLineModel = ChartLineModel(chartPoints: TrendlineGenerator.trendline(chartPoints), lineColor: UIColor.blue, animDuration: 0.5, animDelay: 1)
 		
-		let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "Axis title", settings: labelSettings))
-		let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "Axis title", settings: labelSettings.defaultVertical()))
+		let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings))
+		let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "speed (100 [ms])", settings: labelSettings.defaultVertical()))
 		let chartFrame = ExamplesDefaults.chartFrame(view.bounds)
 		
 		let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
