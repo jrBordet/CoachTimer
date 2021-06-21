@@ -63,11 +63,18 @@ class SessionReducer: XCTestCase {
 			environment: env
 		)
 		
+		let expectation = self.expectation(description: "Scaling")
+		
 		let vc = Scene<SessionChartViewController>().render()
-		
+
 		vc.store = store
+		assertSnapshot(matching: vc, as: .image(on: .iPhoneX), record: true)
 		
-		assertSnapshot(matching: vc, as: .image(on: .iPhoneX), record: false)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+			expectation.fulfill()
+		})
+		
+		waitForExpectations(timeout: 5, handler: nil)
 	}
 	
 	func testStartAndCompleteSession() {

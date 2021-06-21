@@ -218,7 +218,7 @@
 		EFF7B3A524EFFF790607A686 /* Pods-CoachTimerMock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.debug.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.debug.xcconfig"; sourceTree = "<group>"; };
 		F701327C27C764224559071E /* Pods-CoachTimerTests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.mock.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.mock.xcconfig"; sourceTree = "<group>"; };
 		F8AD0F2B2681249100983441 /* testSessionUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testSessionUI.1.png; sourceTree = "<group>"; };
-		F8AD0F2C2681249100983441 /* testChartUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testChartUI.1.png; sourceTree = "<group>"; };
+		F8AD0F3326812A3C00983441 /* testChartUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testChartUI.1.png; sourceTree = "<group>"; };
 		F8C7927F267BB095002C49C2 /* SeedUserRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedUserRequestModel.swift; sourceTree = "<group>"; };
 		F8C7929A267BB39C002C49C2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F8C792B0267BB8A9002C49C2 /* UsersSessionsReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersSessionsReducerTests.swift; sourceTree = "<group>"; };
@@ -578,8 +578,8 @@
 		F8AD0F2A2681249100983441 /* SessionReducer */ = {
 			isa = PBXGroup;
 			children = (
+				F8AD0F3326812A3C00983441 /* testChartUI.1.png */,
 				F8AD0F2B2681249100983441 /* testSessionUI.1.png */,
-				F8AD0F2C2681249100983441 /* testChartUI.1.png */,
 			);
 			path = SessionReducer;
 			sourceTree = "<group>";
