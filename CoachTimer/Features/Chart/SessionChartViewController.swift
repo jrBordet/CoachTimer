@@ -54,8 +54,10 @@ class TrendlineExample: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		print(laps)
+				
+		guard laps.count > 0 else {
+			return
+		}
 		
 		let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
 				
@@ -69,12 +71,22 @@ class TrendlineExample: UIViewController {
 				)
 			}
 
-		let xValues = chartPoints.map{$0.x}
+		let xValues = chartPoints.map { $0.x }
 		let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 10, maxSegmentCount: 20, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettings)}, addPaddingSegmentIfEdge: false)
 		
 		let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: UIColor.red, animDuration: 1, animDelay: 0)
+				
+		let sum = laps
+			.map { $0.time }
+			.reduce(0, +)
+		let avg = Double(sum) / Double(laps.count)
 
-		let trendLineModel = ChartLineModel(chartPoints: TrendlineGenerator.trendline(chartPoints), lineColor: UIColor.blue, animDuration: 0.5, animDelay: 1)
+		let p = [
+			ChartPoint(x: ChartAxisValue(scalar: 0), y: ChartAxisValue(scalar: avg)),
+			ChartPoint(x: ChartAxisValue(scalar: Double(laps.count - 1)), y: ChartAxisValue(scalar: avg))
+		]
+			
+		let trendLineModel = ChartLineModel(chartPoints: p, lineColor: UIColor.blue, animDuration: 0.5, animDelay: 1)
 		
 		let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings))
 		let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "speed (100 [ms])", settings: labelSettings.defaultVertical()))
