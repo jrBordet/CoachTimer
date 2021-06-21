@@ -65,6 +65,7 @@ class SessionViewController: UIViewController {
 		chart.store = store
 		
 		self.navigationController?.pushViewController(chart, animated: true)
+		//self.present(chart, animated: true, completion: nil)
 	}
 	
 	// MARK: - Life cycle
@@ -301,17 +302,13 @@ class SessionViewController: UIViewController {
 			.map { laps  -> [Lap] in
 				laps.enumerated().map { index, value in
 					Lap(
-						id: index,
+						id: (index + 1),
 						time: value
 					)
 				}
 			}
 			.bind(to: store.rx.laps)
 			.disposed(by: disposeBag)
-		
-		let laps = lapsValues
-			.map { $0.map { stringFromTimeInterval($0) } }
-			.share(replay: 1)
 		
 		// MARK: - User Image
 		
@@ -321,23 +318,21 @@ class SessionViewController: UIViewController {
 			.bind(to: self.rx.image)
 			.disposed(by: disposeBag)
 		
-		// MARK: - Bind dataSource
+		// MARK: - Bind laps
 		
 		setupDataSource()
 		
-		laps.map {
-			$0.enumerated().map { index, value in
-				SessionSectionItem(id: String(index), time: value)
+		store.value
+			.map { $0.laps }
+			.map { $0.map { SessionSectionItem(id: String($0.id), time: stringFromTimeInterval($0.time)) } }
+			.map { items -> [SessionListSectionModel] in
+				[
+					SessionListSectionModel(model: "", items: items)
+				]
 			}
-		}
-		.map { items -> [SessionListSectionModel] in
-			[
-				SessionListSectionModel(model: "", items: items)
-			]
-		}
-		.asDriver(onErrorJustReturn: [])
-		.drive(tableView.rx.items(dataSource: dataSource))
-		.disposed(by: disposeBag)
+			.asDriver(onErrorJustReturn: [])
+			.drive(tableView.rx.items(dataSource: dataSource))
+			.disposed(by: disposeBag)
 	}
 	
 	// MARK: - Data Source Configuration
