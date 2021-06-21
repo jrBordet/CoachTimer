@@ -379,7 +379,7 @@ extension SessionViewController {
 				return UITableViewCell(style: .default, reuseIdentifier: nil)
 			}
 			
-			cell.timeLabel.text =  "\(item.id)" + " - " + item.time
+			cell.timeLabel.text =  "\(item.id)" + ". " + item.time
 			
 			return cell
 		}
