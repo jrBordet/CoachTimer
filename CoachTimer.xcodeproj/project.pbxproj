@@ -217,6 +217,8 @@
 		EC3E44577EC927EC67693EF6 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		EFF7B3A524EFFF790607A686 /* Pods-CoachTimerMock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerMock.debug.xcconfig"; path = "Target Support Files/Pods-CoachTimerMock/Pods-CoachTimerMock.debug.xcconfig"; sourceTree = "<group>"; };
 		F701327C27C764224559071E /* Pods-CoachTimerTests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoachTimerTests.mock.xcconfig"; path = "Target Support Files/Pods-CoachTimerTests/Pods-CoachTimerTests.mock.xcconfig"; sourceTree = "<group>"; };
+		F8AD0F2B2681249100983441 /* testSessionUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testSessionUI.1.png; sourceTree = "<group>"; };
+		F8AD0F2C2681249100983441 /* testChartUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testChartUI.1.png; sourceTree = "<group>"; };
 		F8C7927F267BB095002C49C2 /* SeedUserRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedUserRequestModel.swift; sourceTree = "<group>"; };
 		F8C7929A267BB39C002C49C2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F8C792B0267BB8A9002C49C2 /* UsersSessionsReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersSessionsReducerTests.swift; sourceTree = "<group>"; };
@@ -465,6 +467,8 @@
 		BBF02D56FBF1C01C362C813E /* CoachTimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				F8AD0F292681249100983441 /* __Snapshots__ */,
+				F8AD0F1D268122BE00983441 /* SessionReducer */,
 				F8C79467267E3A15002C49C2 /* Utilities */,
 				F8C792B0267BB8A9002C49C2 /* UsersSessionsReducerTests.swift */,
 				F8C79377267C76F2002C49C2 /* FileClientTests.swift */,
@@ -554,6 +558,30 @@
 				F8C794B6267E43B7002C49C2 /* Leaderboard */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		F8AD0F1D268122BE00983441 /* SessionReducer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SessionReducer;
+			sourceTree = "<group>";
+		};
+		F8AD0F292681249100983441 /* __Snapshots__ */ = {
+			isa = PBXGroup;
+			children = (
+				F8AD0F2A2681249100983441 /* SessionReducer */,
+			);
+			path = __Snapshots__;
+			sourceTree = "<group>";
+		};
+		F8AD0F2A2681249100983441 /* SessionReducer */ = {
+			isa = PBXGroup;
+			children = (
+				F8AD0F2B2681249100983441 /* testSessionUI.1.png */,
+				F8AD0F2C2681249100983441 /* testChartUI.1.png */,
+			);
+			path = SessionReducer;
 			sourceTree = "<group>";
 		};
 		F8C79299267BB38B002C49C2 /* Common */ = {

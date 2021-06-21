@@ -83,7 +83,7 @@ class TrendlineExample: UIViewController {
 
 		let p = [
 			ChartPoint(x: ChartAxisValue(scalar: 0), y: ChartAxisValue(scalar: avg)),
-			ChartPoint(x: ChartAxisValue(scalar: Double(laps.count - 1)), y: ChartAxisValue(scalar: avg))
+			ChartPoint(x: ChartAxisValue(scalar: Double(laps.count)), y: ChartAxisValue(scalar: avg))
 		]
 			
 		let trendLineModel = ChartLineModel(chartPoints: p, lineColor: UIColor.blue, animDuration: 0.5, animDelay: 1)
