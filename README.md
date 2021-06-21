@@ -15,9 +15,9 @@ __CoachTimer__ is based on my personal library [RxComposableArchitecture](https:
 
 [RxComposableArchitecture](https://github.com/jrBordet/RxComposableArchitecture) is a modern _Rx_ library for building applications in a consistent way, with composition and testing.
 
-Usually developers come to __Functional Reactive Programming__ whith just in mind the idea of "reactive", or that everything is a stream of data. Basically it's true but there is a ceveat. In fact we should remember that we are working in __functional__ world, which means that we should keep in mind some principle as __state immutability__. 
+Usually developers come to __Functional Reactive Programming__ whith just in mind the idea of "reactive", or that everything is a stream of data. Basically it's true but there is a caveat. In fact we should remember that we are working in __functional__ world, which means that we should keep in mind some principle as __state immutability__. 
 
-__state immutability__ is a misleading concept because obviously the state must change, in fact our aim is transform information, but we must do it in a consisten way. And this is where the idea of the Composable Architecture.
+__state immutability__ is a misleading concept . Obviously the state should change, in fact our aim is to transform informations. But we must do it in a consistent way. And this is where come from the idea of the Composable Architecture.
 
 
 Every feature is defined by some types and values that model your domain:
@@ -64,7 +64,7 @@ The Environment
 
 ```swift 
 public struct UsersEnvironment {
-    // load users from a loca storage
+    // load users from a local storage
 	var loadUsers: () -> Effect<[User]>
     
     // fetch users from remote
@@ -152,7 +152,7 @@ And then we are ready for testing
 			Step(.receive, UsersAction.loadResponse([]), { state in
 				
 			}),
-             // the perform an http request that ansewer with tow users
+             // then perform a http request that return two users
 			Step(.receive, UsersAction.fetchResponse([.sample, .sample_1]), { state in
 				state.list = [
 					.sample,
