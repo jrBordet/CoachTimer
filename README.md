@@ -11,11 +11,11 @@ pod install
 
 <table>
   <tr>
-      <td> <img src="img_users.png" width = 360px height = 640px ></td>
+      <td><img src="img_users.png" width = 360px></td>
       <td><img src="img_session.png" width="360px"/></td>
    </tr> 
    <tr>
-      <td><img src="img_chart.png" width = 360px height = 640px></td>
+      <td><img src="img_chart.png" width = 360px></td>
       <td><img src="img_leaderboard.png" width="360px"/></td>
   </tr>
 </table>
