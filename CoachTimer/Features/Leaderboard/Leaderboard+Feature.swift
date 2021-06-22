@@ -12,7 +12,7 @@ import RxComposableArchitecture
 
 // MARK: - Feature business logic
 
-public func leaderboardReducer(
+func leaderboardReducer(
 	state: inout LeaderboardState,
 	action: LeaderboardAction,
 	environment: LeaderboardEnvironment
@@ -40,12 +40,12 @@ public func leaderboardReducer(
 
 // MARK: - Feature domain
 
-public enum Sorting: Equatable {
+enum Sorting: Equatable {
 	case speed
 	case laps
 }
 
-public struct LeaderboardState: Equatable  {
+struct LeaderboardState: Equatable  {
 	var sessions: [Session]
 	var sort: Sorting
 	
@@ -65,9 +65,9 @@ extension LeaderboardState {
 	)
 }
 
-public enum LeaderboardAction: Equatable {
+enum LeaderboardAction: Equatable {
 	case sort(Sorting)
 }
 
-public struct LeaderboardEnvironment {
+struct LeaderboardEnvironment {
 }

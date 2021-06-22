@@ -10,7 +10,7 @@ import RxComposableArchitecture
 
 // MARK: - Feature business logic
 
-public func sessionReducer(
+func sessionReducer(
 	state: inout SessionState,
 	action: SessionAction,
 	environment: SessionEnvironment
@@ -27,6 +27,7 @@ public func sessionReducer(
 		state.peakSpeed = peakSpeed(laps: state.laps, distance: state.distance ?? 1)
 
 		return []
+		
 	case let .laps(v):
 		guard v.isEmpty == false else {
 			return []
@@ -39,23 +40,27 @@ public func sessionReducer(
 		
 		return []
 		
-	case let .name(id):
-		state.id = id ?? ""
+	case let .id(id):
+		state.id = id
 		
 		return []
 		
-	case .saveCurrentSession:
+	case let .saveCurrentSession(date):
 		let session = Session(
-			id: state.id,
-			   user: state.user,
-			   distance: state.distance,
-			   laps: state.laps
-		   )
+			id: date,
+			user: state.user,
+			distance: state.distance,
+			laps: state.laps
+		)
+		
+		guard state.laps.count > 0 else {
+			return []
+		}
 		
 		state.sessions.append(
 			session
 		)
-		
+				
 		return [
 			environment.sync(session).map(SessionAction.syncResponse)
 		]
@@ -67,8 +72,8 @@ public func sessionReducer(
 
 // MARK: - Feature domain
 
-public struct SessionState: Equatable  {
-	var id: String
+struct SessionState: Equatable  {
+	var id: Date?
 	var user: User?
 	var distance: Int?
 	var laps: [Lap]
@@ -77,7 +82,7 @@ public struct SessionState: Equatable  {
 	var peakSpeed: Double
 	
 	public init(
-		id: String,
+		id: Date?,
 		user: User?,
 		distance: Int?,
 		laps: [Lap],
@@ -97,7 +102,7 @@ public struct SessionState: Equatable  {
 
 extension SessionState {
 	static var empty = Self(
-		id: "",
+		id: nil,
 		user: nil,
 		distance: nil,
 		laps: [],
@@ -107,15 +112,15 @@ extension SessionState {
 	)
 }
 
-public enum SessionAction: Equatable {
-	case name(String?)
+enum SessionAction: Equatable {
+	case id(Date?)
 	case distance(Int?)
 	case lap(Lap)
 	case laps([Lap])
-	case saveCurrentSession
+	case saveCurrentSession(Date)
 	case syncResponse(Bool)
 }
 
-public struct SessionEnvironment {
+struct SessionEnvironment {
 	var sync: (Session) -> Effect<Bool>
 }

@@ -44,13 +44,25 @@ class UsersSessionsReducerTests: XCTestCase {
 	}
 	
 	func testSingleUserSelection() {
+		let date = Date()
+		
+		let state = UsersSessionsViewState(
+			list: [],
+			isLoading: false,
+			alert: nil,
+			currentPage: 1,
+			currentUser: nil,
+			currentSession: Session(id: date, user: .sample, distance: 100, laps: []),
+			sessions: []
+		)
+		
 		assert(
 			initialValue: UsersSessionsViewState.empty,
 			reducer: usersSessionsiewReducer,
 			environment: env_filled,
 			steps: Step(.send, UsersSessionsViewAction.user(UsersAction.fetch), { state in
 				state.isLoading = true
-				state.currentSession = Session(id: "", user: nil, distance: nil, laps: [])
+				state.currentSession = Session(id: nil, user: nil, distance: nil, laps: [])
 			}),
 			Step(.receive, UsersSessionsViewAction.user(UsersAction.fetchResponse([.sample, .sample_1])), { state in
 				state.list = [
@@ -60,7 +72,7 @@ class UsersSessionsReducerTests: XCTestCase {
 				
 				state.currentPage = 2
 				
-				state.isLoading = false
+				state.isLoading = false				
 			}),
 			Step(.receive, UsersSessionsViewAction.user(UsersAction.persistUsersResponse(true)), { state in
 				
@@ -69,13 +81,15 @@ class UsersSessionsReducerTests: XCTestCase {
 	}
 	
 	func testCompleteSession() {
+		let date = Date()
+		
 		assert(
 			initialValue: UsersSessionsViewState.empty,
 			reducer: usersSessionsiewReducer,
 			environment: env_filled,
 			steps: Step(.send, .user(.fetch), { state in
 				state.isLoading = true
-				state.currentSession = Session(id: "", user: nil, distance: nil, laps: [])
+				state.currentSession = Session(id: nil, user: nil, distance: nil, laps: [])
 			}),
 			Step(.receive, .user(.fetchResponse([.sample, .sample_1])), { state in
 				state.list = [
@@ -92,20 +106,20 @@ class UsersSessionsReducerTests: XCTestCase {
 			}),
 			Step(.send, UsersSessionsViewAction.user(.selectUser(.sample)), { state in
 				state.currentUser = .sample
-				state.currentSession = Session(id: "", user: .sample, distance: nil, laps: [])
+				state.currentSession = Session(id: nil, user: .sample, distance: nil, laps: [])
 			}),
-			Step(.send, UsersSessionsViewAction.session(.name("testing")), { state in
-				state.currentSession = Session(id: "testing", user: .sample, distance: 0, laps: [])
+			Step(.send, UsersSessionsViewAction.session(.id(date)), { state in
+				state.currentSession = Session(id: date, user: .sample, distance: 0, laps: [])
 			}),
 			Step(.send, UsersSessionsViewAction.session(.distance(100)), { state in
-				state.currentSession = Session(id: "testing", user: .sample, distance: 100, laps: [])
+				state.currentSession = Session(id: date, user: .sample, distance: 100, laps: [])
 			}),
 			Step(.send, UsersSessionsViewAction.session(.laps([.lap_0, .lap_1])), { state in
-				state.currentSession = Session(id: "testing", user: .sample, distance: 100, laps: [.lap_0, .lap_1])
+				state.currentSession = Session(id: date, user: .sample, distance: 100, laps: [.lap_0, .lap_1])
 			}),
-			Step(.send, UsersSessionsViewAction.session(.saveCurrentSession), { state in
+			Step(.send, UsersSessionsViewAction.session(.saveCurrentSession(date)), { state in
 				state.sessions = [
-					Session(id: "testing", user: .sample, distance: 100, laps: [.lap_0, .lap_1])
+					Session(id: date, user: .sample, distance: 100, laps: [.lap_0, .lap_1])
 				]
 			}), Step(.receive, UsersSessionsViewAction.session(SessionAction.syncResponse(true)), { state in
 				

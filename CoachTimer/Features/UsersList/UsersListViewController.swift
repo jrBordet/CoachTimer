@@ -51,9 +51,9 @@ class UsersListViewController: UIViewController {
 		// MARK: - load users
 		
 		/// Use `fetch` instead to retrieve users frorm the network
-		// store.send(UsersSessionsViewAction.user(UsersAction.fetch))
+		 store.send(UsersSessionsViewAction.user(UsersAction.fetch))
 		
-		store.send(UsersSessionsViewAction.user(UsersAction.load))
+		//store.send(UsersSessionsViewAction.user(UsersAction.load))
 		
 		// MARK: - Config cell
 		
@@ -72,7 +72,8 @@ class UsersListViewController: UIViewController {
 		
 		store.value
 			.map { $0.isLoading }
-			.bind(to: self.activityIndicator.rx.isAnimating)
+			.asDriver(onErrorJustReturn: false)
+			.drive(activityIndicator.rx.isAnimating)
 			.disposed(by: disposeBag)
 		
 		// MARK: - not found
@@ -83,11 +84,13 @@ class UsersListViewController: UIViewController {
 			.share(replay: 1, scope: .whileConnected)
 		
 		alert
-			.bind(to: notFoundLabel.rx.isVisible)
+			.asDriver(onErrorJustReturn: false)
+			.drive(notFoundLabel.rx.isVisible)
 			.disposed(by: disposeBag)
 		
 		alert
-			.bind(to: tableView.rx.isHidden)
+			.asDriver(onErrorJustReturn: false)
+			.drive(tableView.rx.isHidden)
 			.disposed(by: disposeBag)
 		
 		// MARK: - Bind dataSource

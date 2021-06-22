@@ -34,7 +34,7 @@ extension Reactive where Base: Store<SessionState, SessionAction> {
 	
 	var saveCurrentSession: Binder<(Void)> {
 		Binder(self.base) { store, value in
-			store.send(SessionAction.saveCurrentSession)
+			store.send(SessionAction.saveCurrentSession(Date()))
 		}
 	}
 }

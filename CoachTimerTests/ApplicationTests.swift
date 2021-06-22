@@ -17,7 +17,9 @@ import SceneBuilder
 
 class ApplicationTests: XCTestCase {
 	func testApplication() throws {
+		
 		// MARK: - App domain
+		
 		let usersSessionsState = UsersSessionsViewState(
 			list: [],
 			isLoading: false,
@@ -71,7 +73,7 @@ class ApplicationTests: XCTestCase {
 			environment: env,
 			steps: Step(.send, .userSessions(.user(.load)), { state in
 				state.usersSession.currentSession = Session(
-					id: "",
+					id: nil,
 					user: nil,
 					distance: nil,
 					laps: []

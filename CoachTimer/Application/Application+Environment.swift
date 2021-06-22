@@ -8,6 +8,6 @@ import RxComposableArchitecture
 import os.log
 import RxSwift
 
-public struct AppEnvironment {
+struct AppEnvironment {
 	public var userEnv: UsersViewEnvironment
 }

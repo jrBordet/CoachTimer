@@ -13,6 +13,7 @@ import RxSwift
 import RxCocoa
 import RxComposableArchitectureTests
 import SnapshotTesting
+import SceneBuilder
 
 class UsersReducerTests: XCTestCase {
 	let env_empty = UsersEnvironment(
@@ -71,10 +72,48 @@ class UsersReducerTests: XCTestCase {
 		}
 	)
 	
-	override func setUp() {
-	}
-	
-	override func tearDown() {
+	func testUsersUI() {
+		let env = UsersViewEnvironment(
+			userEnv: UsersEnvironment(
+				fetch: {
+					.just([
+						.sample,
+						.sample_1
+					])
+				}, persistUsers: { v in
+					.just(false)
+				}, loadUsers: {
+					.just([])
+				}),
+			sessionEnv: SessionEnvironment(
+				sync: { _ in
+					fatalError()
+				}
+			)
+		)
+		
+		let state = UsersSessionsViewState(
+			list: [
+			],
+			isLoading: false,
+			alert: nil,
+			currentPage: 1,
+			currentUser: nil,
+			currentSession: nil,
+			sessions: []
+		)
+		
+		let store = Store<UsersSessionsViewState, UsersSessionsViewAction>(
+			initialValue: state,
+			reducer: usersSessionsiewReducer,
+			environment: env
+		)
+
+		let vc = Scene<UsersListViewController>().render()
+
+		vc.store = store
+
+		assertSnapshot(matching: vc, as: .image(on: .iPhoneX), record: false)
 	}
 	
 	func testUsersEmpty() {
@@ -93,6 +132,7 @@ class UsersReducerTests: XCTestCase {
 	}
 	
 	func testUsersFilledFromNetworking() {
+		
 		let initalState = UsersState(
 			list: [],
 			isLoading: false,

@@ -36,7 +36,7 @@ var applicationStore: Store<AppState, AppAction> =
 #endif
 
 
-public func customLogging<Value, Action, Environment>(
+func customLogging<Value, Action, Environment>(
 	_ reducer: @escaping Reducer<Value, Action, Environment>
 ) -> Reducer<Value, Action, Environment> {
 	return { value, action, environment in

@@ -10,7 +10,7 @@ import RxComposableArchitecture
 
 // MARK: - Feature domain
 
-public struct UsersSessionsViewState: Equatable {
+struct UsersSessionsViewState: Equatable {
 	public var list: [User]
 	public var isLoading: Bool
 	public var alert: String?
@@ -20,7 +20,7 @@ public struct UsersSessionsViewState: Equatable {
 	public var currentSession: Session?
 	public var sessions: [Session]
 	
-	public init(
+	init(
 		list: [User],
 		isLoading: Bool,
 		alert: String?,
@@ -58,7 +58,7 @@ public struct UsersSessionsViewState: Equatable {
 			
 			// The session is derived from the user selection
 			self.session = SessionState(
-				id: "",
+				id: nil,
 				user: newValue.currentUser,
 				distance: nil,
 				laps: [],
@@ -72,7 +72,7 @@ public struct UsersSessionsViewState: Equatable {
 	var session: SessionState {
 		get {
 			SessionState(
-				id: self.currentSession?.id ?? "",
+				id: self.currentSession?.id ?? nil,
 				user: self.currentUser,
 				distance: self.currentSession?.distance ?? 0,
 				laps: self.currentSession?.laps ?? [],
@@ -84,7 +84,7 @@ public struct UsersSessionsViewState: Equatable {
 		
 		set {
 			self.currentSession = Session(
-				id: newValue.id,
+				id: newValue.id ?? nil,
 				user: newValue.user,
 				distance: newValue.distance,
 				laps: newValue.laps
@@ -143,7 +143,7 @@ extension UsersSessionsViewState {
 	)
 }
 
-public enum UsersSessionsViewAction: Equatable {
+enum UsersSessionsViewAction: Equatable {
 	case user(UsersAction)
 	case session(SessionAction)
 }
@@ -155,7 +155,7 @@ public struct UsersViewEnvironment {
 
 // MARK: - Business logic
 
-public let usersSessionsiewReducer: Reducer<UsersSessionsViewState, UsersSessionsViewAction, UsersViewEnvironment> = combine(
+let usersSessionsiewReducer: Reducer<UsersSessionsViewState, UsersSessionsViewAction, UsersViewEnvironment> = combine(
 	pullback(
 		usersReducer,
 		value: \UsersSessionsViewState.user,

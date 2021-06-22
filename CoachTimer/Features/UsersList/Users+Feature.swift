@@ -10,7 +10,7 @@ import RxComposableArchitecture
 
 // MARK: - Feature business logic
 
-public func usersReducer(
+func usersReducer(
 	state: inout UsersState,
 	action: UsersAction,
 	environment: UsersEnvironment
@@ -46,20 +46,9 @@ public func usersReducer(
 			environment.persistUsers(state.list).map { UsersAction.persistUsersResponse($0) }
 		]
 		
-	case .purge:
-		state.list = []
-		state.isLoading = false
-		state.alert = nil
-		state.currentPage = 1
-		
-		return []
-		
 	case let .selectUser(u):
 		state.currentUser = u
 		
-		return []
-		
-	case .persistUsers:
 		return []
 		
 	case .persistUsersResponse:
@@ -86,7 +75,7 @@ public func usersReducer(
 
 // MARK: - Feature domain
 
-public struct UsersState: Equatable {
+struct UsersState: Equatable {
 	var list: [User]
 	var isLoading: Bool
 	var alert: String?
@@ -118,20 +107,18 @@ extension UsersState {
 	)
 }
 
-public enum UsersAction: Equatable {
-	case purge
+enum UsersAction: Equatable {
 	case load
 	case loadResponse([User])
 	case fetch
 	case fetchResponse([User])
-	case persistUsers
 	case persistUsersResponse(Bool)
 	case selectUser(User?)
 }
 
 // MARK: - Environment
 
-public struct UsersEnvironment {
+struct UsersEnvironment {
 	/// Lists the users
 	///
 	/// ```

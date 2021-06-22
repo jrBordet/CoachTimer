@@ -17,6 +17,8 @@ extension AppEnvironment {
 	)
 }
 
+// MARK: Composition of Users and Session environments
+
 extension UsersViewEnvironment {
 	static var live = Self(
 		userEnv: .live,
@@ -24,13 +26,18 @@ extension UsersViewEnvironment {
 	)
 }
 
+// MARK: Session
+
 extension SessionEnvironment {
 	static var live = Self(
 		sync: { session in
+			/// automatic sync procedure that pushes a single session to Cloud APIs.
 			.just(true)
 		}
 	)
 }
+
+// MARK: Users
 
 extension UsersEnvironment {
 	static var live = Self(
@@ -42,6 +49,9 @@ extension UsersEnvironment {
 			
 			return request
 				.execute(with: URLSession.shared)
+				.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+				// TODO: - just to show the activity indicator
+				.delay(.milliseconds(280), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
 				.map { (model: SeedUserRequestModel) -> [User] in
 					model.results.map { (model: UserRequestModel) -> User in
 						User(

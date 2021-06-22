@@ -13,9 +13,8 @@ import RxCocoa
 import SceneBuilder
 
 class SessionChartViewController: UIViewController {
-
 	public var store: Store<SessionState, SessionAction>?
-	
+		
 	private let disposeBag = DisposeBag()
 	
     override func viewDidLoad() {

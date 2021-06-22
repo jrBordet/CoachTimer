@@ -9,26 +9,18 @@ import XCTest
 @testable import CoachTimer
 
 class MetricsTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
 	
 	func testSessionPeakSpeed() {
 		let distance = 100
 		
 		let lap = Lap(
 			id: 1,
-			time: 100 // 100 -> 10 m/s
+			time: 100 // 10 s
 		)
 		
 		let lap_2 = Lap(
 			id: 2,
-			time: 200 // 5 m/s
+			time: 200 // 20 s
 		)
 		
 		let lap_3 = Lap(
@@ -53,6 +45,7 @@ class MetricsTests: XCTestCase {
 			],
 			distance: distance
 		)
+		
 		XCTAssertEqual(result, 10.0, accuracy: 0.1)
 	}
 	
@@ -122,7 +115,7 @@ class MetricsTests: XCTestCase {
 		
 		let lap_2 = Lap(
 			id: 2,
-			time: (30 * 10) //+ (10 * 10)
+			time: (30 * 10)
 		)
 		
 		let result = cadence([lap, lap_2], distance: distance)
@@ -184,7 +177,7 @@ class MetricsTests: XCTestCase {
 		XCTAssertEqual(speed, 1.2, accuracy: 0.1)
 		
 		let session = Session(
-			id: "test",
+			id: Date(),
 			user: .sample,
 			distance: 10,
 			laps: [
@@ -227,7 +220,7 @@ class MetricsTests: XCTestCase {
 		XCTAssertEqual(speed, 1.2, accuracy: 0.1)
 		
 		let session = Session(
-			id: "test",
+			id: Date(),
 			user: .sample,
 			distance: 10,
 			laps: [
@@ -244,7 +237,7 @@ class MetricsTests: XCTestCase {
 		XCTAssertEqual(1.4, peakSpeed.1, accuracy: 0.1)
 	}
 	
-	func testFormat() {
+	func testDoubleFormatter() {
 		let someInt = 4, someIntFormat = "03"
 		
 		let int_result = someInt.format(f: someIntFormat)

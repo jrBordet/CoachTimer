@@ -46,11 +46,9 @@ class SessionViewController: UIViewController {
 	@IBOutlet var tableView: UITableView!
 	@IBOutlet var lapsCountLabel: UILabel!
 	@IBOutlet var peakSpeedLabel: UILabel!
-	@IBOutlet var averageSpeedLabel: UILabel!
-	@IBOutlet var timeVarianceLabel: UILabel!
-	@IBOutlet var timeVariabilityLabel: UILabel!
-	@IBOutlet var averageTimeLapLabel: UILabel!
 	@IBOutlet var cadenceLabel: UILabel!
+	
+	private var goingForwards: Bool = false
 	
 	// MARK: - RxDataSource
 	
@@ -63,27 +61,30 @@ class SessionViewController: UIViewController {
 	public var store: Store<SessionState, SessionAction>?
 	
 	private let disposeBag = DisposeBag()
-	
-	public var closeClosure: (() -> Void)?
-	
+		
 	var mainTimer: Observable<Int>!
 	
-	// MARK: - Life cycle
+	// MARK: - Open chart
 	
 	@objc func chartTapped() {
 		guard let store = self.store else {
 			return
 		}
-		
+				
 		let chart = Scene<SessionChartViewController>().render()
 		
 		chart.store = store
 		
 		self.navigationController?.pushViewController(chart, animated: true)
-		//self.present(chart, animated: true, completion: nil)
 	}
 	
 	// MARK: - Life cycle
+	
+	@objc func back() {
+		store?.send(.saveCurrentSession(Date()))
+		
+		self.navigationController?.popViewController(animated: true)
+	}
 	
 	deinit {
 		print("SessionViewController deinit")
@@ -91,18 +92,21 @@ class SessionViewController: UIViewController {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		
-		// MARK: Save current session
-		store?.send(.saveCurrentSession)
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		// Custom back button to save current session
+		self.navigationItem.hidesBackButton = true
+		let newBackButton = UIBarButtonItem(image: UIImage(named: "ic_back"), style: .plain, target: self, action:  #selector(back))
+		 self.navigationItem.leftBarButtonItem = newBackButton
+				
 		guard let store = self.store else {
 			return
 		}
 		
+		// Chart button
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "chart", style: .plain, target: self, action: #selector(chartTapped))
 		let search = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(chartTapped))
 
@@ -121,27 +125,9 @@ class SessionViewController: UIViewController {
 
 				let result = cadence(tuple.1, distance: distance)
 				
-				return formatter(result, from: "lap/time:", format: ".1")
+				return formatter(result, from: "lap/min:", format: ".1")
 			}
 			.bind(to: cadenceLabel.rx.text)
-			.disposed(by: disposeBag)
-		
-		// MARK: - AverageTimeLap
-		
-		store.value
-			.map { (distance: $0.distance, laps: $0.laps) }
-			.map { tuple -> String in
-				guard
-					let distance = tuple.0,
-					tuple.laps.count > 0 else {
-					return "avg time/lap:"
-				}
-
-				let result = averageTimeLap(tuple.1, distance: distance)
-				
-				return formatter(result, from: "avg time/lap:", format: ".1")
-			}
-			.bind(to: averageTimeLapLabel.rx.text)
 			.disposed(by: disposeBag)
 		
 		/// disable start button for invalid distance
@@ -160,60 +146,6 @@ class SessionViewController: UIViewController {
 			.bind(to: lapsCountLabel.rx.text)
 			.disposed(by: disposeBag)
 		
-		// MARK: - Time variability
-		
-		store.value
-			.map { (distance: $0.distance, laps: $0.laps) }
-			.map { tuple -> String in
-				guard
-					let distance = tuple.0,
-					tuple.laps.count > 0 else {
-					return "time var.[%]:"
-				}
-
-				let result = timeVariability(tuple.1, distance: distance)
-				
-				return formatter(result, from: "time var.[%]:", format: ".3")
-			}
-			.bind(to: timeVariabilityLabel.rx.text)
-			.disposed(by: disposeBag)
-		
-		// MARK: - Time variance
-		
-		store.value
-			.map { (distance: $0.distance, laps: $0.laps) }
-			.map { tuple -> String in
-				guard
-					let distance = tuple.0,
-					tuple.laps.count > 0 else {
-					return "time var.:"
-				}
-
-				let result = timeVariance(tuple.1, distance: distance)
-				
-				return formatter(result, from: "time var.:")
-			}
-			.bind(to: timeVarianceLabel.rx.text)
-			.disposed(by: disposeBag)
-		
-		// MARK: - Average speed
-		
-		store.value
-			.map { (distance: $0.distance, laps: $0.laps) }
-			.map { tuple -> String in
-				guard
-					let distance = tuple.0,
-					tuple.laps.count > 0 else {
-					return "avg speed:"
-				}
-
-				let result = averageSpeed(tuple.1, distance: distance)
-				
-				return formatter(result, from: "avg speed:")
-			}
-			.bind(to: averageSpeedLabel.rx.text)
-			.disposed(by: disposeBag)
-				
 		// MARK: - Peak speed
 		
 		store.value
@@ -248,7 +180,7 @@ class SessionViewController: UIViewController {
 		
 		alert.addTextField { textField in
 			textField.placeholder = "distance in [m]"
-			textField.text = "100"
+			textField.text = "25"
 		}
 		
 		alert.addAction(
@@ -299,11 +231,6 @@ class SessionViewController: UIViewController {
 			.asDriver(onErrorJustReturn: "")
 			.drive(timerLabel.rx.text)
 			.disposed(by: disposeBag)
-				
-//		stopButton.rx
-//			.tap
-//			.bind(to: store.rx.saveCurrentSession)
-//			.disposed(by: disposeBag)
 				
 		// MARK: - take a lap
 		

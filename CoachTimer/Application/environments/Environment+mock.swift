@@ -37,6 +37,9 @@ extension SessionEnvironment {
 extension UsersEnvironment {
 	static var mock = Self(
 		fetch: {
+			// not found response
+			// return .just([.notFound])
+				
 			.just(Page()
 					.mock(from: page_1)
 					.results

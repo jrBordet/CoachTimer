@@ -8,6 +8,12 @@ To run the project, clone the repo, and run `pod install` from the root director
 ```ruby
 pod install
 ```
+<img src="img_users.png" alt="users" width="200"/>
+<img src="img_session.png" alt="session" width="200"/>
+
+<img src="img_chart.png" alt="chart" width="200"/>
+<img src="img_leaderboard.png" alt="leaderboard" width="200"/>
+
 
 ## Architecture
 
@@ -169,6 +175,28 @@ And then we are ready for testing
 
 ```
 
+### Debug
+
+The Coach Timer App comes with a logging function to aid in debugging. With reference to Application+Store.swift 
+
+```swift
+var applicationStore: Store<AppState, AppAction> =
+  Store(
+	initialValue: initialAppState,
+	reducer: with(
+	  appReducer,
+	  compose(
+		customLogging,
+		activityFeed
+	)),
+	environment: AppEnvironment.live
+)
+```
+
+In the debug console we can see the State of the entire app on each status change.
+
+![debug](img_debug.png)
+
 ## Frameworks
 
 
@@ -193,7 +221,7 @@ And then we are ready for testing
 | Pod                            | Version         
 | -------------                  |:-------------:| 
 | RxComposableArchitectureTests  | 2.1.2         |
-
+| SnapshotTesting | 1.7.2|
 
 
 

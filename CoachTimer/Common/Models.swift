@@ -112,7 +112,7 @@ extension Lap {
 }
 
 public struct Session: Equatable {
-	let id: String
+	let id: Date?
 	let user: User?
 	let distance: Int?
 	let laps: [Lap]
@@ -158,7 +158,7 @@ func peakSpeed(laps: [Lap], distance: Int) -> Double {
 
 extension Session {
 	static var one = Self(
-		id: "one",
+		id: Date(timeIntervalSince1970: 1624343834),
 		user: .sample,
 		distance: 100,
 		laps: [
@@ -167,7 +167,7 @@ extension Session {
 	)
 	
 	static var two = Self(
-		id: "two",
+		id: Date(timeIntervalSince1970: 1624347434),
 		user: .sample_1,
 		distance: 100,
 		laps: [
@@ -177,7 +177,7 @@ extension Session {
 	)
 	
 	static var three = Self(
-		id: "three",
+		id: Date(timeIntervalSince1970: 1624351034),
 		user: .sample_1,
 		distance: 100,
 		laps: [

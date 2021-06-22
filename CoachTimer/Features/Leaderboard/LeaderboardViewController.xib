@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1CX-Jk-zff">
-                    <rect key="frame" x="0.0" y="44" width="414" height="32"/>
+                    <rect key="frame" x="15" y="44" width="384" height="32"/>
                     <segments>
                         <segment title="explosiveness"/>
                         <segment title="endurance"/>
@@ -36,10 +36,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="1CX-Jk-zff" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HUn-Cl-B1p"/>
+                <constraint firstItem="1CX-Jk-zff" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="HUn-Cl-B1p"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZBo-jM-XqH" secondAttribute="bottom" id="HbE-d7-Hfp"/>
                 <constraint firstItem="ZBo-jM-XqH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="OHg-iY-VNF"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1CX-Jk-zff" secondAttribute="trailing" id="WrB-5j-vdk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1CX-Jk-zff" secondAttribute="trailing" constant="15" id="WrB-5j-vdk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZBo-jM-XqH" secondAttribute="trailing" id="XCn-2c-y94"/>
                 <constraint firstItem="ZBo-jM-XqH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gbb-1k-AFN"/>
                 <constraint firstItem="1CX-Jk-zff" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iqw-B2-cxS"/>

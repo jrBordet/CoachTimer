@@ -12,14 +12,6 @@ import RxCocoa
 import RxComposableArchitecture
 import SceneBuilder
 
-extension Reactive where Base: Store<LeaderboardState, LeaderboardAction> {
-	var sort: Binder<(Sorting)> {
-		Binder(self.base) { store, value in
-			store.send(LeaderboardAction.sort(value))
-		}
-	}
-}
-
 class LeaderboardViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet var sortingController: UISegmentedControl!
@@ -64,8 +56,8 @@ class LeaderboardViewController: UIViewController {
 		
 		tableView.separatorColor = .lightGray
 		
-		// MARK: - Bind dataSource
-		
+		// MARK: - Sort
+
 		sortingController.rx
 			.selectedSegmentIndex
 			.map { index in
@@ -77,66 +69,34 @@ class LeaderboardViewController: UIViewController {
 			}
 			.bind(to: store.rx.sort)
 			.disposed(by: disposeBag)
+		
+		// MARK: - Bind dataSource
 				
 		setupDataSource()
 		
 		store
 			.value
-			//.debug("[LEADERBOARD]", trimOutput: false)
 			.map { (state: LeaderboardState) -> [LeaderboardSectionItem] in
 				// TODO: check this, something goes wrong with RxDataSource
-//				return state
-//					.sessions
-//					.map { (model: Session) -> LeaderboardSectionItem in
-//						LeaderboardSectionItem(
-//							id: model.id,
-//							title: model.user?.id ?? "",
-//							name: model.user?.name ?? "",
-//							surname: model.user?.surname ?? "",
-//							imageUrl: model.user?.imageUrl,
-//							laps: model.laps.count,
-//							speed: model.speed()
-//						)
-//					}
-				
-				
-				switch state.sort {
-				case .laps:
-					return state
-						.sessions
-						.sorted { s1, s2 in
-							s1.laps.count > s2.laps.count
-						}
-						.map { (model: Session) -> LeaderboardSectionItem in
-							LeaderboardSectionItem(
-								id: model.id,
-								title: model.user?.id ?? "",
-								name: model.user?.name ?? "",
-								surname: model.user?.surname ?? "",
-								imageUrl: model.user?.imageUrl,
-								laps: model.laps.count,
-								speed: model.peakSpeed(),
-								sort: state.sort
-							)
-						}
-				case .speed:
-					return state
-						.sessions
-						.sorted { s1, s2 in
-							s1.peakSpeed() > s2.peakSpeed()
-						}
-						.map { (model: Session) -> LeaderboardSectionItem in
-							LeaderboardSectionItem(
-								id: model.id,
-								title: model.user?.id ?? "",
-								name: model.user?.name ?? "",
-								surname: model.user?.surname ?? "",
-								imageUrl: model.user?.imageUrl,
-								laps: model.laps.count,
-								speed: model.peakSpeed(),
-								sort: state.sort
-							)
-						}
+				state.sessions.sorted { (s1, s2) -> Bool in
+					switch state.sort {
+					case .speed:
+						return s1.peakSpeed() > s2.peakSpeed()
+					case .laps:
+						return s1.laps.count > s2.laps.count
+					}
+				}
+				.map { (model: Session) -> LeaderboardSectionItem in
+					LeaderboardSectionItem(
+						id: model.id.debugDescription,
+						title: model.user?.id ?? "",
+						name: model.user?.name ?? "",
+						surname: model.user?.surname ?? "",
+						imageUrl: model.user?.imageUrl,
+						laps: model.laps.count,
+						speed: model.peakSpeed(),
+						sort: state.sort
+					)
 				}
 			}
 			.map { (items: [LeaderboardSectionItem]) -> [UsersListSectionModel] in
@@ -231,7 +191,7 @@ extension LeaderboardSectionItem: IdentifiableType {
 	public typealias Identity = String
 	
 	public var identity: String {
-		return UUID().uuidString
+		return id
 	}
 }
 

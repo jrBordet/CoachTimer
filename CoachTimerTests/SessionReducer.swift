@@ -24,7 +24,7 @@ class SessionReducer: XCTestCase {
 	
 	func testSessionUI() {
 		let state = SessionState(
-			id: "",
+			id: nil,
 			user: User.sample,
 			distance: 100,
 			laps: [Lap.lap_0, .lap_1, Lap.lap_2],
@@ -48,7 +48,7 @@ class SessionReducer: XCTestCase {
 	
 	func testChartUI() {
 		let state = SessionState(
-			id: "",
+			id: nil,
 			user: User.sample,
 			distance: 100,
 			laps: [Lap.lap_0, .lap_1, Lap.lap_2],
@@ -68,7 +68,7 @@ class SessionReducer: XCTestCase {
 		let vc = Scene<SessionChartViewController>().render()
 
 		vc.store = store
-		assertSnapshot(matching: vc, as: .image(on: .iPhoneX), record: true)
+		assertSnapshot(matching: vc, as: .image(on: .iPhoneX), record: false)
 		
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
 			expectation.fulfill()
@@ -77,13 +77,30 @@ class SessionReducer: XCTestCase {
 		waitForExpectations(timeout: 5, handler: nil)
 	}
 	
-	func testStartAndCompleteSession() {
+	func testSaveSessionEmptyLaps() {
+		let session: SessionState = .empty
+		
 		assert(
-			initialValue: SessionState(id: "", user: User.sample, distance: nil, laps: [], sessions: [], lapsCount: 0, peakSpeed: 0),
+			initialValue: session,
 			reducer: sessionReducer,
 			environment: env,
-			steps: Step(.send, .name("test session name"), { state in
-				state.id = "test session name"
+			steps: Step(.send, .saveCurrentSession(Date()), { state in
+				state.sessions = []
+			}), Step(.send, .laps([]), { state in
+				state.sessions = []
+			})
+		)
+	}
+	
+	func testStartAndCompleteSession() {
+		let date = Date()
+		
+		assert(
+			initialValue: SessionState(id: nil, user: .sample, distance: nil, laps: [], sessions: [], lapsCount: 0, peakSpeed: 0),
+			reducer: sessionReducer,
+			environment: env,
+			steps: Step(.send, .id(date), { state in
+				state.id = date
 			}), Step(.send, .distance(10), { state in
 				state.distance = 10
 			}),
@@ -101,10 +118,10 @@ class SessionReducer: XCTestCase {
 				state.lapsCount = 2
 				state.peakSpeed = 0.01
 			}),
-			Step(.send, .saveCurrentSession, { state in
+			Step(.send, .saveCurrentSession(date), { state in
 				state.sessions = [
 					Session(
-						id: "test session name",
+						id: date,
 						user: User.sample,
 						distance: 10,
 						laps: [

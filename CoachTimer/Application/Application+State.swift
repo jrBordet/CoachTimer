@@ -9,7 +9,7 @@
 import Foundation
 import RxComposableArchitecture
 
-public struct AppState {
+struct AppState {
 	var usersSession: UsersSessionsViewState
 	var leaderboardState: LeaderboardState
 	
