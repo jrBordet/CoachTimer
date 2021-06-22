@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UsersListViewController" customModule="CoachTimer" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="lcz-2O-CSP" id="K2s-hp-han"/>
+                <outlet property="notFoundLabel" destination="Zeq-t4-6B4" id="1aH-Vq-zgo"/>
+                <outlet property="ownerField" destination="kFG-6N-lsv" id="l7R-QI-wNC"/>
+                <outlet property="repoField" destination="JwK-YW-d5p" id="OAX-CE-7VQ"/>
+                <outlet property="tableView" destination="RQo-xn-ea4" id="Khe-7D-rIb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="u2D-KX-2OL">
+                    <rect key="frame" x="15" y="44" width="384" height="117"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="owner" textAlignment="natural" minimumFontSize="15" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="kFG-6N-lsv">
+                            <rect key="frame" x="0.0" y="0.0" width="384" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="XVQ-vA-6up"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="repo" textAlignment="natural" minimumFontSize="15" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="JwK-YW-d5p">
+                            <rect key="frame" x="0.0" y="61" width="384" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="s9b-38-W2W"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                        </textField>
+                    </subviews>
+                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RQo-xn-ea4">
+                    <rect key="frame" x="0.0" y="52" width="414" height="810"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="not found " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeq-t4-6B4">
+                    <rect key="frame" x="8" y="436" width="398" height="42"/>
+                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="35"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="lcz-2O-CSP">
+                    <rect key="frame" x="197" y="443" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="lcz-2O-CSP" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="By5-qz-LSo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RQo-xn-ea4" secondAttribute="trailing" id="DjC-qN-qfA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RQo-xn-ea4" secondAttribute="bottom" id="KY9-rg-mO3"/>
+                <constraint firstItem="u2D-KX-2OL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-15" id="Mip-J8-pDy"/>
+                <constraint firstItem="Zeq-t4-6B4" firstAttribute="centerY" secondItem="RQo-xn-ea4" secondAttribute="centerY" id="TnM-3T-Z30"/>
+                <constraint firstItem="RQo-xn-ea4" firstAttribute="top" secondItem="u2D-KX-2OL" secondAttribute="top" constant="8" id="awe-L9-6Po"/>
+                <constraint firstItem="Zeq-t4-6B4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="cYy-Zm-WPX"/>
+                <constraint firstItem="Zeq-t4-6B4" firstAttribute="centerX" secondItem="RQo-xn-ea4" secondAttribute="centerX" id="hTo-C8-F87"/>
+                <constraint firstItem="u2D-KX-2OL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="hbU-Ya-d6g"/>
+                <constraint firstItem="RQo-xn-ea4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kl5-nJ-F4N"/>
+                <constraint firstItem="u2D-KX-2OL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="lEo-3s-AGT"/>
+                <constraint firstItem="lcz-2O-CSP" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="olW-GN-rcV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zeq-t4-6B4" secondAttribute="trailing" constant="8" id="z9p-1u-d9Y"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
