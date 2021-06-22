@@ -17,5 +17,5 @@ gen:
 test:
 	rm -rf TestResults
 	rm -rf TestResults.xcresult
-	xcodebuild test -workspace CoachTimer.xcworkspace -scheme CoachTimerTests -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.0' -resultBundlePath TestResults
+	xcodebuild test -workspace CoachTimer.xcworkspace -scheme CoachTimerTests -destination 'platform=iOS Simulator,name=iPhone X' -resultBundlePath TestResults
 

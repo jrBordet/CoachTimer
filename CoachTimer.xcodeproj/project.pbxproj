@@ -468,7 +468,6 @@
 			isa = PBXGroup;
 			children = (
 				F8AD0F292681249100983441 /* __Snapshots__ */,
-				F8AD0F1D268122BE00983441 /* SessionReducer */,
 				F8C79467267E3A15002C49C2 /* Utilities */,
 				F8C792B0267BB8A9002C49C2 /* UsersSessionsReducerTests.swift */,
 				F8C79377267C76F2002C49C2 /* FileClientTests.swift */,
@@ -551,20 +550,13 @@
 		F65C19D9D1A3B236E8D4D855 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				F8C795B226806A2C002C49C2 /* Chart */,
 				9451C92541EC440D2D8CB19E /* Users+Sessions.swift */,
+				F8C795B226806A2C002C49C2 /* Chart */,
 				592203DE72B06F9309D07BB4 /* Session */,
 				ED7C3F0F2E372C7C31B5BCEE /* UsersList */,
 				F8C794B6267E43B7002C49C2 /* Leaderboard */,
 			);
 			path = Features;
-			sourceTree = "<group>";
-		};
-		F8AD0F1D268122BE00983441 /* SessionReducer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SessionReducer;
 			sourceTree = "<group>";
 		};
 		F8AD0F292681249100983441 /* __Snapshots__ */ = {
@@ -1131,6 +1123,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.0;
+				DEVELOPMENT_TEAM = XP6P798NUV;
 				INFOPLIST_FILE = "CoachTimer/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1283,6 +1276,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.0;
+				DEVELOPMENT_TEAM = XP6P798NUV;
 				INFOPLIST_FILE = "CoachTimer/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1366,6 +1360,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.0;
+				DEVELOPMENT_TEAM = XP6P798NUV;
 				INFOPLIST_FILE = "CoachTimer/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
