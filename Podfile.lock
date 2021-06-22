@@ -2,20 +2,19 @@ PODS:
   - Caprice (0.0.6)
   - Difference (0.4)
   - Differentiator (4.0.1)
-  - Pageboy (3.6.2)
   - RxBlocking (5.1.1):
     - RxSwift (~> 5)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxComposableArchitecture (2.1.2):
+  - RxComposableArchitecture (2.1.3):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
     - SwiftSpinner (~> 2.1.0)
-  - RxComposableArchitectureTests (2.1.2):
+  - RxComposableArchitectureTests (2.1.3):
     - Difference (= 0.4)
     - RxCocoa (~> 5)
-    - RxComposableArchitecture (= 2.1.2)
+    - RxComposableArchitecture (= 2.1.3)
     - RxSwift (~> 5)
   - RxDataSources (4.0.1):
     - Differentiator (~> 4.0)
@@ -32,15 +31,13 @@ PODS:
   - SwiftLint (0.43.1)
   - SwiftPrettyPrint (1.1.0)
   - SwiftSpinner (2.1.0)
-  - Tabman (2.11.1):
-    - Pageboy (~> 3.6.0)
 
 DEPENDENCIES:
   - Caprice (= 0.0.6)
   - Difference
   - RxBlocking
-  - RxComposableArchitecture (= 2.1.2)
-  - RxComposableArchitectureTests (= 2.1.2)
+  - RxComposableArchitecture (= 2.1.3)
+  - RxComposableArchitectureTests (= 2.1.3)
   - RxDataSources (= 4.0.1)
   - RxTest
   - SceneBuilder (= 1.0.0)
@@ -48,7 +45,6 @@ DEPENDENCIES:
   - SwiftCharts (from `https://github.com/i-schuetz/SwiftCharts.git`)
   - SwiftLint
   - SwiftPrettyPrint (~> 1.1.0)
-  - Tabman (~> 2.9)
 
 SPEC REPOS:
   https://github.com/jrBordet/Sources.git:
@@ -59,7 +55,6 @@ SPEC REPOS:
   trunk:
     - Difference
     - Differentiator
-    - Pageboy
     - RxBlocking
     - RxCocoa
     - RxDataSources
@@ -70,7 +65,6 @@ SPEC REPOS:
     - SwiftLint
     - SwiftPrettyPrint
     - SwiftSpinner
-    - Tabman
 
 EXTERNAL SOURCES:
   SwiftCharts:
@@ -85,11 +79,10 @@ SPEC CHECKSUMS:
   Caprice: 083660ba310518f0eb42fda32f7febc40198f112
   Difference: d647f091010f05267885fdf758b885c6cfbf116e
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
-  Pageboy: cf121b9dd48c63f3f281b2a9ec93d02e0f23879b
   RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
-  RxComposableArchitecture: 62f2cbefba2a138d269cb335b5f72b0d0e3f7eb1
-  RxComposableArchitectureTests: 99d9f5c06d1e86c08d62cbec79ae79c97050bcb0
+  RxComposableArchitecture: f902811ae1c2c2223b1c96e87b9de63c49f4b511
+  RxComposableArchitectureTests: b6c8a7307427c26270bdbf7dae52d66386c5d7d1
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
@@ -100,8 +93,7 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   SwiftPrettyPrint: 3af0e8c4dca181184522a276e9f8c9ce30f77f22
   SwiftSpinner: 0f15c006307f8d8bbac075638927ec1361b565d7
-  Tabman: 792ac76fd1ec95af175c93db880a3c47cabedc91
 
-PODFILE CHECKSUM: 17c31c8ff9479f2d04f7b67f4f52204173762c93
+PODFILE CHECKSUM: a712e694a31e9ff9864c67ac5e62ff4bf9d9f152
 
 COCOAPODS: 1.10.1
