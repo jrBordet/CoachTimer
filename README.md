@@ -8,12 +8,17 @@ To run the project, clone the repo, and run `pod install` from the root director
 ```ruby
 pod install
 ```
-<img src="img_users.png" alt="users" width="200"/>
-<img src="img_session.png" alt="session" width="200"/>
 
-<img src="img_chart.png" alt="chart" width="200"/>
-<img src="img_leaderboard.png" alt="leaderboard" width="200"/>
-
+<table>
+  <tr>
+      <td> <img src="img_users.png"  alt="1" width = 360px height = 640px ></td>
+      <td><img src="img_session.png" alt="session" width="200"/></td>
+   </tr> 
+   <tr>
+      <td><img src="img_chart.png" alt="3" width = 360px height = 640px></td>
+      <td><img src="img_leaderboard.png" alt="session" width="200"/></td>
+  </tr>
+</table>
 
 ## Architecture
 
