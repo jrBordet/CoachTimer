@@ -32,6 +32,7 @@ extension SessionEnvironment {
 	static var live = Self(
 		sync: { session in
 			/// automatic sync procedure that pushes a single session to Cloud APIs.
+			/// obviously not implemented but, the purpose is just for test the behaviour
 			.just(true)
 		}
 	)
