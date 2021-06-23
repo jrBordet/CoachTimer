@@ -32,7 +32,8 @@ class ApplicationTests: XCTestCase {
 		
 		let leaderboardState = LeaderboardState(
 			sessions: [],
-			sort: .speed
+			sort: .speed,
+			exportSuccess: false
 		)
 		
 		let appState = AppState(
@@ -61,8 +62,11 @@ class ApplicationTests: XCTestCase {
 			)
 		)
 		
+		let leaderboardEnv = LeaderboardEnvironment(exportCSV: { _ in .just(true) })
+		
 		let env = AppEnvironment(
-			userEnv: usersViewEnvironment
+			userEnv: usersViewEnvironment,
+			leaderboardEnv: leaderboardEnv
 		)
 		
 		// MARK: - Tests
@@ -86,6 +90,8 @@ class ApplicationTests: XCTestCase {
 			}),
 			Step(.send, .leaderboard(.sort(.speed)),{ state in
 				state.sort = .speed
+				state.exportSuccess = nil
+				state.leaderboardState.exportSuccess = nil
 			})
 		)
 	}

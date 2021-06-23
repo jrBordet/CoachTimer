@@ -20,6 +20,6 @@ let appReducer: Reducer<AppState, AppAction, AppEnvironment> =  combine(
 		leaderboardReducer,
 		value: \AppState.leaderboard,
 		action: /AppAction.leaderboard,
-		environment: { _ in LeaderboardEnvironment() }
+		environment: { $0.leaderboardEnv }
 	)
 )

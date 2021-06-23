@@ -43,19 +43,7 @@ class UsersSessionsReducerTests: XCTestCase {
 	override func tearDown() {
 	}
 	
-	func testSingleUserSelection() {
-		let date = Date()
-		
-		let state = UsersSessionsViewState(
-			list: [],
-			isLoading: false,
-			alert: nil,
-			currentPage: 1,
-			currentUser: nil,
-			currentSession: Session(id: date, user: .sample, distance: 100, laps: []),
-			sessions: []
-		)
-		
+	func testSingleUserSelection() {		
 		assert(
 			initialValue: UsersSessionsViewState.empty,
 			reducer: usersSessionsiewReducer,
@@ -145,5 +133,52 @@ class UsersSessionsReducerTests: XCTestCase {
 		let speed: Double = 10 / (6375 / 1000)
 		
 		XCTAssertEqual(1.56, speed, accuracy: 0.2)
+	}
+	
+	func testSessionCSV() {
+		let session = Session(
+			id: Date(timeIntervalSince1970: 1624467600),
+			user: User.sample,
+			distance: 25,
+			laps: [
+				.lap_0
+			]
+		)
+		
+		let result = session.exportCSV()
+		
+		XCTAssertEqual(result, "2021-06-23 17:00:00 +0000;1;25;0.0;1")
+	}
+	
+	func testMultipleSessionsCSV() {
+		let session = Session(
+			id: Date(timeIntervalSince1970: 1624467600),
+			user: User.sample,
+			distance: 25,
+			laps: [
+				.lap_0
+			]
+		)
+		
+		let session2 = Session(
+			id: Date(timeIntervalSince1970: 1624471200),
+			user: User.sample_1,
+			distance: 25,
+			laps: [
+				.lap_1
+			]
+		)
+				
+		let csv = exportCSV([session, session2])
+		
+		let expectedResult =
+		"""
+		date;user_id;distance;peak_speed;laps
+		2021-06-23 17:00:00 +0000;1;25;0.0;1
+		2021-06-23 18:00:00 +0000;2;25;0.0;1
+
+		"""
+		
+		XCTAssertEqual(expectedResult, csv)
 	}
 }

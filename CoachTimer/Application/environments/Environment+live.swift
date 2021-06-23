@@ -8,12 +8,14 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxComposableArchitecture
 
 // MARK: - Application effetcs
 
 extension AppEnvironment {
 	static var live = Self(
-		userEnv: UsersViewEnvironment.live
+		userEnv: .live,
+		leaderboardEnv: .live
 	)
 }
 
@@ -26,14 +28,52 @@ extension UsersViewEnvironment {
 	)
 }
 
+// MARK: Leaderboard
+
+/**
+	3) Export
+
+	Provide a sample function that eﬃciently converts data structures to string rows.
+	The function should run in parallel without blocking the UI.
+*/
+
+let liveExportCSV: ([Session]) -> Effect<Bool> = { sessions in
+	 Observable<String>
+		.just(exportCSV(sessions))
+		.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+		.delay(.seconds(10), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+		.map { _ in true }
+}
+
+extension LeaderboardEnvironment {
+	static var live = Self(
+		exportCSV: {
+			liveExportCSV($0)
+				.debug("[ExportCSV] result:", trimOutput: false)
+		}
+	)
+}
+
 // MARK: Session
+
+/**
+
+	5) Sync
+	automatic sync procedure that pushes a single session to Cloud APIs.
+
+	every time a session is completed the `sync` function is called
+*/
 
 extension SessionEnvironment {
 	static var live = Self(
 		sync: { session in
-			/// automatic sync procedure that pushes a single session to Cloud APIs.
-			/// obviously not implemented but, the purpose is just for test the behaviour
-			.just(true)
+			let request = SyncRequest(body: session.exportCSV())
+						
+			return request
+				.execute(with: URLSession.shared)
+				.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+				.map { $0.status == "training-uploaded" }
+				.debug("[SYNC] result:", trimOutput: false)
 		}
 	)
 }
@@ -51,7 +91,7 @@ extension UsersEnvironment {
 			return request
 				.execute(with: URLSession.shared)
 				.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-				// TODO: - just to show the activity indicator
+				// TODO: - forgive me, I've introduced a delays just to show the activity indicator
 				.delay(.milliseconds(280), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
 				.map { (model: SeedUserRequestModel) -> [User] in
 					model.results.map { (model: UserRequestModel) -> User in

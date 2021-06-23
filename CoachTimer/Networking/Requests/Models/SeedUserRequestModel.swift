@@ -40,3 +40,7 @@ public struct UserRequestModel: Codable, Equatable {
 		(self.name.title + self.name.first + self.name.last).lowercased()
 	}
 }
+
+public struct SyncRequestResponse: Codable, Equatable {
+	public let status: String
+}

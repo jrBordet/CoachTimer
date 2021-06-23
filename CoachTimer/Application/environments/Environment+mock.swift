@@ -11,7 +11,8 @@ import Foundation
 
 extension AppEnvironment {
 	static var mock = Self(
-		userEnv: UsersViewEnvironment.mock
+		userEnv: UsersViewEnvironment.mock,
+		leaderboardEnv: LeaderboardEnvironment.mock
 	)
 }
 
@@ -27,6 +28,16 @@ extension UsersViewEnvironment {
 extension SessionEnvironment {
 	static var mock = Self(
 		sync: { session in
+			.just(true)
+		}
+	)
+}
+
+// MARK: - Leaderboard
+
+extension LeaderboardEnvironment {
+	static var mock = Self(
+		exportCSV: { _ in
 			.just(true)
 		}
 	)

@@ -35,6 +35,21 @@ func leaderboardReducer(
 		}
 
 		return []
+		
+	case .exportCSV:
+		return [
+			environment.exportCSV(state.sessions).map { .exportCSVResponse($0) }
+		]
+		
+	case let .exportCSVResponse(success):
+		state.exportSuccess = success
+				
+		return []
+		
+	case .resetExport:
+		state.exportSuccess = nil
+		
+		return []
 	}
 }
 
@@ -48,26 +63,34 @@ enum Sorting: Equatable {
 struct LeaderboardState: Equatable  {
 	var sessions: [Session]
 	var sort: Sorting
+	var exportSuccess: Bool?
 	
 	public init(
 		sessions: [Session],
-		sort: Sorting
+		sort: Sorting,
+		exportSuccess: Bool?
 	) {
 		self.sessions = sessions
 		self.sort = sort
+		self.exportSuccess = exportSuccess
 	}
 }
 
 extension LeaderboardState {
 	static var empty = Self(
 		sessions: [],
-		sort: .speed
+		sort: .speed,
+		exportSuccess: false
 	)
 }
 
 enum LeaderboardAction: Equatable {
 	case sort(Sorting)
+	case exportCSV
+	case exportCSVResponse(Bool)
+	case resetExport
 }
 
 struct LeaderboardEnvironment {
+	var exportCSV: ([Session]) -> Effect<Bool>
 }
