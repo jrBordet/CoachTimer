@@ -434,15 +434,15 @@
 		80185F90F8A1BB0F7B85B59F /* CoachTimer */ = {
 			isa = PBXGroup;
 			children = (
-				F8C79299267BB38B002C49C2 /* Common */,
 				1B5C8B4B04454165E152B69E /* AppDelegate.swift */,
+				F8C79299267BB38B002C49C2 /* Common */,
 				852950857CC207A16EE14BF8 /* Application */,
 				F65C19D9D1A3B236E8D4D855 /* Features */,
 				2FB9F5426233A643EB03A58E /* Networking */,
+				F8C7936D267C7672002C49C2 /* FileClient */,
 				D03BAFBB22505051A80F2751 /* Resources */,
 				77C3C05022C215C80F8F4793 /* Supporting Files */,
 				739446D42E8DE6B655FD2DB0 /* Utilities */,
-				F8C7936D267C7672002C49C2 /* FileClient */,
 			);
 			path = CoachTimer;
 			sourceTree = "<group>";
@@ -495,14 +495,14 @@
 				F8AD0F292681249100983441 /* __Snapshots__ */,
 				F8C79467267E3A15002C49C2 /* Utilities */,
 				F8C792B0267BB8A9002C49C2 /* UsersSessionsReducerTests.swift */,
-				F8C79377267C76F2002C49C2 /* FileClientTests.swift */,
 				0F61B400F5288CE3A8D59AF6 /* ApplicationTests.swift */,
 				3FC9DDD45682926BD5C1FF22 /* UsersReducerTests.swift */,
 				F8C794AE267E4064002C49C2 /* LeaderboardTests.swift */,
 				F8C793EF267D006F002C49C2 /* SessionReducer.swift */,
 				F8C7952E267F428F002C49C2 /* MetricsTests.swift */,
-				D9581F5ADDD57E497552B393 /* Info.plist */,
+				F87545912683389400EDCDB3 /* File client */,
 				DB9248FCD6D93D28F7FF991B /* NetworkingTests */,
+				D9581F5ADDD57E497552B393 /* Info.plist */,
 			);
 			path = CoachTimerTests;
 			sourceTree = "<group>";
@@ -591,6 +591,14 @@
 			);
 			name = UsersReducerTests;
 			path = __Snapshots__/UsersReducerTests;
+			sourceTree = "<group>";
+		};
+		F87545912683389400EDCDB3 /* File client */ = {
+			isa = PBXGroup;
+			children = (
+				F8C79377267C76F2002C49C2 /* FileClientTests.swift */,
+			);
+			path = "File client";
 			sourceTree = "<group>";
 		};
 		F8AD0F292681249100983441 /* __Snapshots__ */ = {
@@ -1273,6 +1281,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimerMock;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1292,6 +1301,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimerMock;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1436,6 +1446,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bordet.CoachTimerMock;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

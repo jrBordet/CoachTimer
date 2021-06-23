@@ -75,7 +75,7 @@ class SessionViewController: UIViewController {
 		
 		chart.store = store
 		
-		self.navigationController?.pushViewController(chart, animated: true)
+		self.present(chart, animated: true, completion: nil)
 	}
 	
 	// MARK: - Life cycle
@@ -100,17 +100,16 @@ class SessionViewController: UIViewController {
 		// Custom back button to save current session
 		self.navigationItem.hidesBackButton = true
 		let newBackButton = UIBarButtonItem(image: UIImage(named: "ic_back"), style: .plain, target: self, action:  #selector(back))
-		 self.navigationItem.leftBarButtonItem = newBackButton
-				
+		self.navigationItem.leftBarButtonItem = newBackButton
+		
 		guard let store = self.store else {
 			return
 		}
 		
 		// Chart button
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "chart", style: .plain, target: self, action: #selector(chartTapped))
-		let search = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(chartTapped))
-
-		navigationItem.rightBarButtonItems = [search]
+		let chart = UIBarButtonItem(title: "chart", style: .plain, target: self, action:  #selector(chartTapped))
+		navigationItem.rightBarButtonItems = [chart]
 		
 		// MARK: - Cadence
 		

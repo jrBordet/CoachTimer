@@ -113,7 +113,15 @@ As you can see the enviromnet resolve extrenally the effect and then return the 
 
 ### Testing
 
-Testing
+#### Integration Tests
+
+Basically in CoachTimer we have just a couple of layer for the "effects"
+
+	* networking layer: check NetworkingTests
+	* file client layer: check FileClientTests
+	
+
+#### Behaviour Testing
 
 To test, we first need to create a mock for the __Environment__ with the same information that the __reducer__ needs to solve depedencies.
 
@@ -218,14 +226,14 @@ In the debug console we can see the State of the entire app on each status chang
 | Pod                       | Version         
 | -------------             |:-------------:| 
 | SceneBuilder              | 1.0.0         |
-| RxComposableArchitecture  | 2.1.2         |
+| RxComposableArchitecture  | 2.1.3         |
 
 
 ### Pods for testing
 
 | Pod                            | Version         
 | -------------                  |:-------------:| 
-| RxComposableArchitectureTests  | 2.1.2         |
+| RxComposableArchitectureTests  | 2.1.3         |
 | SnapshotTesting | 1.7.2|
 
 

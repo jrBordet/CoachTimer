@@ -15,6 +15,12 @@ import SceneBuilder
 class LeaderboardViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet var sortingController: UISegmentedControl!
+	@IBOutlet var exportCSV: UIButton! {
+		didSet {
+			exportCSV.layer.cornerRadius = 5
+			exportCSV.clipsToBounds = true
+		}
+	}
 	
 	// MARK: Store
 	
@@ -55,6 +61,23 @@ class LeaderboardViewController: UIViewController {
 		)
 		
 		tableView.separatorColor = .lightGray
+		
+		// MARK: - Export CSV
+		
+		exportCSV.rx
+			.tap
+			.bind(to: store.rx.export)
+			.disposed(by: disposeBag)
+		
+		// MARK: - export success alert
+
+		store.value
+			.map { $0.exportSuccess }
+			.ignoreNil()
+			.distinctUntilChanged()
+			.observeOn(MainScheduler.instance)
+			.bind(to: self.rx.presentAlert)
+			.disposed(by: disposeBag)
 		
 		// MARK: - Sort
 
@@ -124,6 +147,30 @@ class LeaderboardViewController: UIViewController {
 		)
 	}
 	
+}
+
+extension Reactive where Base: LeaderboardViewController {
+	var presentAlert: Binder<Bool> {
+		Binder(self.base) { vc, success in
+			let alert = UIAlertController(
+				title: "CVS exported",
+				message: "\(success ? "success" : "failure")",
+				preferredStyle: .alert
+			)
+			
+			alert.addAction(
+				UIAlertAction(
+					title: "Ok",
+					style: .default,
+					handler: { _ in
+						vc.store?.send(LeaderboardAction.resetExport)
+					}
+				)
+			)
+			
+			vc.present(alert, animated: true, completion: nil)
+		}
+	}
 }
 
 // MARK: - cell

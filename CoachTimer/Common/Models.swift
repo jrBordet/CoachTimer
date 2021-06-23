@@ -143,6 +143,30 @@ public struct Session: Equatable {
 	}
 }
 
+extension Session {
+	func exportCSV() -> String {
+		guard
+			let user = user,
+			let distance = distance else {
+			return ""
+		}
+				
+		let pkSpeed = peakSpeed(), speedFormat = ".1"
+		
+		return "\(id ?? Date());\(user.id);\(distance);\(pkSpeed.format(f: speedFormat));\(laps.count)"
+	}
+}
+
+func exportCSV(_ sessions: [Session]) -> String {
+	let header = "date;user_id;distance;peak_speed;laps"
+	
+	let result = sessions.reduce("") { (result: String, session: Session) -> String in
+		result + session.exportCSV() + "\n"
+	}
+	
+	return  header + "\n" + result
+}
+
 func peakSpeed(laps: [Lap], distance: Int) -> Double {
 	let result = laps
 		.sorted { (l0, l1) -> Bool in

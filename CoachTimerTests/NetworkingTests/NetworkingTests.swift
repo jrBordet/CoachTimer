@@ -32,9 +32,30 @@ class NetworkingTests: XCTestCase {
 		XCTAssertEqual("GET", request.request?.httpMethod)
 	}
 	
+	func testSyncRequest() {
+		let request = SyncRequest(body: "sample body")
+		
+		XCTAssertEqual("http://empatica-homework.free.beeceptor.com/trainings", request.request?.url?.absoluteString)
+		XCTAssertEqual("POST", request.request?.httpMethod)
+	}
+	
+	func testSyncRequestSuccess() throws {
+		MockUrlProtocol.requestHandler = requestHandler(with: "{\n    \"status\": \"training-uploaded\"\n}".data(using: .utf8)!)
+		
+		let request = SyncRequest(body: "sample body")
+		
+		let result = try request.execute(
+			with: urlSession
+		)
+		.toBlocking(timeout: 10)
+		.toArray()
+		.first
+		
+		XCTAssertEqual("training-uploaded", result?.status)
+	}
+	
 	func testUserRequestSuccess() throws {
 		MockUrlProtocol.requestHandler = requestHandler(with: test_success_response.data(using: .utf8)!)
-		
 		
 		let request = UsersRequest(
 			seed: "empatica",
@@ -48,6 +69,7 @@ class NetworkingTests: XCTestCase {
 			.first
 		
 		XCTAssertFalse(result!.results.isEmpty)
+		
 		XCTAssertEqual(
 			result?.results.first,
 			UserRequestModel(

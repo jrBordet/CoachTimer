@@ -42,6 +42,7 @@ func customLogging<Value, Action, Environment>(
 	return { value, action, environment in
 		let effects = reducer(&value, action, environment)
 		let _value = value
+		
 		return [.fireAndForget {
 			print("\n---")
 

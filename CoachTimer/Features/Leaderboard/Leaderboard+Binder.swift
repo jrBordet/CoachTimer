@@ -17,4 +17,10 @@ extension Reactive where Base: Store<LeaderboardState, LeaderboardAction> {
 			store.send(LeaderboardAction.sort(value))
 		}
 	}
+	
+	var export: Binder<Void> {
+		Binder(self.base) { store, _ in
+			store.send(LeaderboardAction.exportCSV)
+		}
+	}
 }

@@ -9,5 +9,6 @@ import os.log
 import RxSwift
 
 struct AppEnvironment {
-	public var userEnv: UsersViewEnvironment
+	 var userEnv: UsersViewEnvironment
+	var leaderboardEnv: LeaderboardEnvironment
 }

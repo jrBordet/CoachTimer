@@ -51,9 +51,9 @@ class UsersListViewController: UIViewController {
 		// MARK: - load users
 		
 		/// Use `fetch` instead to retrieve users frorm the network
-		 store.send(UsersSessionsViewAction.user(UsersAction.fetch))
+		 //store.send(UsersSessionsViewAction.user(UsersAction.fetch))
 		
-		//store.send(UsersSessionsViewAction.user(UsersAction.load))
+		store.send(UsersSessionsViewAction.user(UsersAction.load))
 		
 		// MARK: - Config cell
 		
