@@ -236,7 +236,7 @@
 		F875453C268231C200EDCDB3 /* img_leaderboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_leaderboard.png; sourceTree = "<group>"; };
 		F875453D268231C200EDCDB3 /* img_users.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_users.png; sourceTree = "<group>"; };
 		F875453E268231C300EDCDB3 /* img_session.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_session.png; sourceTree = "<group>"; };
-		F8AD0F462681B51700983441 /* testChartUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testChartUI.1.png; sourceTree = "<group>"; };
+		F875460826837A9B00EDCDB3 /* testChartUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testChartUI.1.png; sourceTree = "<group>"; };
 		F8AD0F472681B51700983441 /* testSessionUI.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testSessionUI.1.png; sourceTree = "<group>"; };
 		F8C7927F267BB095002C49C2 /* SeedUserRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedUserRequestModel.swift; sourceTree = "<group>"; };
 		F8C7929A267BB39C002C49C2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -612,7 +612,7 @@
 		F8AD0F2A2681249100983441 /* SessionReducer */ = {
 			isa = PBXGroup;
 			children = (
-				F8AD0F462681B51700983441 /* testChartUI.1.png */,
+				F875460826837A9B00EDCDB3 /* testChartUI.1.png */,
 				F8AD0F472681B51700983441 /* testSessionUI.1.png */,
 			);
 			path = SessionReducer;
