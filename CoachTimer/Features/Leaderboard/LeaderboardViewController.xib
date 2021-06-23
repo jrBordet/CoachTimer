@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaderboardViewController" customModule="CoachTimer" customModuleProvider="target">
             <connections>
+                <outlet property="exportCSV" destination="3ue-xJ-ohg" id="P1s-mY-Mhd"/>
                 <outlet property="sortingController" destination="1CX-Jk-zff" id="nUu-7m-MbP"/>
                 <outlet property="tableView" destination="ZBo-jM-XqH" id="ZVY-xh-chM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -32,10 +33,23 @@
                     <rect key="frame" x="0.0" y="108" width="414" height="754"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ue-xJ-ohg">
+                    <rect key="frame" x="314" y="791" width="85" height="56"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="Wd6-fZ-fp5"/>
+                        <constraint firstAttribute="width" constant="85" id="hbh-tb-UOP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="export CVS"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3ue-xJ-ohg" secondAttribute="bottom" constant="15" id="1F4-41-10P"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3ue-xJ-ohg" secondAttribute="trailing" constant="15" id="AUP-hE-p6q"/>
                 <constraint firstItem="1CX-Jk-zff" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="HUn-Cl-B1p"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZBo-jM-XqH" secondAttribute="bottom" id="HbE-d7-Hfp"/>
                 <constraint firstItem="ZBo-jM-XqH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="OHg-iY-VNF"/>
@@ -50,6 +64,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

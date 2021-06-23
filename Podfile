@@ -6,7 +6,7 @@ source 'https://cdn.cocoapods.org/'
 
 def shared_pods
 		pod 'SceneBuilder', '1.0.0'
-		pod 'RxComposableArchitecture', '2.1.2'
+		pod 'RxComposableArchitecture', '2.1.3'
 		pod 'SwiftLint'
 end
 
@@ -33,7 +33,7 @@ target 'CoachTimer' do
     inherit! :search_paths
     # Pods for testing
 		
-		pod 'RxComposableArchitectureTests', '2.1.2'
+		pod 'RxComposableArchitectureTests', '2.1.3'
     
     pod 'SnapshotTesting', '~> 1.7.2'
     pod 'RxBlocking'
@@ -53,7 +53,6 @@ target 'CoachTimerMock' do
 
 	pod 'SwiftCharts', :git => 'https://github.com/i-schuetz/SwiftCharts.git'
   pod 'RxDataSources', '4.0.1'
-	pod 'Tabman', '~> 2.9'
 	pod "SwiftPrettyPrint", "~> 1.1.0" #, :configuration => "Debug"
 	
 	# add the Firebase pod for Google Analytics

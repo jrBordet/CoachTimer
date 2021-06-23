@@ -50,3 +50,33 @@ public struct UsersRequest: APIRequest, CustomDebugStringConvertible {
 		self.page = page
 	}
 }
+
+public struct SyncRequest: APIRequest, CustomDebugStringConvertible {
+	public var debugDescription: String {
+		request.debugDescription
+	}
+	
+	public var endpoint: String = "trainings"
+	
+	private var body: String
+	
+	public typealias Response = SyncRequestResponse
+	
+	public var request: URLRequest? {
+		guard let url = URL(string: "http://empatica-homework.free.beeceptor.com/\(endpoint)") else {
+			return nil
+		}
+		
+		var request = URLRequest(url: url)
+		request.httpMethod = "POST"
+		request.httpBody = body.data(using: .utf8)
+				
+		return request
+	}
+	
+	public init(
+		body: String
+	) {
+		self.body = body
+	}
+}

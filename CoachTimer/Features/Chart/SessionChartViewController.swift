@@ -17,17 +17,28 @@ class SessionChartViewController: UIViewController {
 		
 	private let disposeBag = DisposeBag()
 	
-    override func viewDidLoad() {
+	@IBOutlet var closeButton: UIButton!
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
 		
+		closeButton.rx
+			.tap
+			.bind { [weak self] in
+				self?.dismiss(animated: true, completion: nil)
+			}
+			.disposed(by: disposeBag)
+		
 		store?.value
-			.map { (state: SessionState) -> [Lap] in
-				state.laps
+			.map { (state: SessionState) -> ([Lap], Double, Int?) in
+				return (state.laps, state.peakSpeed, state.distance)
 			}
 			.map { laps -> TrendlineExample in
 				let controller = TrendlineExample()
 				
-				controller.laps = laps
+				controller.laps = laps.0
+				controller.peakSpead = laps.1
+				controller.distance = laps.2
 				
 				return controller
 			}
@@ -50,6 +61,8 @@ class TrendlineExample: UIViewController {
 	fileprivate var chart: Chart? // arc
 	
 	public var laps: [Lap] = []
+	public var peakSpead: Double = 0
+	public var distance: Int?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -59,10 +72,10 @@ class TrendlineExample: UIViewController {
 		}
 		
 		let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
-				
+		
 		let chartPoints: [ChartPoint] =
 			laps
-			.map { ($0.id, $0.time) }
+			.map { ($0.id, (Double(distance ?? 1)) / $0.timeInSec()) }
 			.map {
 				ChartPoint(
 					x: ChartAxisValueDouble($0.0, labelSettings: labelSettings),
@@ -71,13 +84,23 @@ class TrendlineExample: UIViewController {
 			}
 
 		let xValues = chartPoints.map { $0.x }
-		let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 10, maxSegmentCount: 20, multiple: 2, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelSettings)}, addPaddingSegmentIfEdge: false)
+		
+		let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(
+			chartPoints,
+			minSegmentCount: peakSpead,
+			maxSegmentCount: peakSpead + 1,
+			multiple: 1,
+			axisValueGenerator: {
+				ChartAxisValueDouble($0, labelSettings: labelSettings)
+			}, addPaddingSegmentIfEdge: false
+		)
 		
 		let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: UIColor.red, animDuration: 1, animDelay: 0)
-				
-		let sum = laps
-			.map { $0.time }
-			.reduce(0, +)
+			
+		let sum: Double = laps
+			.map { (Double(distance ?? 1)) / $0.timeInSec()  }
+			.reduce(0.0, +)
+		
 		let avg = Double(sum) / Double(laps.count)
 
 		let p = [
@@ -88,7 +111,7 @@ class TrendlineExample: UIViewController {
 		let trendLineModel = ChartLineModel(chartPoints: p, lineColor: UIColor.blue, animDuration: 0.5, animDelay: 1)
 		
 		let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings))
-		let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "speed (100 [ms])", settings: labelSettings.defaultVertical()))
+		let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "speed", settings: labelSettings.defaultVertical()))
 		let chartFrame = ExamplesDefaults.chartFrame(view.bounds)
 		
 		let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom

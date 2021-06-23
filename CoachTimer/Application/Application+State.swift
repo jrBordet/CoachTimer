@@ -14,6 +14,7 @@ struct AppState {
 	var leaderboardState: LeaderboardState
 	
 	var sort: Sorting = .speed
+	var exportSuccess: Bool? = nil
 }
 
 extension AppState: Equatable { }
@@ -29,7 +30,8 @@ extension AppState {
 						
 			self.leaderboard = LeaderboardState(
 				sessions: newValue.sessions,
-				sort: self.sort
+				sort: self.sort,
+				exportSuccess: false
 			)
 		}
 	}
@@ -38,13 +40,15 @@ extension AppState {
 		get {
 			LeaderboardState(
 				sessions: self.usersSession.sessions,
-				sort: self.sort
+				sort: self.sort,
+				exportSuccess: self.exportSuccess
 			)
 		}
 		
 		set {
 			self.leaderboardState = newValue
 			self.sort = newValue.sort
+			self.exportSuccess = newValue.exportSuccess
 		}
 	}
 }

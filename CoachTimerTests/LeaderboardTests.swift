@@ -15,16 +15,11 @@ import RxComposableArchitectureTests
 import SnapshotTesting
 
 class LeaderboardTests: XCTestCase {
-	
-	let env = LeaderboardEnvironment()
-	
-	override func setUpWithError() throws {
-		// Put setup code here. This method is called before the invocation of each test method in the class.
-	}
-	
-	override func tearDownWithError() throws {
-		// Put teardown code here. This method is called after the invocation of each test method in the class.
-	}
+	let env = LeaderboardEnvironment(
+		exportCSV: { _ in
+			.just(true)
+		}
+	)
 	
 	func testLeaderboardSorting() throws {		
 		assert(
@@ -33,7 +28,8 @@ class LeaderboardTests: XCTestCase {
 					Session.one,
 					Session.two
 				],
-				sort: .speed
+				sort: .speed,
+				exportSuccess: false
 			),
 			reducer: leaderboardReducer,
 			environment: env,
@@ -49,6 +45,34 @@ class LeaderboardTests: XCTestCase {
 					.one,
 					.two
 				]
+			})
+		)
+	}
+	
+	func testLeaderboardExportCSV() throws {
+		assert(
+			initialValue: LeaderboardState(
+				sessions: [
+					Session.one,
+					Session.two
+				],
+				sort: .speed,
+				exportSuccess: false
+			),
+			reducer: leaderboardReducer,
+			environment: env,
+			steps: Step(.send, LeaderboardAction.sort(.laps), { state in
+				state.sort = .laps
+				state.sessions = [
+					.two,
+					.one
+				]
+			}),
+			Step(.send, .exportCSV, { state in
+				
+			}),
+			Step(.receive, .exportCSVResponse(true), { state in
+				state.exportSuccess = true
 			})
 		)
 	}
