@@ -70,7 +70,7 @@ class LeaderboardViewController: UIViewController {
 			.disposed(by: disposeBag)
 		
 		// MARK: - export success alert
-
+		
 		store.value
 			.map { $0.exportSuccess }
 			.ignoreNil()
@@ -80,7 +80,7 @@ class LeaderboardViewController: UIViewController {
 			.disposed(by: disposeBag)
 		
 		// MARK: - Sort
-
+		
 		sortingController.rx
 			.selectedSegmentIndex
 			.map { index in
@@ -93,34 +93,41 @@ class LeaderboardViewController: UIViewController {
 			.bind(to: store.rx.sort)
 			.disposed(by: disposeBag)
 		
+		store.value
+			.map { $0.sort }
+			.map { (v: Sorting) -> Int in
+				switch v {
+				case .speed:
+					return 0
+				case .laps:
+					return 1
+				}
+			}
+			.bind(to: sortingController.rx.value)
+			.disposed(by: disposeBag)
+		
 		// MARK: - Bind dataSource
-				
+		
 		setupDataSource()
 		
 		store
 			.value
+			.distinctUntilChanged()
 			.map { (state: LeaderboardState) -> [LeaderboardSectionItem] in
-				// TODO: check this, something goes wrong with RxDataSource
-				state.sessions.sorted { (s1, s2) -> Bool in
-					switch state.sort {
-					case .speed:
-						return s1.peakSpeed() > s2.peakSpeed()
-					case .laps:
-						return s1.laps.count > s2.laps.count
+				state
+					.sessions
+					.map { (model: Session) -> LeaderboardSectionItem in
+						LeaderboardSectionItem(
+							id: model.id.debugDescription,
+							title: model.user?.id ?? "",
+							name: model.user?.name ?? "",
+							surname: model.user?.surname ?? "",
+							imageUrl: model.user?.imageUrl,
+							laps: model.laps.count,
+							speed: model.peakSpeed(),
+							sort: state.sort
+						)
 					}
-				}
-				.map { (model: Session) -> LeaderboardSectionItem in
-					LeaderboardSectionItem(
-						id: model.id.debugDescription,
-						title: model.user?.id ?? "",
-						name: model.user?.name ?? "",
-						surname: model.user?.surname ?? "",
-						imageUrl: model.user?.imageUrl,
-						laps: model.laps.count,
-						speed: model.peakSpeed(),
-						sort: state.sort
-					)
-				}
 			}
 			.map { (items: [LeaderboardSectionItem]) -> [UsersListSectionModel] in
 				[

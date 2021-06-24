@@ -12,9 +12,6 @@ import RxComposableArchitecture
 struct AppState {
 	var usersSession: UsersSessionsViewState
 	var leaderboardState: LeaderboardState
-	
-	var sort: Sorting = .speed
-	var exportSuccess: Bool? = nil
 }
 
 extension AppState: Equatable { }
@@ -30,8 +27,8 @@ extension AppState {
 						
 			self.leaderboard = LeaderboardState(
 				sessions: newValue.sessions,
-				sort: self.sort,
-				exportSuccess: false
+				sort: newValue.sort,
+				exportSuccess: newValue.exportSuccess
 			)
 		}
 	}
@@ -40,15 +37,25 @@ extension AppState {
 		get {
 			LeaderboardState(
 				sessions: self.usersSession.sessions,
-				sort: self.sort,
-				exportSuccess: self.exportSuccess
+				sort: self.usersSession.sort,
+				exportSuccess: self.usersSession.exportSuccess
 			)
 		}
 		
 		set {
 			self.leaderboardState = newValue
-			self.sort = newValue.sort
-			self.exportSuccess = newValue.exportSuccess
+			
+			self.usersSession = UsersSessionsViewState(
+				list: self.usersSession.list,
+				isLoading: self.usersSession.isLoading,
+				alert: self.usersSession.alert,
+				currentPage: self.usersSession.currentPage,
+				currentUser: self.usersSession.currentUser,
+				currentSession: self.usersSession.currentSession,
+				sessions: newValue.sessions,
+				sort: newValue.sort,
+				exportSuccess: newValue.exportSuccess
+			)
 		}
 	}
 }

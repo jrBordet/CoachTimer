@@ -100,7 +100,9 @@ class UsersReducerTests: XCTestCase {
 			currentPage: 1,
 			currentUser: nil,
 			currentSession: nil,
-			sessions: []
+			sessions: [],
+			sort: .speed,
+			exportSuccess: nil
 		)
 		
 		let store = Store<UsersSessionsViewState, UsersSessionsViewAction>(
