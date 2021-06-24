@@ -11,14 +11,17 @@ import RxComposableArchitecture
 // MARK: - Feature domain
 
 struct UsersSessionsViewState: Equatable {
-	public var list: [User]
-	public var isLoading: Bool
-	public var alert: String?
-	public var currentPage: Int
+	var list: [User]
+	var isLoading: Bool
+	var alert: String?
+	var currentPage: Int
 	
-	public var currentUser: User?
-	public var currentSession: Session?
-	public var sessions: [Session]
+	var currentUser: User?
+	var currentSession: Session?
+	var sessions: [Session]
+	
+	var sort: Sorting
+	var exportSuccess: Bool?
 	
 	init(
 		list: [User],
@@ -27,7 +30,9 @@ struct UsersSessionsViewState: Equatable {
 		currentPage: Int,
 		currentUser: User?,
 		currentSession: Session?,
-		sessions: [Session]
+		sessions: [Session],
+		sort: Sorting,
+		exportSuccess: Bool?
 	) {
 		self.list = list
 		self.isLoading = isLoading
@@ -36,6 +41,8 @@ struct UsersSessionsViewState: Equatable {
 		self.currentUser = currentUser
 		self.currentSession = currentSession
 		self.sessions = sessions
+		self.sort = sort
+		self.exportSuccess = exportSuccess
 	}
 	
 	var user: UsersState {
@@ -64,7 +71,9 @@ struct UsersSessionsViewState: Equatable {
 				laps: [],
 				sessions: self.sessions,
 				lapsCount: 0,
-				peakSpeed: 0
+				peakSpeed: 0,
+				sort: .speed,
+				exportSuccess: nil
 			)
 		}
 	}
@@ -78,7 +87,9 @@ struct UsersSessionsViewState: Equatable {
 				laps: self.currentSession?.laps ?? [],
 				sessions: self.sessions,
 				lapsCount: self.currentSession?.laps.count ?? 0,
-				peakSpeed: peakSpeed(laps: self.currentSession?.laps ?? [], distance: self.currentSession?.distance ?? 1)
+				peakSpeed: peakSpeed(laps: self.currentSession?.laps ?? [], distance: self.currentSession?.distance ?? 1),
+				sort: self.sort,
+				exportSuccess: self.exportSuccess
 			)
 		}
 		
@@ -91,6 +102,8 @@ struct UsersSessionsViewState: Equatable {
 			)
 
 			self.sessions = newValue.sessions
+			self.sort = newValue.sort
+			self.exportSuccess = newValue.exportSuccess
 		}
 	}
 }
@@ -103,7 +116,9 @@ extension UsersSessionsViewState {
 		currentPage: 1,
 		currentUser: nil,
 		currentSession: nil,
-		sessions: []
+		sessions: [],
+		sort: .speed,
+		exportSuccess: nil
 	)
 	
 	static var sample = Self(
@@ -113,7 +128,9 @@ extension UsersSessionsViewState {
 		currentPage: 1,
 		currentUser: nil,
 		currentSession: nil,
-		sessions: []
+		sessions: [],
+		sort: .speed,
+		exportSuccess: nil
 	)
 	
 	static var sample_1 = Self(
@@ -126,7 +143,9 @@ extension UsersSessionsViewState {
 		currentPage: 1,
 		currentUser: nil,
 		currentSession: nil,
-		sessions: []
+		sessions: [],
+		sort: .speed,
+		exportSuccess: nil
 	)
 	
 	static var test = Self(
@@ -139,7 +158,9 @@ extension UsersSessionsViewState {
 		currentPage: 1,
 		currentUser: nil,
 		currentSession: nil,
-		sessions: []
+		sessions: [],
+		sort: .speed,
+		exportSuccess: nil
 	)
 }
 

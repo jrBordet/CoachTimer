@@ -30,7 +30,9 @@ class SessionReducer: XCTestCase {
 			laps: [Lap.lap_0, .lap_1, Lap.lap_2],
 			sessions: [],
 			lapsCount: 3,
-			peakSpeed: 10
+			peakSpeed: 10,
+			sort: .speed,
+			exportSuccess: nil
 		)
 		
 		let store = Store<SessionState, SessionAction>(
@@ -54,7 +56,9 @@ class SessionReducer: XCTestCase {
 			laps: [Lap.lap_0, .lap_1, Lap.lap_2],
 			sessions: [],
 			lapsCount: 3,
-			peakSpeed: 10
+			peakSpeed: 10,
+			sort: .speed,
+			exportSuccess: nil
 		)
 		
 		let store = Store<SessionState, SessionAction>(
@@ -96,7 +100,7 @@ class SessionReducer: XCTestCase {
 		let date = Date()
 		
 		assert(
-			initialValue: SessionState(id: nil, user: .sample, distance: nil, laps: [], sessions: [], lapsCount: 0, peakSpeed: 0),
+			initialValue: SessionState(id: nil, user: .sample, distance: nil, laps: [], sessions: [], lapsCount: 0, peakSpeed: 0, sort: .speed, exportSuccess: nil),
 			reducer: sessionReducer,
 			environment: env,
 			steps: Step(.send, .id(date), { state in

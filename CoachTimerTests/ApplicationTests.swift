@@ -27,7 +27,9 @@ class ApplicationTests: XCTestCase {
 			currentPage: 0,
 			currentUser: nil,
 			currentSession: nil,
-			sessions: []
+			sessions: [],
+			sort: .speed,
+			exportSuccess: nil
 		)
 		
 		let leaderboardState = LeaderboardState(
@@ -89,8 +91,6 @@ class ApplicationTests: XCTestCase {
 				]
 			}),
 			Step(.send, .leaderboard(.sort(.speed)),{ state in
-				state.sort = .speed
-				state.exportSuccess = nil
 				state.leaderboardState.exportSuccess = nil
 			})
 		)

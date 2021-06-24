@@ -459,12 +459,12 @@
 		852950857CC207A16EE14BF8 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				C9154A888151F198170A2AD9 /* Application+Action.swift */,
-				AFFA427A8B5FE5FBD97BD198 /* Application+ActivityFeed.swift */,
-				A3744C8347C068A7F46AACC5 /* Application+Environment.swift */,
-				94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */,
-				EC298075A45185081B226BBC /* Application+State.swift */,
 				A26D87084DE40C1690E514A9 /* Application+Store.swift */,
+				EC298075A45185081B226BBC /* Application+State.swift */,
+				C9154A888151F198170A2AD9 /* Application+Action.swift */,
+				94BA476CFAEA8C9605C21488 /* Application+Reducer.swift */,
+				A3744C8347C068A7F46AACC5 /* Application+Environment.swift */,
+				AFFA427A8B5FE5FBD97BD198 /* Application+ActivityFeed.swift */,
 				8772E27FEC53F208A1024384 /* environments */,
 			);
 			path = Application;

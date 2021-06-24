@@ -80,6 +80,8 @@ struct SessionState: Equatable  {
 	var sessions: [Session]
 	var lapsCount: Int
 	var peakSpeed: Double
+	var sort: Sorting = .speed
+	var exportSuccess: Bool? = nil
 	
 	public init(
 		id: Date?,
@@ -88,7 +90,9 @@ struct SessionState: Equatable  {
 		laps: [Lap],
 		sessions: [Session],
 		lapsCount: Int,
-		peakSpeed: Double
+		peakSpeed: Double,
+		sort: Sorting,
+		exportSuccess: Bool?
 	) {
 		self.id = id
 		self.user = user
@@ -97,6 +101,8 @@ struct SessionState: Equatable  {
 		self.sessions = sessions
 		self.lapsCount = lapsCount
 		self.peakSpeed = peakSpeed
+		self.sort = sort
+		self.exportSuccess = exportSuccess
 	}
 }
 
@@ -108,7 +114,9 @@ extension SessionState {
 		laps: [],
 		sessions: [],
 		lapsCount: 0,
-		peakSpeed: 0
+		peakSpeed: 0,
+		sort: .speed,
+		exportSuccess: nil
 	)
 }
 
