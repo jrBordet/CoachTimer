@@ -202,7 +202,7 @@ class UsersReducerTests: XCTestCase {
 	
 	func testSingleUserSelection() {
 		assert(
-			initialValue: UsersState.init(list: [], isLoading: false, alert: nil, currentUser: nil),
+			initialValue: UsersState(list: [], isLoading: false, alert: nil, currentUser: nil),
 			reducer: usersReducer,
 			environment: env_filled,
 			steps: Step(.send, UsersAction.selectUser(.sample), { state in

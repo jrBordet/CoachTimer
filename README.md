@@ -26,9 +26,9 @@ __CoachTimer__ is based on my personal library [RxComposableArchitecture](https:
 
 [RxComposableArchitecture](https://github.com/jrBordet/RxComposableArchitecture) is a modern _Rx_ library for building applications in a consistent way, with composition and testing.
 
-Usually developers come to __Functional Reactive Programming__ whith just in mind the idea of "reactive", or that everything is a stream of data. Basically it's true but there is a caveat. In fact we should remember that we are working in __functional__ world, which means that we should keep in mind some principle as __state immutability__. 
+Usually developers come to __Functional Reactive Programming__ whith just in mind the idea of "reactive", or that everything is a stream of data. Basically it's true but there is a caveat. In fact we should remember that we are working in __functional__ world, which means that we should keep in mind some principle as: __the state immutability__. 
 
-__state immutability__ is a misleading concept . Obviously the state should change, in fact our aim is to transform informations. But we must do it in a consistent way. And this is where come from the idea of the Composable Architecture.
+__State immutability__ is a misleading concept. Obviously the state should mutata, in fact our aim is to transform informations. But we must do it in a consistent way. And this is where come from the idea of the Composable Architecture.
 
 
 Every feature is defined by some types and values that model your domain:
@@ -41,9 +41,19 @@ Every feature is defined by some types and values that model your domain:
 
 The benefits of doing this is that you will instantly unlock testability of your feature, and you will be able to break large, complex features into smaller domains that can be glued together.
 
+
+Every feature is testable in isolation and the power of the Composable Architecture is the ability to glue together two or more features in order to create a brand new one. 
+
+For example the [usersSessionsiewReducer](https://github.com/jrBordet/CoachTimer/blob/master/CoachTimer/Features/Users%2BSessions.swift) is build on the composition of the user list and the single session. And even the [appReducer](https://github.com/jrBordet/CoachTimer/blob/master/CoachTimer/Application/Application%2BReducer.swift) is build on the composition of the UsersList and Session and the Leaderboard.
+
+This lead to an another concept: the __sharing state__. In fact, every time a session is completed, the collection of training sessions is updated and shared between the single Session and the Leaderboard, please refer to [LeaderboardState](https://github.com/jrBordet/CoachTimer/blob/master/CoachTimer/Application/Application%2BState.swift)
+
+
+
+
 ### User list feature
 
-The State
+####The State
 
 ```swift 
 struct UsersState {
@@ -55,11 +65,10 @@ struct UsersState {
 }
 ```
 
-The Actions
+####The Actions
 
 ```swift 
 public enum UsersAction: Equatable {
-	case purge
 	case load
 	case loadResponse([User])
 	case fetch
@@ -70,7 +79,7 @@ public enum UsersAction: Equatable {
 }
 ```
 
-The Environment
+####The Environment
 
 
 ```swift 
