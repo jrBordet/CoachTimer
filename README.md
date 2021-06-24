@@ -53,7 +53,7 @@ This lead to an another concept: the __sharing state__. In fact, every time a se
 
 ### User list feature
 
-####The State
+#### The State
 
 ```swift 
 struct UsersState {
@@ -65,7 +65,7 @@ struct UsersState {
 }
 ```
 
-####The Actions
+#### The Actions
 
 ```swift 
 public enum UsersAction: Equatable {
@@ -79,7 +79,7 @@ public enum UsersAction: Equatable {
 }
 ```
 
-####The Environment
+#### The Environment
 
 
 ```swift 
@@ -96,7 +96,7 @@ public struct UsersEnvironment {
 
 ```
 
-The reducer
+#### The reducer
 
 ```swift 
 public func usersReducer(
