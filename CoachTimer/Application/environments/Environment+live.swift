@@ -28,17 +28,17 @@ extension UsersViewEnvironment {
 	)
 }
 
-// MARK: Leaderboard
+// MARK: - Leaderboard
 
 /**
-	3) Export
+3) Export
 
-	Provide a sample function that eﬃciently converts data structures to string rows.
-	The function should run in parallel without blocking the UI.
+Provide a sample function that eﬃciently converts data structures to string rows.
+The function should run in parallel without blocking the UI.
 */
 
 let liveExportCSV: ([Session]) -> Effect<Bool> = { sessions in
-	 Observable<String>
+	Observable<String>
 		.just(exportCSV(sessions))
 		.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
 		.delay(.seconds(10), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
@@ -54,21 +54,21 @@ extension LeaderboardEnvironment {
 	)
 }
 
-// MARK: Session
+// MARK: - Session
 
 /**
 
-	5) Sync
-	automatic sync procedure that pushes a single session to Cloud APIs.
+5) Sync
+automatic sync procedure that pushes a single session to Cloud APIs.
 
-	every time a session is completed the `sync` function is called
+every time a session is completed the `sync` function is called
 */
 
 extension SessionEnvironment {
 	static var live = Self(
 		sync: { session in
 			let request = SyncRequest(body: session.exportCSV())
-						
+			
 			return request
 				.execute(with: URLSession.shared)
 				.subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
@@ -78,7 +78,7 @@ extension SessionEnvironment {
 	)
 }
 
-// MARK: Users
+// MARK: - Users
 
 extension UsersEnvironment {
 	static var live = Self(
@@ -104,6 +104,7 @@ extension UsersEnvironment {
 						)
 					}
 				}
+				.catchErrorJustReturn([.notFound])
 		},
 		persistUsers: { users in
 			do {

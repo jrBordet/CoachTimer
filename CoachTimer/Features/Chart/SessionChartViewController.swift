@@ -58,7 +58,7 @@ extension Reactive where Base: SessionChartViewController {
 
 
 class TrendlineExample: UIViewController {
-	fileprivate var chart: Chart? // arc
+	fileprivate var chart: Chart?
 	
 	public var laps: [Lap] = []
 	public var peakSpead: Double = 0
