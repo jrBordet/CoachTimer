@@ -99,8 +99,20 @@ class SessionReducer: XCTestCase {
 	func testStartAndCompleteSession() {
 		let date = Date()
 		
+		let state = SessionState(
+			id: nil,
+			user: .sample,
+			distance: nil,
+			laps: [],
+			sessions: [],
+			lapsCount: 0,
+			peakSpeed: 0,
+			sort: .speed,
+			exportSuccess: nil
+		)
+		
 		assert(
-			initialValue: SessionState(id: nil, user: .sample, distance: nil, laps: [], sessions: [], lapsCount: 0, peakSpeed: 0, sort: .speed, exportSuccess: nil),
+			initialValue: state,
 			reducer: sessionReducer,
 			environment: env,
 			steps: Step(.send, .id(date), { state in
@@ -142,5 +154,4 @@ class SessionReducer: XCTestCase {
 			})
 		)
 	}
-	
 }
