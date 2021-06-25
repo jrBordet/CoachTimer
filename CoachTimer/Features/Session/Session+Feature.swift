@@ -61,6 +61,17 @@ func sessionReducer(
 			session
 		)
 				
+		switch state.sort {
+		case .speed:
+			state.sessions = state.sessions.sorted { s1, s2 in
+				s1.peakSpeed() > s2.peakSpeed()
+			}
+		case .laps:
+			state.sessions = state.sessions.sorted { s1, s2 in
+				s1.laps.count > s2.laps.count
+			}
+		}
+				
 		return [
 			environment.sync(session).map(SessionAction.syncResponse)
 		]
