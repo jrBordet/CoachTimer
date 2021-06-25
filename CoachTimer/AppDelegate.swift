@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let leaderboard = Scene<LeaderboardViewController>().render()
 		
 		leaderboard.store = applicationStore.view(
-			value: { $0.leaderboard },
+			value: { $0.leaderboardFeature },
 			action: { .leaderboard($0) }
 		)
 		

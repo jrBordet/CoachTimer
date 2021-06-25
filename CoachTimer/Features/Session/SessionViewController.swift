@@ -169,7 +169,7 @@ class SessionViewController: UIViewController {
 			reuseIdentifier: "SessionCell"
 		)
 		
-		// MARK: - session name
+		// MARK: - Session distance
 		
 		let alert = UIAlertController(
 			title: "Session distance",
@@ -231,7 +231,7 @@ class SessionViewController: UIViewController {
 			.drive(timerLabel.rx.text)
 			.disposed(by: disposeBag)
 				
-		// MARK: - take a lap
+		// MARK: - Take a lap
 		
 		let lapsValues = mainTimer
 			.sample(

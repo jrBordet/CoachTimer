@@ -198,11 +198,11 @@ extension LeaderboardViewController {
 			switch item.sort {
 			case .speed:
 				cell.speedLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-				cell.lapsLabel.font = UIFont.systemFont(ofSize: 20)
+				cell.lapsLabel.font = UIFont.systemFont(ofSize: 20, weight: .light)
 				break
 			case .laps:
 				cell.lapsLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-				cell.speedLabel.font = UIFont.systemFont(ofSize: 20)
+				cell.speedLabel.font = UIFont.systemFont(ofSize: 20, weight: .light)
 				
 				break
 			}

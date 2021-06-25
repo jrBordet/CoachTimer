@@ -189,7 +189,7 @@ And then we are ready for testing
 				state.isLoading = false
 				state.currentPage = 2
 			}),
-            // persiste the response locally
+            // persist the response locally
 			Step(.receive, UsersAction.persistUsersResponse(true), { state in
 				
 			})

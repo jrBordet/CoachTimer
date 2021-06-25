@@ -12,13 +12,13 @@ import RxSwift
 let appReducer: Reducer<AppState, AppAction, AppEnvironment> =  combine(
 	pullback(
 		usersSessionsiewReducer,
-		value: \AppState.usersSession,
+		value: \AppState.usersSessions,
 		action: /AppAction.userSessions,
 		environment: { $0.userEnv }
 	),
 	pullback(
 		leaderboardReducer,
-		value: \AppState.leaderboard,
+		value: \AppState.leaderboardFeature,
 		action: /AppAction.leaderboard,
 		environment: { $0.leaderboardEnv }
 	)

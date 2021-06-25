@@ -39,7 +39,7 @@ class ApplicationTests: XCTestCase {
 		)
 		
 		let appState = AppState(
-			usersSession: usersSessionsState,
+			usersSessions: usersSessionsState,
 			leaderboardState: leaderboardState
 		)
 		
@@ -78,7 +78,7 @@ class ApplicationTests: XCTestCase {
 			reducer: appReducer,
 			environment: env,
 			steps: Step(.send, .userSessions(.user(.load)), { state in
-				state.usersSession.currentSession = Session(
+				state.usersSessions.currentSession = Session(
 					id: nil,
 					user: nil,
 					distance: nil,
@@ -86,7 +86,7 @@ class ApplicationTests: XCTestCase {
 				)
 			}),
 			Step(.receive, .userSessions(.user(.loadResponse([.sample]))), { state in
-				state.usersSession.user.list = [
+				state.usersSessions.user.list = [
 					.sample
 				]
 			}),

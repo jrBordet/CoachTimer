@@ -10,7 +10,7 @@ import Foundation
 import RxComposableArchitecture
 
 struct AppState {
-	var usersSession: UsersSessionsViewState
+	var usersSessions: UsersSessionsViewState
 	var leaderboardState: LeaderboardState
 }
 
@@ -19,13 +19,13 @@ extension AppState: Equatable { }
 extension AppState {
 	var usersSessionsFeature: UsersSessionsViewState {
 		get {
-			self.usersSession
+			self.usersSessions
 		}
 		
 		set {
-			self.usersSession = newValue
+			self.usersSessions = newValue
 						
-			self.leaderboard = LeaderboardState(
+			self.leaderboardFeature = LeaderboardState(
 				sessions: newValue.sessions,
 				sort: newValue.sort,
 				exportSuccess: newValue.exportSuccess
@@ -33,25 +33,25 @@ extension AppState {
 		}
 	}
 	
-	var leaderboard: LeaderboardState {
+	var leaderboardFeature: LeaderboardState {
 		get {
 			LeaderboardState(
-				sessions: self.usersSession.sessions,
-				sort: self.usersSession.sort,
-				exportSuccess: self.usersSession.exportSuccess
+				sessions: self.usersSessions.sessions,
+				sort: self.usersSessions.sort,
+				exportSuccess: self.usersSessions.exportSuccess
 			)
 		}
 		
 		set {
 			self.leaderboardState = newValue
 			
-			self.usersSession = UsersSessionsViewState(
-				list: self.usersSession.list,
-				isLoading: self.usersSession.isLoading,
-				alert: self.usersSession.alert,
-				currentPage: self.usersSession.currentPage,
-				currentUser: self.usersSession.currentUser,
-				currentSession: self.usersSession.currentSession,
+			self.usersSessions = UsersSessionsViewState(
+				list: self.usersSessions.list,
+				isLoading: self.usersSessions.isLoading,
+				alert: self.usersSessions.alert,
+				currentPage: self.usersSessions.currentPage,
+				currentUser: self.usersSessions.currentUser,
+				currentSession: self.usersSessions.currentSession,
 				sessions: newValue.sessions,
 				sort: newValue.sort,
 				exportSuccess: newValue.exportSuccess
@@ -61,6 +61,6 @@ extension AppState {
 }
 
 let initialAppState = AppState(
-	usersSession: .empty,
+	usersSessions: .empty,
 	leaderboardState: .empty
 )
