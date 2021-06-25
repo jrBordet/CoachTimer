@@ -96,7 +96,7 @@ class SessionReducer: XCTestCase {
 		)
 	}
 	
-	func testStartAndCompleteSession() {
+	func testStartAndCompleteCurrentSession() {
 		let date = Date()
 		
 		let state = SessionState(
@@ -148,6 +148,114 @@ class SessionReducer: XCTestCase {
 				]
 				
 				state.peakSpeed = 0.01
+			}),
+			Step(.receive, .syncResponse(true), { state in
+				
+			})
+		)
+	}
+	
+	func testStartAndCompleteSession() {
+		let date = Date()
+				
+		let state = SessionState(
+			id: nil,
+			user: .sample,
+			distance: nil,
+			laps: [],
+			sessions: [
+				.one
+			],
+			lapsCount: 0,
+			peakSpeed: 0,
+			sort: .speed,
+			exportSuccess: nil
+		)
+		
+		assert(
+			initialValue: state,
+			reducer: sessionReducer,
+			environment: env,
+			steps: Step(.send, .id(date), { state in
+				state.id = date
+			}), Step(.send, .distance(10), { state in
+				state.distance = 10
+			}),
+			Step(.send, .laps([.lap_0, .lap_1, .lap_2]), { state in
+				state.laps = [.lap_0, .lap_1, .lap_2]
+				state.lapsCount = 3
+				state.peakSpeed = 0.0125
+			}),
+			Step(.send, .saveCurrentSession(date), { state in
+				state.sessions = [
+					.one, 
+					Session(
+						id: date,
+						user: User.sample,
+						distance: 10,
+						laps: [
+							.lap_0,
+							.lap_1,
+							.lap_2
+						]
+					)
+				]
+				
+				state.peakSpeed = 0.0125
+			}),
+			Step(.receive, .syncResponse(true), { state in
+				
+			})
+		)
+	}
+	
+	func testStartAndCompleteEnduranceSession() {
+		let date = Date()
+				
+		let state = SessionState(
+			id: nil,
+			user: .sample,
+			distance: nil,
+			laps: [],
+			sessions: [
+				.one
+			],
+			lapsCount: 0,
+			peakSpeed: 0,
+			sort: .laps,
+			exportSuccess: nil
+		)
+		
+		assert(
+			initialValue: state,
+			reducer: sessionReducer,
+			environment: env,
+			steps: Step(.send, .id(date), { state in
+				state.id = date
+			}), Step(.send, .distance(10), { state in
+				state.distance = 10
+			}),
+			Step(.send, .laps([.lap_0, .lap_1, .lap_2]), { state in
+				state.laps = [.lap_0, .lap_1, .lap_2]
+				state.lapsCount = 3
+				state.peakSpeed = 0.0125
+			}),
+			Step(.send, .saveCurrentSession(date), { state in
+				state.sessions = [
+					Session(
+						id: date,
+						user: User.sample,
+						distance: 10,
+						laps: [
+							.lap_0,
+							.lap_1,
+							.lap_2
+						]
+					),
+					.one
+				]
+				
+				state.peakSpeed = 0.0125
 			}),
 			Step(.receive, .syncResponse(true), { state in
 				
